@@ -36,7 +36,7 @@ ul,ol{list-style:none}
 
 /* NAVBAR */
 .navbar{background:var(--white);border-bottom:var(--border);position:sticky;top:29px;z-index:100}
-.navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;max-width:1280px;margin:0 auto}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:76px;max-width:1280px;margin:0 auto}
 .nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
 .nav-logo-mark{display:none}
 .nav-logo-mark svg{width:20px;height:20px;color:var(--orange)}
@@ -588,8 +588,8 @@ footer{background:var(--black);border-top:var(--border)}
 <nav class="navbar">
   <div class="navbar-inner">
     <div class="nav-logo" onclick="goPage('home')" style="cursor:pointer;">
-      <img src="logo.png" height="48" alt="Bolt and Screw Trading"
-           style="display:block;height:48px;width:auto;"
+      <img src="logo.png" height="68" alt="Bolt and Screw Trading"
+           style="display:block;height:68px;width:auto;max-width:180px;object-fit:contain;"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
       <span style="display:none;align-items:center;gap:8px;font-size:20px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:48px;"><span style="color:var(--orange);font-size:22px;">&#9650;</span> BOLT &amp; SCREW</span>
     </div>
@@ -612,7 +612,7 @@ footer{background:var(--black);border-top:var(--border)}
   <div class="mobile-nav-header">
     <div class="nav-logo" onclick="goPage('home');closeMobileNav();" style="cursor:pointer;">
       <img src="logo.png" height="56" alt="Bolt and Screw Trading"
-           style="display:block;height:56px;width:auto;"
+           style="display:block;height:56px;width:auto;max-width:160px;object-fit:contain;filter:brightness(0) invert(1);"
            onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
       <span style="display:none;font-size:26px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:56px;"><span style="color:var(--orange);">&#9650;</span> BOLT &amp; SCREW</span>
     </div>

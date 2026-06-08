@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolt &amp; Screw Trading — Mockup v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#111111;--black-2:#1a1a1a;--black-3:#242424;
+  --orange:#e8681a;--orange-d:#c9570f;--orange-bg:#fff4ee;
+  --white:#ffffff;
+  --g50:#fafafa;--g100:#f4f4f4;--g200:#e8e8e8;--g300:#d4d4d4;
+  --g400:#a3a3a3;--g500:#737373;--g600:#525252;--g700:#404040;
+  --border:2px solid #111111;--border-l:1px solid #e8e8e8;--border-d:1px solid #2a2a2a;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --ease:0.18s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--white);color:var(--black);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:var(--font)}
+img,svg{display:block}
+input,select,textarea{font-family:var(--font)}
+ul,ol{list-style:none}
+
+/* DEV BANNER */
+.dev-banner{background:var(--black);color:var(--orange);text-align:center;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:7px 16px;position:sticky;top:0;z-index:1000}
+.dev-banner span{color:var(--g500);font-weight:400;letter-spacing:.06em}
+
+/* PAGE SYSTEM */
+.page{display:none}.page.active{display:block}
+
+/* NAVBAR */
+.navbar{background:var(--white);border-bottom:var(--border);position:sticky;top:29px;z-index:100}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;max-width:1280px;margin:0 auto}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo-mark{display:none}
+.nav-logo-mark svg{width:20px;height:20px;color:var(--orange)}
+.nav-logo-text{line-height:1.15}
+.nav-logo-name{font-size:13px;font-weight:900;letter-spacing:.02em;text-transform:uppercase;color:var(--black)}
+.nav-logo-name .o{color:var(--orange)}
+.nav-logo-sub{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g400)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g600);padding-bottom:2px;border-bottom:2px solid transparent;transition:color var(--ease),border-color var(--ease);cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;font-family:var(--font)}
+.nav-link:hover,.nav-link.active{color:var(--black);border-bottom-color:var(--orange)}
+.nav-actions{display:flex;align-items:center;gap:16px}
+.nav-phone{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--g500)}
+.nav-phone svg{width:14px;height:14px;color:var(--orange)}
+.nav-cta{background:var(--black);color:var(--orange);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;transition:background var(--ease),color var(--ease);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.nav-cta:hover{background:var(--orange);color:var(--white)}
+.nav-cta svg{width:14px;height:14px}
+.nav-hamburger{display:none;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer}
+.nav-hamburger svg{width:22px;height:22px;color:var(--black)}
+
+/* MOBILE NAV */
+.mobile-nav{display:none;position:fixed;inset:0;background:var(--black);z-index:500;flex-direction:column;padding:24px}
+.mobile-nav.open{display:flex}
+.mobile-nav-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:32px;border-bottom:1px solid var(--black-3);margin-bottom:32px}
+.mobile-close-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mobile-close-btn svg{width:24px;height:24px;color:var(--white)}
+.mobile-nav-links{display:flex;flex-direction:column}
+.mobile-nav-link{font-size:clamp(24px,6vw,32px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;color:var(--white);padding:20px 0;border-bottom:1px solid var(--black-3);cursor:pointer;transition:color var(--ease)}
+.mobile-nav-link:hover{color:var(--orange)}
+.mobile-nav-footer{margin-top:auto;display:flex;flex-direction:column;gap:16px}
+.mobile-nav-phone{font-size:16px;font-weight:700;color:var(--orange);display:flex;align-items:center;gap:10px}
+.mobile-nav-phone svg{width:18px;height:18px}
+.mobile-nav-cta{background:var(--orange);color:var(--white);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:16px;text-align:center;cursor:pointer}
+
+/* UTILITIES */
+.section-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';display:inline-block;width:24px;height:2px;background:var(--orange);flex-shrink:0}
+.section-header{display:flex;align-items:stretch;margin-bottom:32px}
+.section-header h2{background:var(--black);color:var(--white);font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:11px 18px;white-space:nowrap;line-height:1;display:flex;align-items:center}
+.sh-accent{width:6px;background:var(--orange);flex-shrink:0}
+.sh-line{flex:1;border-bottom:var(--border);align-self:flex-end}
+.sh-action{align-self:flex-end;padding:0 0 11px 20px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:4px;background:none;border:none;font-family:var(--font)}
+.sh-action svg{width:14px;height:14px}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:13px 24px;transition:background var(--ease),transform var(--ease);cursor:pointer;border:none;font-family:var(--font)}
+.btn-primary svg{width:15px;height:15px}
+.btn-primary:hover{background:var(--orange-d);transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--g400);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:color var(--ease);cursor:pointer;background:none;border:none;font-family:var(--font)}
+.btn-ghost svg{width:15px;height:15px;color:var(--orange)}
+.btn-ghost:hover{color:var(--white)}
+.btn-dark{display:inline-flex;align-items:center;gap:8px;background:var(--black);color:var(--white);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:13px 24px;transition:background var(--ease);cursor:pointer;border:none;font-family:var(--font)}
+.btn-dark svg{width:15px;height:15px}
+.btn-dark:hover{background:#333}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;color:var(--black);background:transparent;border:var(--border);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 22px;transition:all var(--ease);cursor:pointer;font-family:var(--font)}
+.btn-outline:hover{background:var(--black);color:var(--white)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:56% 44%;border-bottom:var(--border)}
+.hero-left{background:var(--black);padding:64px 48px 48px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hero-left::after{content:'';position:absolute;bottom:-80px;right:-80px;width:320px;height:320px;border:1px solid #252525;border-radius:50%;pointer-events:none}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.hero-eyebrow .eline{width:28px;height:2px;background:var(--orange);flex-shrink:0}
+.hero-eyebrow span{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+.hero-heading{font-size:clamp(44px,5.5vw,72px);font-weight:900;line-height:.92;letter-spacing:-.04em;text-transform:uppercase;color:var(--white);margin-bottom:24px}
+.hero-heading .accent{color:var(--orange)}
+.hero-desc{color:var(--g400);font-size:13px;line-height:1.8;max-width:380px;margin-bottom:32px;font-weight:400}
+.hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.hero-strip{margin-top:auto;padding-top:24px;border-top:1px solid #252525;display:flex;gap:32px;flex-wrap:wrap}
+.hero-strip-item{}
+.hero-strip-label{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g600);margin-bottom:3px}
+.hero-strip-value{font-size:12px;font-weight:700;color:var(--white)}
+
+.hero-right{background:var(--orange);padding:48px 40px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;top:-100px;right:-100px;width:380px;height:380px;background:rgba(0,0,0,.06);border-radius:50%;pointer-events:none}
+.hero-right::after{content:'';position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;background:rgba(0,0,0,.05);border-radius:50%;pointer-events:none}
+.hero-tag{display:inline-block;background:rgba(0,0,0,.14);font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--white);padding:5px 12px;margin-bottom:20px;position:relative;z-index:1}
+.hero-big-text{font-size:clamp(32px,3.5vw,46px);font-weight:900;line-height:.94;letter-spacing:-.03em;text-transform:uppercase;color:var(--white);position:relative;z-index:1}
+.hero-big-text .dim{opacity:.35}
+.hero-chips-block{background:rgba(0,0,0,.1);border:1px solid rgba(255,255,255,.15);padding:20px;position:relative;z-index:1;margin-top:24px}
+.hero-chips-lbl{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:6px}
+.hero-chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:var(--white);font-size:10px;font-weight:600;padding:5px 10px;letter-spacing:.03em}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.18);position:relative;z-index:1;margin-top:8px}
+.hero-stat{background:rgba(0,0,0,.1);padding:14px 12px}
+.hero-stat .n{font-size:26px;font-weight:900;color:var(--white);line-height:1;letter-spacing:-.02em}
+.hero-stat .l{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.55);margin-top:3px}
+
+/* CATEGORY STRIP */
+.cat-strip{border-bottom:var(--border);display:grid;grid-template-columns:repeat(5,1fr);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cat-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 16px;border-right:var(--border);cursor:pointer;transition:background var(--ease);position:relative;min-width:120px}
+.cat-item:last-child{border-right:none}
+.cat-item:hover{background:var(--orange-bg)}
+.cat-item.active{background:var(--black)}
+.cat-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center}
+.cat-icon svg{width:40px;height:40px;color:var(--black)}
+.cat-item.active .cat-icon svg{color:var(--orange)}
+.cat-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--black);text-align:center}
+.cat-item.active .cat-label{color:var(--orange)}
+.cat-count{position:absolute;top:10px;right:10px;background:var(--orange);color:var(--white);font-size:8px;font-weight:800;padding:2px 6px;letter-spacing:.04em}
+
+/* STATS BAR */
+.stats-bar{background:var(--black);display:grid;grid-template-columns:repeat(4,1fr);border-bottom:var(--border)}
+.stat-item{padding:32px;border-right:1px solid #252525;position:relative}
+.stat-item:last-child{border-right:none}
+.stat-item::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--orange)}
+.stat-num{font-size:40px;font-weight:900;color:var(--orange);line-height:1;letter-spacing:-.03em}
+.stat-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--g500);margin-top:8px}
+
+/* PRODUCT CARDS */
+.products-section{padding:56px 48px;background:var(--g50)}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white)}
+.product-card{background:var(--white);cursor:pointer;transition:background var(--ease);display:flex;flex-direction:column;border:1px solid var(--g200)}
+.product-card:hover{background:var(--g50)}
+.product-card:hover .product-btn{background:var(--orange);color:var(--white)}
+.product-img-area{aspect-ratio:4/3;background:#ffffff;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--g200)}
+.product-img-area svg.p-icon{width:80px;height:80px;color:rgba(255,255,255,.2);flex-shrink:0}
+.pcat-tag{position:absolute;top:10px;left:10px;background:var(--orange);color:var(--white);font-size:8px;font-weight:800;padding:3px 8px;letter-spacing:.1em;text-transform:uppercase;z-index:1}
+.product-body{padding:14px 14px 12px;flex:1;display:flex;flex-direction:column}
+.product-name{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--black);line-height:1.3;margin-bottom:4px}
+.product-spec{font-size:10px;color:var(--g500);line-height:1.6;margin-bottom:16px;flex:1;font-weight:500}
+.product-btn{display:block;width:100%;background:var(--black);color:var(--white);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:9px;text-align:center;transition:background var(--ease),color var(--ease);cursor:pointer;border:none;font-family:var(--font)}
+
+/* INDUSTRIES */
+.industries-section{background:var(--black);padding:56px 48px}
+.industries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#252525;border:1px solid #252525}
+.industry-card{background:#181818;padding:24px 20px;transition:background var(--ease);cursor:pointer}
+.industry-card:hover{background:#1f1f1f}
+.industry-icon{width:32px;height:32px;color:var(--orange);margin-bottom:16px}
+.industry-icon svg{width:100%;height:100%}
+.industry-name{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--white);margin-bottom:8px}
+.industry-desc{font-size:10px;color:var(--g600);line-height:1.7}
+
+/* WHY US */
+.why-section{padding:56px 48px;background:var(--white);border-top:var(--border);border-bottom:var(--border);display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.why-heading{font-size:clamp(28px,3vw,40px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:1;margin-top:8px;margin-bottom:20px}
+.why-left p{font-size:13px;color:var(--g600);line-height:1.9;margin-bottom:24px}
+.why-items{border-top:var(--border-l)}
+.why-item{display:grid;grid-template-columns:40px 1fr;gap:20px;padding:20px 0;border-bottom:var(--border-l);align-items:start}
+.why-num{font-size:24px;font-weight:900;color:var(--orange);line-height:1;letter-spacing:-.02em}
+.why-text h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;color:var(--black)}
+.why-text p{font-size:11px;color:var(--g500);line-height:1.7}
+
+/* CTA BANNER */
+.cta-banner{background:var(--orange);padding:56px 48px;display:flex;align-items:center;justify-content:space-between;gap:32px;border-top:var(--border);border-bottom:var(--border);position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;right:-100px;top:-100px;width:400px;height:400px;background:rgba(0,0,0,.06);border-radius:50%;pointer-events:none}
+.cta-banner h2{font-size:clamp(28px,3.5vw,44px);font-weight:900;line-height:.95;letter-spacing:-.03em;text-transform:uppercase;color:var(--white);position:relative;z-index:1}
+.cta-banner h2 em{font-style:normal;opacity:.4}
+.cta-right{display:flex;flex-direction:column;align-items:flex-end;gap:16px;position:relative;z-index:1;flex-shrink:0}
+.cta-phone{font-size:20px;font-weight:900;color:var(--white);letter-spacing:.02em;display:flex;align-items:center;gap:8px}
+.cta-phone svg{width:20px;height:20px}
+
+/* CONTACT TEASER */
+.contact-teaser{background:var(--black);padding:56px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;border-bottom:var(--border)}
+.contact-heading{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;color:var(--white);line-height:1;margin-top:8px;margin-bottom:24px}
+.contact-list{border-top:1px solid #252525}
+.contact-item{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid #252525}
+.ci-icon{width:36px;height:36px;background:var(--orange);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-icon svg{width:16px;height:16px;color:var(--white)}
+.ci-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g600);margin-bottom:3px}
+.ci-value{font-size:13px;font-weight:600;color:var(--white);line-height:1.5}
+
+/* FORMS */
+.inquiry-form{background:#ffffff;border:2px solid #111111;padding:32px}
+.form-title{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--black);margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--orange)}
+.form-row{margin-bottom:14px}
+.form-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.form-label{display:block;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--black);margin-bottom:6px}
+.form-label .req{color:var(--orange)}
+.form-input{width:100%;background:#f9f9f9;border:1px solid #cccccc;color:var(--black);font-size:12px;font-family:var(--font);font-weight:500;padding:10px 12px;outline:none;transition:border-color var(--ease);-webkit-appearance:none;appearance:none;display:block}
+.form-input:focus{border-color:var(--orange)}
+.form-select{width:100%;background:#f9f9f9;border:1px solid #cccccc;color:var(--black);font-size:12px;font-family:var(--font);font-weight:500;padding:10px 12px;outline:none;-webkit-appearance:none;appearance:none;cursor:pointer;transition:border-color var(--ease)}
+.form-select:focus{border-color:var(--orange)}
+.form-input,.form-select,.form-textarea{width:100%;background:#f9f9f9;border:1px solid #cccccc;color:var(--black);font-size:12px;font-family:var(--font);font-weight:500;padding:10px 12px;outline:none;transition:border-color var(--ease);-webkit-appearance:none;appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--orange)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--g600);font-weight:400}
+.form-select option{background:#222;color:var(--white)}
+.form-textarea{min-height:80px;resize:vertical;line-height:1.6}
+.form-submit{width:100%;background:var(--orange);color:var(--white);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:13px;margin-top:8px;transition:background var(--ease);cursor:pointer;border:none;font-family:var(--font);display:flex;align-items:center;justify-content:center;gap:8px}
+.form-submit svg{width:15px;height:15px}
+.form-submit:hover{background:var(--orange-d)}
+.form-light .form-input,.form-light .form-select,.form-light .form-textarea{background:var(--white);border-color:var(--g200);color:var(--black)}
+.form-light .form-input::placeholder,.form-light .form-textarea::placeholder{color:var(--g400)}
+.form-light .form-label{color:var(--g600)}
+
+/* FOOTER */
+footer{background:var(--black);border-top:var(--border)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding:48px;border-bottom:1px solid #1e1e1e}
+.footer-brand-name{font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;color:var(--white);margin-bottom:3px}
+.footer-brand-name .o{color:var(--orange)}
+.footer-brand-sub{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g600);margin-bottom:16px}
+.footer-brand-desc{font-size:11px;color:var(--g600);line-height:1.8;margin-bottom:20px}
+.footer-social{display:flex;gap:8px}
+.social-btn{width:34px;height:34px;background:var(--black-2);border:1px solid #2a2a2a;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--ease),border-color var(--ease);color:var(--g500)}
+.social-btn:hover{background:var(--orange);border-color:var(--orange);color:var(--white)}
+.social-btn svg{width:16px;height:16px}
+.footer-col h4{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--white);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #252525}
+.footer-col ul li{font-size:11px;color:var(--g600);padding:5px 0;cursor:pointer;transition:color var(--ease);border-bottom:1px solid #1a1a1a}
+.footer-col ul li:hover{color:var(--orange)}
+.footer-bottom{padding:16px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:10px;color:var(--g700)}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:150;display:flex;align-items:center;gap:10px;background:#25d366;color:var(--white);padding:12px 18px 12px 14px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 20px rgba(37,211,102,.35);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease)}
+.wa-float:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.45)}
+.wa-float svg{width:20px;height:20px;flex-shrink:0}
+.wa-float .wa-lbl{font-size:10px}
+
+/* PRODUCTS PAGE */
+.page-hero{background:var(--black);padding:40px 48px 32px;border-bottom:var(--border)}
+.breadcrumb{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.breadcrumb svg{width:12px;height:12px}
+.breadcrumb .curr{color:var(--orange)}
+.page-heading{font-size:clamp(36px,5vw,52px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;color:var(--white);line-height:.95}
+.page-heading .accent{color:var(--orange)}
+.page-hero-inner{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.page-hero-stat .big{font-size:48px;font-weight:900;color:var(--orange);line-height:1;letter-spacing:-.03em}
+.page-hero-stat .lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g600)}
+.products-layout{display:grid;grid-template-columns:240px 1fr;border-bottom:var(--border)}
+.sidebar{border-right:var(--border);background:var(--white);padding:24px;position:sticky;top:93px;align-self:start;max-height:calc(100vh - 93px);overflow-y:auto}
+.sidebar-heading{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--black);margin-bottom:20px;padding-bottom:12px;border-bottom:var(--border)}
+.filter-group{margin-bottom:20px}
+.filter-group-title{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--g400);margin-bottom:10px}
+.filter-opt{display:flex;align-items:center;gap:8px;padding:8px 0;cursor:pointer;font-size:11px;font-weight:500;color:var(--g700);border-bottom:1px solid var(--g100);transition:color var(--ease)}
+.filter-opt:hover,.filter-opt.active{color:var(--orange);font-weight:700}
+.filter-check{width:14px;height:14px;border:2px solid var(--g300);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all var(--ease)}
+.filter-opt.active .filter-check{background:var(--orange);border-color:var(--orange)}
+.filter-check-icon{width:8px;height:8px;color:var(--white);display:none}
+.filter-opt.active .filter-check-icon{display:block}
+.products-main{padding:24px 32px;background:var(--g50)}
+.products-toolbar{display:flex;flex-direction:column;align-items:stretch;gap:0;margin-bottom:20px}
+
+.sort-sel{background:var(--white);border:var(--border);font-size:11px;font-weight:700;font-family:var(--font);color:var(--black);padding:11px 14px;letter-spacing:.06em;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;text-transform:uppercase}
+.products-count{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g500);white-space:nowrap}
+.products-count strong{color:var(--orange);font-weight:900}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);background:var(--white)}
+
+/* PRODUCT DETAIL */
+.detail-body{display:grid;grid-template-columns:1fr 1fr;border-bottom:var(--border)}
+.detail-image-area{border-right:var(--border);background:#ffffff;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;position:relative;padding:24px;gap:16px}
+.detail-main-icon{width:100%;aspect-ratio:1/1;color:rgba(255,255,255,.2)}
+.detail-img-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g600)}
+.detail-badge{position:absolute;top:20px;left:20px;background:var(--orange);color:var(--white);font-size:9px;font-weight:800;padding:5px 12px;letter-spacing:.1em;text-transform:uppercase}
+.detail-thumbs{display:flex;gap:8px}
+.d-thumb{width:56px;height:56px;background:#222;border:1px solid #333;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color var(--ease)}
+.d-thumb svg{width:28px;height:28px;color:rgba(255,255,255,.3)}
+.d-thumb.active{border-color:var(--orange)}
+.d-thumb.active svg{color:rgba(255,255,255,.6)}
+.detail-info{padding:40px;background:var(--white)}
+.detail-cat{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.detail-name{font-size:clamp(22px,2.5vw,30px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;color:var(--black);margin-bottom:8px}
+.detail-sub{font-size:11px;color:var(--g500);margin-bottom:24px;font-weight:500}
+.spec-table{border-top:var(--border);border-bottom:var(--border);margin-bottom:24px}
+.spec-row{display:grid;grid-template-columns:140px 1fr;border-bottom:var(--border-l)}
+.spec-row:last-child{border-bottom:none}
+.spec-key{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g500);padding:10px 12px;background:var(--g50);border-right:var(--border-l);line-height:1.4}
+.spec-val{font-size:11px;font-weight:600;color:var(--black);padding:10px 14px;line-height:1.5}
+.detail-form-title{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--black);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--orange)}
+
+/* ABOUT */
+.about-hero{display:grid;grid-template-columns:55% 45%;border-bottom:var(--border);position:relative;z-index:1}
+.about-hero-left{background:var(--black);padding:clamp(2rem,5vw,3.5rem) clamp(1.5rem,4vw,3rem);color:var(--white)}
+.about-hero-left h1{font-size:clamp(40px,5vw,56px);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;color:var(--white);margin-top:16px;margin-bottom:20px}
+.about-hero-left h1 .accent{color:var(--orange)}
+.about-hero-left p{font-size:13px;color:var(--g400);line-height:1.8;max-width:420px}
+.about-hero-right{background:#1a1a1a;padding:clamp(2rem,4vw,3rem);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.about-hero-right::before{content:'';position:absolute;top:-80px;right:-80px;width:300px;height:300px;background:rgba(232,104,26,.06);border-radius:50%}
+.about-tagline{font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1.3;color:rgba(255,255,255,.7);border-left:3px solid var(--orange);padding-left:1rem;margin-top:2rem}
+.about-story{display:grid;grid-template-columns:1fr 1fr;gap:4rem;border-bottom:var(--border)}
+.about-story-left h2{font-size:clamp(26px,3vw,36px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;margin-top:16px;margin-bottom:20px}
+.about-story-left p{font-size:13px;color:var(--g600);line-height:1.9;margin-bottom:16px}
+.value-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.value-card{padding:1.75rem;border:var(--border);background:#fff}
+.value-card h3,.value-card h4{font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;color:var(--black)}
+.value-card p{font-size:.82rem;color:var(--gray-mid);line-height:1.65}
+
+/* CONTACT PAGE */
+.contact-page-hero{background:var(--black);padding:clamp(2rem,5vw,3.5rem) 0;border-bottom:var(--border)}
+.contact-page-hero h1{font-size:clamp(40px,5vw,56px);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.95;color:var(--white);margin-top:16px}
+.contact-page-hero h1 .accent{color:var(--orange)}
+.contact-page-hero .sub-p{font-size:13px;color:var(--g400);line-height:1.8}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;border-bottom:var(--border)}
+.contact-info-col{padding:48px;border-right:var(--border);background:var(--white)}
+.contact-info-section{margin-bottom:32px}
+.contact-info-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--black);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--orange)}
+.contact-detail{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.cd-icon{width:38px;height:38px;background:var(--black);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cd-icon svg{width:16px;height:16px;color:var(--orange)}
+.cd-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g400);margin-bottom:3px}
+.cd-value{font-size:13px;font-weight:600;color:var(--black);line-height:1.5}
+.map-block{background:var(--g100);border:var(--border);height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;margin-top:8px;overflow:hidden;position:relative}
+.map-block svg{width:36px;height:36px;color:var(--g300)}
+.map-block p{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400)}
+.map-block small{font-size:10px;color:var(--g400);text-align:center}
+.social-list{display:flex;flex-direction:column;gap:8px}
+.social-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:var(--border-l);cursor:pointer;transition:border-color var(--ease),background var(--ease)}
+.social-item:hover{border-color:var(--orange);background:var(--orange-bg)}
+.social-item-icon{width:20px;height:20px;color:var(--black);flex-shrink:0}
+.social-item-platform{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400)}
+.social-item-handle{font-size:12px;font-weight:700;color:var(--black)}
+.contact-form-col{padding:48px;background:var(--g50)}
+.contact-form-title{font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:var(--black);margin-bottom:24px;padding-bottom:16px;border-bottom:3px solid var(--orange)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .navbar-inner{padding:0 24px}
+  .nav-links,.nav-phone{display:none}
+  .nav-hamburger{display:flex}
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:48px 24px 40px}
+  .hero-right{padding:32px 24px;min-height:300px}
+  .cat-strip{grid-template-columns:none;display:flex;overflow-x:auto}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .stat-item:nth-child(-n+2){border-bottom:1px solid #252525}
+  .products-section{padding:40px 24px}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .industries-section{padding:40px 24px}
+  .industries-grid{grid-template-columns:repeat(2,1fr)}
+  .why-section{grid-template-columns:1fr;gap:32px;padding:40px 24px}
+  .cta-banner{flex-direction:column;align-items:flex-start;padding:40px 24px}
+  .cta-right{align-items:flex-start}
+  .contact-teaser{grid-template-columns:1fr;padding:40px 24px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px;padding:40px 24px}
+  .footer-bottom{padding:16px 24px;flex-direction:column;align-items:flex-start}
+  .products-layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .products-main{padding:20px}
+  .grid3{grid-template-columns:repeat(2,1fr)}
+  .page-hero{padding:32px 24px}
+  .page-hero-inner{flex-direction:column;align-items:flex-start}
+  .detail-body{grid-template-columns:1fr}
+  .detail-image-area{min-height:300px;border-right:none;border-bottom:var(--border)}
+  .detail-info{padding:32px 24px}
+  .about-hero{grid-template-columns:1fr}
+  .about-hero-right{min-height:200px;justify-content:center}
+  .about-story{grid-template-columns:1fr;gap:32px;padding:40px 24px}
+  .contact-page-hero{grid-template-columns:1fr;padding:40px 24px}
+  .contact-layout{grid-template-columns:1fr}
+  .contact-info-col{border-right:none;border-bottom:var(--border);padding:40px 24px}
+  .contact-form-col{padding:40px 24px}
+}
+@media(max-width:640px){
+  .navbar-inner{padding:0 16px;height:56px}
+  .dev-banner{font-size:9px;padding:6px}
+  .hero-left{padding:40px 16px 32px}
+  .hero-heading{font-size:38px}
+  .hero-right{padding:24px 16px}
+  .hero-big-text{font-size:28px}
+  .hero-strip{gap:20px}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .industries-grid{grid-template-columns:repeat(2,1fr)}
+  .stat-num{font-size:32px}
+  .grid3{grid-template-columns:1fr}
+  .form-grid2{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .wa-float{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;bottom:16px;right:16px}
+  .wa-lbl{display:none}
+  .products-toolbar{flex-wrap:wrap}
+  .products-count{width:100%}
+  .cta-banner{padding:32px 16px}
+  .products-section{padding:32px 16px}
+  .industries-section{padding:32px 16px}
+  .why-section{padding:32px 16px}
+  .contact-teaser{padding:32px 16px}
+  .footer-bottom{padding:14px 16px}
+}
+</style>
+</head>
+<body>
+  <!-- ── Global Back Button ── -->
+  <button id="global-back-btn" onclick="goBack()"
+    title="Go back"
+    style="display:none;position:fixed;top:93px;left:16px;z-index:900;
+           width:36px;height:36px;background:#111111;border:none;cursor:pointer;
+           align-items:center;justify-content:center;
+           transition:background .2s,transform .15s;box-shadow:0 2px 8px rgba(0,0,0,.18);"
+    onmouseenter="this.style.background='#e8681a'"
+    onmouseleave="this.style.background='#111111'">
+    <svg width="16" height="16" fill="none" stroke="#ffffff" stroke-width="2.2"
+         stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+
+
+<!-- SVG ICON SPRITE -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <!-- UI Icons -->
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.34 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.58a16 16 0 0 0 6 6l1.14-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-chevron-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+  <symbol id="i-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V6l9-4 9 4v16"/><path d="M9 22v-4h6v4"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1M12 18h1M7 18h1"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="i-mountain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></symbol>
+  <symbol id="i-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.86H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.86l.58-3.57a2 2 0 0 0-1.34-2.23z"/></symbol>
+  <!-- Social Icons -->
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></symbol>
+  <!-- Category SVG Icons (40x40 technical line-art) -->
+  <symbol id="cat-all" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="13" height="13"/><rect x="23" y="4" width="13" height="13"/><rect x="4" y="23" width="13" height="13"/><rect x="23" y="23" width="13" height="13"/></symbol>
+  <symbol id="cat-bolt" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="20,4 28,8 28,16 20,20 12,16 12,8"/><rect x="16" y="20" width="8" height="16"/><line x1="16" y1="24" x2="24" y2="24"/><line x1="16" y1="27" x2="24" y2="27"/><line x1="16" y1="30" x2="24" y2="30"/><line x1="16" y1="33" x2="24" y2="33"/></symbol>
+  <symbol id="cat-nut" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="20,4 33,11.5 33,26.5 20,34 7,26.5 7,11.5"/><circle cx="20" cy="19" r="7"/></symbol>
+  <symbol id="cat-washer" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="16"/><circle cx="20" cy="20" r="6"/></symbol>
+  <symbol id="cat-anchor" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="4" width="8" height="28"/><line x1="16" y1="8" x2="24" y2="8"/><line x1="16" y1="11" x2="24" y2="11"/><line x1="16" y1="14" x2="24" y2="14"/><path d="M16 32 L10 38 L16 36 L20 38 L24 36 L30 38 L24 32 Z"/><polygon points="20,4 26,7 26,13 20,16 14,13 14,7"/></symbol>
+  <!-- Product line-art (80x80) -->
+  <symbol id="p-hex-bolt" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="40,6 54,12 54,26 40,32 26,26 26,12"/><rect x="32" y="32" width="16" height="42"/><line x1="32" y1="38" x2="48" y2="38"/><line x1="32" y1="43" x2="48" y2="43"/><line x1="32" y1="48" x2="48" y2="48"/><line x1="32" y1="53" x2="48" y2="53"/><line x1="32" y1="58" x2="48" y2="58"/><line x1="32" y1="63" x2="48" y2="63"/><line x1="32" y1="68" x2="48" y2="68"/></symbol>
+  <symbol id="p-socket-screw" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="8" width="36" height="22" rx="2"/><polygon points="40,13 46,17 46,23 40,27 34,23 34,17"/><rect x="33" y="30" width="14" height="42"/><line x1="33" y1="36" x2="47" y2="36"/><line x1="33" y1="41" x2="47" y2="41"/><line x1="33" y1="46" x2="47" y2="46"/><line x1="33" y1="51" x2="47" y2="51"/><line x1="33" y1="56" x2="47" y2="56"/><line x1="33" y1="61" x2="47" y2="61"/><line x1="33" y1="66" x2="47" y2="66"/></symbol>
+  <symbol id="p-hex-nut" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="40,8 62,20 62,44 40,56 18,44 18,20"/><circle cx="40" cy="32" r="12"/><circle cx="40" cy="32" r="9" stroke-dasharray="3 2" opacity="0.5"/></symbol>
+  <symbol id="p-washer" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="40" cy="40" r="32"/><circle cx="40" cy="40" r="13"/></symbol>
+  <symbol id="p-anchor" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="40,4 52,9 52,21 40,26 28,21 28,9"/><rect x="34" y="26" width="12" height="36"/><line x1="34" y1="32" x2="46" y2="32"/><line x1="34" y1="37" x2="46" y2="37"/><line x1="34" y1="42" x2="46" y2="42"/><path d="M34 62 L22 74 L34 70 L40 74 L46 70 L58 74 L46 62 Z"/></symbol>
+  <symbol id="p-rod" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="4" width="12" height="72"/><line x1="34" y1="10" x2="46" y2="10"/><line x1="34" y1="15" x2="46" y2="15"/><line x1="34" y1="20" x2="46" y2="20"/><line x1="34" y1="25" x2="46" y2="25"/><line x1="34" y1="30" x2="46" y2="30"/><line x1="34" y1="35" x2="46" y2="35"/><line x1="34" y1="40" x2="46" y2="40"/><line x1="34" y1="45" x2="46" y2="45"/><line x1="34" y1="50" x2="46" y2="50"/><line x1="34" y1="55" x2="46" y2="55"/><line x1="34" y1="60" x2="46" y2="60"/><line x1="34" y1="65" x2="46" y2="65"/></symbol>
+  <symbol id="p-carriage" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 28 Q22 8 40 8 Q58 8 58 28 L58 30 L22 30 Z"/><rect x="32" y="30" width="16" height="8"/><rect x="35" y="38" width="10" height="36"/><line x1="35" y1="44" x2="45" y2="44"/><line x1="35" y1="49" x2="45" y2="49"/><line x1="35" y1="54" x2="45" y2="54"/><line x1="35" y1="59" x2="45" y2="59"/><line x1="35" y1="64" x2="45" y2="64"/></symbol>
+  <symbol id="p-flange-bolt" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="40,6 53,12 53,24 40,30 27,24 27,12"/><ellipse cx="40" cy="30" rx="20" ry="5"/><rect x="33" y="35" width="14" height="38"/><line x1="33" y1="41" x2="47" y2="41"/><line x1="33" y1="46" x2="47" y2="46"/><line x1="33" y1="51" x2="47" y2="51"/><line x1="33" y1="56" x2="47" y2="56"/><line x1="33" y1="61" x2="47" y2="61"/><line x1="33" y1="66" x2="47" y2="66"/></symbol>
+  <symbol id="p-lock-nut" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="22" width="44" height="26"/><rect x="20" y="14" width="40" height="10" rx="1"/><ellipse cx="40" cy="35" rx="9" ry="13"/><line x1="28" y1="22" x2="28" y2="48"/><line x1="52" y1="22" x2="52" y2="48"/></symbol>
+  <symbol id="p-spring-washer" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 38 A28 28 0 1 0 68 42"/><line x1="12" y1="38" x2="12" y2="46"/><line x1="68" y1="34" x2="68" y2="42"/><circle cx="40" cy="40" r="12"/></symbol>
+  <symbol id="p-circlip" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M58 18 A26 26 0 1 0 58 62"/><circle cx="60" cy="16" r="4"/><circle cx="60" cy="64" r="4"/></symbol>
+  <symbol id="p-wedge-anchor" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="40,4 50,8 50,18 40,22 30,18 30,8"/><rect x="35" y="22" width="10" height="30"/><line x1="35" y1="28" x2="45" y2="28"/><line x1="35" y1="33" x2="45" y2="33"/><line x1="35" y1="38" x2="45" y2="38"/><line x1="35" y1="43" x2="45" y2="43"/><path d="M35 52 L24 70 L35 66 L40 70 L45 66 L56 70 L45 52 Z"/></symbol>
+  <!-- Logo bolt icon -->
+  <symbol id="logo-bolt" viewBox="0 0 20 20" fill="currentColor"><path d="M11 2L4 11h6l-1 7 7-9h-6z"/></symbol>
+</svg>
+
+<!-- DEV BANNER -->
+<div class="dev-banner">UI Mockup v2 — Bolt &amp; Screw Trading <span>| Click nav links to explore pages | Style C: Bold Editorial</span></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="nav-logo" onclick="goPage('home')" style="cursor:pointer;">
+      <img src="logo.png" height="48" alt="Bolt and Screw Trading"
+           style="display:block;height:48px;width:auto;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <span style="display:none;align-items:center;gap:8px;font-size:20px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:48px;"><span style="color:var(--orange);font-size:22px;">&#9650;</span> BOLT &amp; SCREW</span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link active" onclick="goPage('home')">Home</button>
+      <button class="nav-link" onclick="goPage('products')">Products</button>
+      <button class="nav-link" onclick="goPage('about')">About</button>
+      <button class="nav-link" onclick="goPage('contact')">Contact</button>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-phone"><svg><use href="#i-phone"/></svg>0333-3869952</div>
+      <button class="nav-cta" onclick="goPage('contact')">Get a Quote <svg><use href="#i-arrow-r"/></svg></button>
+    </div>
+    <button class="nav-hamburger" onclick="openMobileNav()"><svg><use href="#i-menu"/></svg></button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-header">
+    <div class="nav-logo" onclick="goPage('home');closeMobileNav();" style="cursor:pointer;">
+      <img src="logo.png" height="56" alt="Bolt and Screw Trading"
+           style="display:block;height:56px;width:auto;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+      <span style="display:none;font-size:26px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:56px;"><span style="color:var(--orange);">&#9650;</span> BOLT &amp; SCREW</span>
+    </div>
+    <button class="mobile-close-btn" onclick="closeMobileNav()"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <div class="mobile-nav-links">
+    <div class="mobile-nav-link" onclick="goPage('home');closeMobileNav()">Home</div>
+    <div class="mobile-nav-link" onclick="goPage('products');closeMobileNav()">Products</div>
+    <div class="mobile-nav-link" onclick="goPage('about');closeMobileNav()">About</div>
+    <div class="mobile-nav-link" onclick="goPage('contact');closeMobileNav()">Contact</div>
+  </div>
+  <div class="mobile-nav-footer">
+    <div class="mobile-nav-phone"><svg><use href="#i-phone"/></svg>0333-3869952</div>
+    <div class="mobile-nav-cta" onclick="goPage('contact');closeMobileNav()">Get a Quote →</div>
+  </div>
+</div>
+
+<!-- ========== PAGE: HOME ========== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow"><span class="eline"></span><span>Industrial Fasteners · Karachi</span></div>
+      <h1 class="hero-heading">WE SELL<br>WHAT<br><span class="accent">HOLDS</span><br>TOGETHER</h1>
+      <p class="hero-desc">Premium bolts, screws, nuts, washers &amp; anchors for construction, manufacturing and industrial applications. DIN · ANSI · ISO certified.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="goPage('products')">Browse Catalog <svg><use href="#i-arrow-r"/></svg></button>
+        <button class="btn-ghost" onclick="goPage('contact')">Request a Quote <svg><use href="#i-arrow-r"/></svg></button>
+      </div>
+      <div class="hero-search">
+        <div class="search-bar" id="home-search-bar">
+          <input type="text" id="home-search-input" placeholder="Search products… e.g. concrete anchor, allen bolt, stainless nut"
+                 onkeydown="if(event.key==='Enter'){_homeSearch();}"
+                 oninput="var c=document.getElementById('home-search-clear');c.classList.toggle('visible',this.value.length>0);" />
+          <button class="search-bar-clear" id="home-search-clear" onclick="document.getElementById('home-search-input').value='';this.classList.remove('visible');document.getElementById('home-search-input').focus();">&#x2715;</button>
+          <button class="search-bar-btn" onclick="_homeSearch()" title="Search">
+            <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="hero-strip">
+        <div class="hero-strip-item"><div class="hero-strip-label">Phone / WhatsApp</div><div class="hero-strip-value">0333-3869952</div></div>
+        <div class="hero-strip-item"><div class="hero-strip-label">Location</div><div class="hero-strip-value">Fazal Chamber, Karachi</div></div>
+        <div class="hero-strip-item"><div class="hero-strip-label">Instagram</div><div class="hero-strip-value">@boltnscrewtrading1</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div>
+        <div class="hero-tag">Est. · Murad Khan Road, Karachi</div>
+        <div class="hero-big-text">PREMIUM<br><span class="dim">FAST</span>ENERS<br><span class="dim">FOR EVERY</span><br>INDUSTRY</div>
+      </div>
+      <div>
+        <div class="hero-chips-block">
+          <div class="hero-chips-lbl">Products in stock</div>
+          <div class="hero-chips">
+            <span class="hero-chip">Hex Bolts</span><span class="hero-chip">Socket Screws</span><span class="hero-chip">Hex Nuts</span><span class="hero-chip">Flat Washers</span><span class="hero-chip">Wedge Anchors</span><span class="hero-chip">Carriage Bolts</span><span class="hero-chip">Lock Nuts</span><span class="hero-chip">Threaded Rod</span>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="n">50+</div><div class="l">Products</div></div>
+          <div class="hero-stat"><div class="n">100+</div><div class="l">Clients</div></div>
+          <div class="hero-stat"><div class="n">All</div><div class="l">Grades</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY STRIP -->
+  <div class="cat-strip">
+    <div class="cat-item active" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-all"/></svg></div><div class="cat-label">All</div><span class="cat-count">50+</span></div>
+    <div class="cat-item" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-bolt"/></svg></div><div class="cat-label">Bolts &amp; Screws</div><span class="cat-count">22</span></div>
+    <div class="cat-item" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-nut"/></svg></div><div class="cat-label">Nuts</div><span class="cat-count">10</span></div>
+    <div class="cat-item" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-washer"/></svg></div><div class="cat-label">Washers</div><span class="cat-count">8</span></div>
+    <div class="cat-item" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-anchor"/></svg></div><div class="cat-label">Anchors</div><span class="cat-count">7</span></div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Product Varieties</div></div>
+    <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Clients Served</div></div>
+    <div class="stat-item"><div class="stat-num">All</div><div class="stat-label">DIN / ANSI Grades</div></div>
+    <div class="stat-item"><div class="stat-num">KHI</div><div class="stat-label">Serving Karachi</div></div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="products-section">
+    <div class="section-header">
+      <h2>Featured Products</h2><div class="sh-accent"></div><div class="sh-line"></div>
+      <button class="sh-action" onclick="goPage('products')">View All <svg><use href="#i-arrow-r"/></svg></button>
+    </div>
+    <div class="product-grid">
+      <div class="product-card" onclick="openProduct('hex-bolt','Hexagonal Bolt','Bolts & Screws','DIN 933 / 931','M6–M64','4.8 / 8.8 / 10.9','Hex Head Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/hex-bolt-1.png" alt="Hexagonal Bolt" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=HEX+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/hex-bolt-2.png" alt="Hexagonal Bolt view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=HEX+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Hexagonal Bolt</div>
+          <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 933 / 931 · M6–M64</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" onclick="openProduct('allen-bolt','Allen Bolt (Socket Cap Screw)','Bolts & Screws','DIN 912','M3–M48','8.8 / 12.9 / SS 304','Socket Head Cap Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/allen-bolt-1.png" alt="Allen Bolt (Socket Cap Screw)" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=ALLEN+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/allen-bolt-2.png" alt="Allen Bolt (Socket Cap Screw) view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=ALLEN+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Allen Bolt (Socket Cap Screw)</div>
+          <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 912 · M3–M48</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" onclick="openProduct('hex-nut','Hex Nut','Nuts','DIN 934','M3–M64','6 / 8 / SS 304/316','Hexagon Nut')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" src="images/products/hex-nut-1.png" alt="Hex Nut" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=HEX+NUT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/hex-nut-2.png" alt="Hex Nut view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=HEX+NUT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Hex Nut</div>
+          <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 934 · M3–M64</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" onclick="openProduct('wedge-anchor','Wedge Anchor','Anchors','DIN 529','M8–M24','Carbon Steel','Through Bolt / Wedge Anchor')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/wedge-anchor-1.png" alt="Wedge Anchor" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=WEDGE+ANCHOR+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/wedge-anchor-2.png" alt="Wedge Anchor view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=WEDGE+ANCHOR+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Wedge Anchor</div>
+          <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 529 · M8–M24</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" onclick="openProduct('ss-fastener-set','SS Nuts Bolts Washers','Washers & SS Hardware','DIN 125/934/933','M4–M36','SS 304 / SS 316','Stainless Steel Fastener Set')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Washers &amp; SS Hardware</span>
+          <img class="pimg-main" src="images/products/ss-fastener-set-1.png" alt="SS Nuts Bolts Washers" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SS+FASTENER+SET+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/ss-fastener-set-2.png" alt="SS Nuts Bolts Washers view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SS+FASTENER+SET+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">SS Nuts Bolts Washers</div>
+          <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 125/934/933 · M4–M36</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" onclick="openProduct('lock-nut','Lock Nuts (Nylon Insert)','Nuts','DIN 985','M4–M36','A2 / A4 / SS 304','Nylon Lock Nut / Nyloc')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" src="images/products/lock-nut-1.png" alt="Lock Nuts (Nylon Insert)" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=LOCK+NUT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/lock-nut-2.png" alt="Lock Nuts (Nylon Insert) view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=LOCK+NUT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Lock Nuts (Nylon Insert)</div>
+          <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 985 · M4–M36</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" onclick="openProduct('sleeve-anchor','Sleeve Anchor','Anchors','DIN 7715','M6–M20','Zinc Alloy','Expansion Sleeve Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/sleeve-anchor-1.png" alt="Sleeve Anchor" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SLEEVE+ANCHOR+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/sleeve-anchor-2.png" alt="Sleeve Anchor view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SLEEVE+ANCHOR+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Sleeve Anchor</div>
+          <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 7715 · M6–M20</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" onclick="openProduct('thread-rod','Thread Rods','Rods & Bars','DIN 975','M6–M36','SS 304 / CS','All-Thread Stud / Threaded Bar')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Rods &amp; Bars</span>
+          <img class="pimg-main" src="images/products/thread-rod-1.png" alt="Thread Rods" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=THREAD+ROD+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/thread-rod-2.png" alt="Thread Rods view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=THREAD+ROD+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Thread Rods</div>
+          <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 975 · M6–M36</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries-section">
+    <div class="section-header">
+      <h2 style="background:var(--orange)">Industries We Serve</h2><div class="sh-accent" style="background:#333"></div><div class="sh-line" style="border-color:#333"></div>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-building"/></svg></div><div class="industry-name">Construction</div><div class="industry-desc">Foundation bolts, anchors and structural fasteners for civil and commercial projects.</div></div>
+      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-factory"/></svg></div><div class="industry-name">Manufacturing</div><div class="industry-desc">Precision fasteners for machinery assembly, production lines and equipment fabrication.</div></div>
+      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-zap"/></svg></div><div class="industry-name">Power &amp; Energy</div><div class="industry-desc">High-grade fasteners for power plants, substations and energy infrastructure.</div></div>
+      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-shirt"/></svg></div><div class="industry-name">Textile Sector</div><div class="industry-desc">Specialised bolts and screws for textile machinery maintenance and installation.</div></div>
+      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-flame"/></svg></div><div class="industry-name">Oil &amp; Gas</div><div class="industry-desc">Stainless and alloy fasteners for pipelines, refineries and petrochemical plants.</div></div>
+      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-truck"/></svg></div><div class="industry-name">Transportation</div><div class="industry-desc">Automotive and transport-grade bolts meeting strict safety specifications.</div></div>
+      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-mountain"/></svg></div><div class="industry-name">Mining &amp; Minerals</div><div class="industry-desc">Hardened heavy-duty fasteners for mining equipment and extraction machinery.</div></div>
+      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-leaf"/></svg></div><div class="industry-name">Agriculture</div><div class="industry-desc">Corrosion-resistant fasteners for farm equipment and agricultural infrastructure.</div></div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-section">
+    <div class="why-left">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="why-heading">QUALITY YOU CAN RELY ON</h2>
+      <p>At Bolt &amp; Screw Trading, we've built our reputation on delivering the right fastener at the right grade at the right time. Every product meets international DIN and ANSI standards, and our team helps you find the exact specification for your application.</p>
+      <button class="btn-primary" onclick="goPage('about')">Our Story <svg><use href="#i-arrow-r"/></svg></button>
+    </div>
+    <div class="why-right">
+      <div class="why-items">
+        <div class="why-item"><div class="why-num">01</div><div class="why-text"><h4>International Standards</h4><p>All products certified to DIN, ISO and ANSI standards — every grade, size and material clearly specified.</p></div></div>
+        <div class="why-item"><div class="why-num">02</div><div class="why-text"><h4>Wide Range in Stock</h4><p>50+ product types across bolts, nuts, washers, screws and anchors. Most orders fulfilled same day.</p></div></div>
+        <div class="why-item"><div class="why-num">03</div><div class="why-text"><h4>Expert Guidance</h4><p>Not sure which grade or size? Our team helps you specify the right fastener for your application.</p></div></div>
+        <div class="why-item"><div class="why-num">04</div><div class="why-text"><h4>Bulk &amp; Retail Orders</h4><p>Competitive pricing for wholesale with flexible quantities for smaller purchase requirements.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>NEED A <em>QUOTE?</em><br>WE'LL GET<br>BACK FAST.</h2>
+    <div class="cta-right">
+      <div class="cta-phone"><svg><use href="#i-phone"/></svg>0333-3869952</div>
+      <button class="btn-dark" onclick="goPage('contact')">Send Inquiry <svg><use href="#i-arrow-r"/></svg></button>
+    </div>
+  </div>
+
+  <!-- CONTACT TEASER -->
+  <div class="contact-teaser">
+    <div class="contact-left">
+      <div class="section-label">Find Us</div>
+      <h2 class="contact-heading">VISIT THE SHOP</h2>
+      <div class="contact-list">
+        <div class="contact-item"><div class="ci-icon"><svg><use href="#i-map"/></svg></div><div><div class="ci-label">Address</div><div class="ci-value">Shop No. 12D, Fazal Chamber, Katchi Gali No. 3, Murad Khan Road, Karachi</div></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg><use href="#i-phone"/></svg></div><div><div class="ci-label">Phone / WhatsApp</div><div class="ci-value">0333-3869952</div></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg><use href="#i-fb"/></svg></div><div><div class="ci-label">Facebook</div><div class="ci-value">Bolt and Screw Trading</div></div></div>
+        <div class="contact-item"><div class="ci-icon"><svg><use href="#i-ig"/></svg></div><div><div class="ci-label">Instagram</div><div class="ci-value">@boltnscrewtrading1</div></div></div>
+      </div>
+    </div>
+    <div class="inquiry-form">
+      <div class="form-title">Quick Inquiry</div>
+      <div class="form-grid2">
+        <div><label class="form-label">Name <span class="req">*</span></label><input class="form-input" type="text" placeholder="Muhammad Ali"></div>
+        <div><label class="form-label">Phone <span class="req">*</span></label><input class="form-input" type="tel" placeholder="0300-0000000"></div>
+      </div>
+      <div class="form-row"><label class="form-label">Product Category</label>
+        <select class="form-select"><option value="">Select a category...</option><option>Bolts &amp; Screws</option><option>Nuts</option><option>Washers</option><option>Anchors &amp; Fixing</option><option>Other / Custom</option></select>
+      </div>
+      <div class="form-row"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Describe your requirement, quantity, grade, size..."></textarea></div>
+      <button class="form-submit">Send Inquiry <svg><use href="#i-arrow-r"/></svg></button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">
+          <img src="logo.png" height="72" alt="Bolt and Screw Trading"
+               style="display:block;height:72px;width:auto;"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+          <div style="display:none;">
+            <div style="font-size:28px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:1;">BOLT &amp; SCREW</div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-top:4px;">TRADING</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc">Premium industrial fasteners for Pakistan's construction, manufacturing, textile and energy sectors. Shop No. 12D, Fazal Chamber, Murad Khan Road, Karachi.</p>
+        <div class="footer-social">
+          <div class="social-btn"><svg><use href="#i-fb"/></svg></div>
+          <div class="social-btn"><svg><use href="#i-ig"/></svg></div>
+          <div class="social-btn"><svg><use href="#i-wa"/></svg></div>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Products</h4><ul><li>Bolts &amp; Screws</li><li>Nuts</li><li>Washers</li><li>Anchors &amp; Fixing</li><li>Clips &amp; Pins</li><li>Threaded Rod</li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li onclick="goPage('home')">Home</li><li onclick="goPage('about')">About Us</li><li onclick="goPage('products')">Catalog</li><li onclick="goPage('contact')">Contact</li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li>0333-3869952</li><li>Shop No. 12D</li><li>Fazal Chamber</li><li>Murad Khan Road</li><li>Karachi, Pakistan</li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Bolt &amp; Screw Trading. All rights reserved.</p><p>Designed with Next.js · Hosted on Vercel</p></div>
+  </footer>
+</div><!-- end page-home -->
+
+<!-- ═══════════════════════════════════════════════════════════ PRODUCTS PAGE -->
+<div id="page-products" class="page">
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="navbar-inner" style="height:auto;overflow:visible;padding-top:0;padding-bottom:0;">
+      <div class="breadcrumb">
+        <span onclick="goPage('home')" style="cursor:pointer;opacity:.6;">Home</span>
+        <svg width="12" height="12"><use href="#i-chevron-r"/></svg>
+        <span>Products</span>
+      </div>
+    </div>
+    <div class="navbar-inner" style="height:auto;overflow:visible;">
+      <h1 class="page-heading">OUR PRODUCT <span class="sh-accent">CATALOG</span></h1>
+      <p style="color:var(--g400);max-width:560px;font-size:.93rem;margin-top:.5rem;line-height:1.7;">34 products across 6 categories. All items available for bulk inquiry — contact us for pricing &amp; availability.</p>
+    </div>
+  </div>
+
+  <!-- Category filter bar -->
+  <div style="border-bottom:var(--border);background:var(--white);position:sticky;top:93px;z-index:50;overflow-x:auto;">
+    <div class="navbar-inner" style="height:auto;overflow:visible;padding-top:0;padding-bottom:0;display:flex;gap:0;flex-wrap:nowrap;min-width:max-content;">
+      <button class="cat-filter-btn active" data-cat="all" onclick="filterProducts(this)">All <span class="cat-count">(34)</span></button>
+      <button class="cat-filter-btn" data-cat="Bolts & Screws" onclick="filterProducts(this)">Bolts & Screws <span class="cat-count">(13)</span></button>
+      <button class="cat-filter-btn" data-cat="Nuts" onclick="filterProducts(this)">Nuts <span class="cat-count">(5)</span></button>
+      <button class="cat-filter-btn" data-cat="Washers & SS Hardware" onclick="filterProducts(this)">Washers & SS Hardware <span class="cat-count">(1)</span></button>
+      <button class="cat-filter-btn" data-cat="Structural Steel" onclick="filterProducts(this)">Structural Steel <span class="cat-count">(1)</span></button>
+      <button class="cat-filter-btn" data-cat="Anchors" onclick="filterProducts(this)">Anchors <span class="cat-count">(13)</span></button>
+      <button class="cat-filter-btn" data-cat="Rods & Bars" onclick="filterProducts(this)">Rods & Bars <span class="cat-count">(1)</span></button>
+    </div>
+  </div>
+
+  <!-- Products Layout -->
+  <div class="navbar-inner" style="height:auto;overflow:visible;padding-top:2rem;padding-bottom:4rem;">
+    <div class="products-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="filter-group">
+          <div class="fg-title">CATEGORY</div>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" checked onchange="syncSidebar(this,'all')"> <span>All Products (34)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" onchange="syncSidebar(this,'Bolts &amp; Screws')"> <span>Bolts &amp; Screws (13)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" onchange="syncSidebar(this,'Nuts')"> <span>Nuts (5)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" onchange="syncSidebar(this,'Anchors')"> <span>Anchors (13)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" onchange="syncSidebar(this,'Washers &amp; SS Hardware')"> <span>Washers &amp; SS Hardware (1)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" onchange="syncSidebar(this,'Structural Steel')"> <span>Structural Steel (1)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" onchange="syncSidebar(this,'Rods &amp; Bars')"> <span>Rods &amp; Bars (1)</span></label>
+        </div>
+        <div class="filter-group">
+          <div class="fg-title">MATERIAL</div>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" checked> <span>All Materials</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check"> <span>Mild Steel / Carbon Steel</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check"> <span>Stainless Steel 304</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check"> <span>Stainless Steel 316</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check"> <span>High Tensile (8.8 / 10.9 / 12.9)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check"> <span>Galvanised / HDG</span></label>
+        </div>
+        <div style="margin-top:1.5rem;padding:1rem;background:var(--black);border:var(--border);">
+          <div style="font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;">Bulk Inquiry</div>
+          <p style="color:var(--g400);font-size:.78rem;line-height:1.6;margin-bottom:.75rem;">Need multiple products? Send us your requirements list and we'll respond with pricing.</p>
+          <button class="btn-primary" style="width:100%;font-size:.75rem;padding:10px 12px;" onclick="goPage('contact')">Get a Quote</button>
+        </div>
+      </aside>
+
+      <!-- Product Grid -->
+      <div class="products-main">
+        <div class="products-toolbar" style="flex-direction:column;align-items:stretch;gap:10px;">
+          <div class="products-search-row">
+            <div class="search-bar" id="products-search-bar">
+              <input type="text" id="products-search-input" placeholder="Search products… e.g. stainless bolt, concrete anchor, nyloc nut"
+                     onkeydown="if(event.key==='Enter'){runSearch(this.value,'products');}"
+                     oninput="var c=document.getElementById('products-search-clear');c.classList.toggle('visible',this.value.length>0);if(!this.value)runSearch('','products');" />
+              <button class="search-bar-clear" id="products-search-clear" onclick="document.getElementById('products-search-input').value='';this.classList.remove('visible');runSearch('','products');">&#x2715;</button>
+              <button class="search-bar-btn" onclick="runSearch(document.getElementById('products-search-input').value,'products')" title="Search">
+                <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="products-count" id="prod-count">Showing <strong>34</strong> products</div>
+        </div>
+        <div class="product-grid grid3" id="product-grid">
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('hex-bolt','Hexagonal Bolt','Bolts & Screws','DIN 933 / 931','M6–M64','4.8 / 8.8 / 10.9 / SS 304','Hex Head Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/hex-bolt-1.png" alt="Hexagonal Bolt" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=HEX+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/hex-bolt-2.png" alt="Hexagonal Bolt view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=HEX+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Hexagonal Bolt</div>
+          <div class="product-meta">Hex Head Bolt</div>
+          <div class="product-spec">DIN 933 / 931 &nbsp;·&nbsp; M6–M64</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('allen-bolt','Allen Bolt (Socket Cap Screw)','Bolts & Screws','DIN 912','M3–M48','8.8 / 12.9 / SS 304/316','Socket Head Cap Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/allen-bolt-1.png" alt="Allen Bolt (Socket Cap Screw)" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=ALLEN+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/allen-bolt-2.png" alt="Allen Bolt (Socket Cap Screw) view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=ALLEN+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Allen Bolt (Socket Cap Screw)</div>
+          <div class="product-meta">Socket Head Cap Screw</div>
+          <div class="product-spec">DIN 912 &nbsp;·&nbsp; M3–M48</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('button-head-allen-bolt','Button Head Allen Bolt','Bolts & Screws','DIN 7380','M3–M30','8.8 / 10.9 / SS 304','Button Head Socket Cap Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/button-head-allen-bolt-1.png" alt="Button Head Allen Bolt" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=BUTTON+HEAD+ALLEN+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/button-head-allen-bolt-2.png" alt="Button Head Allen Bolt view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=BUTTON+HEAD+ALLEN+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Button Head Allen Bolt</div>
+          <div class="product-meta">Button Head Socket Cap Screw</div>
+          <div class="product-spec">DIN 7380 &nbsp;·&nbsp; M3–M30</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('csk-allen-bolt','CSK Allen Bolt','Bolts & Screws','DIN 7991','M3–M30','8.8 / 12.9 / SS 304','Countersunk Socket Cap Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/csk-allen-bolt-1.png" alt="CSK Allen Bolt" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=CSK+ALLEN+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/csk-allen-bolt-2.png" alt="CSK Allen Bolt view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=CSK+ALLEN+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">CSK Allen Bolt</div>
+          <div class="product-meta">Countersunk Socket Cap Screw</div>
+          <div class="product-spec">DIN 7991 &nbsp;·&nbsp; M3–M30</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('csk-cut-screw','CSK Cut Screw','Bolts & Screws','—','No. 4–No. 14','Carbon Steel','Countersunk Self-Tapping Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/csk-cut-screw-1.png" alt="CSK Cut Screw" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=CSK+CUT+SCREW+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/csk-cut-screw-2.png" alt="CSK Cut Screw view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=CSK+CUT+SCREW+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">CSK Cut Screw</div>
+          <div class="product-meta">Countersunk Self-Tapping Screw</div>
+          <div class="product-spec">— &nbsp;·&nbsp; No. 4–No. 14</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('csk-machine-screw','CSK Machine Screw','Bolts & Screws','DIN 963 / 965','M3–M12','4.8 / SS 304','Countersunk Machine Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/csk-machine-screw-1.png" alt="CSK Machine Screw" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=CSK+MACHINE+SCREW+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/csk-machine-screw-2.png" alt="CSK Machine Screw view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=CSK+MACHINE+SCREW+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">CSK Machine Screw</div>
+          <div class="product-meta">Countersunk Machine Screw</div>
+          <div class="product-spec">DIN 963 / 965 &nbsp;·&nbsp; M3–M12</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('frame-fixing-screw','Frame Fixing Screw','Bolts & Screws','—','6×60 – 10×200mm','Carbon Steel / SS','Window / Door Frame Anchor Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/frame-fixing-screw-1.png" alt="Frame Fixing Screw" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FRAME+FIXING+SCREW+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/frame-fixing-screw-2.png" alt="Frame Fixing Screw view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FRAME+FIXING+SCREW+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Frame Fixing Screw</div>
+          <div class="product-meta">Window / Door Frame Anchor Screw</div>
+          <div class="product-spec">— &nbsp;·&nbsp; 6×60 – 10×200mm</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('metal-frame-fixing-screw','Metal Frame Fixing Screw','Bolts & Screws','—','—','Carbon Steel','Heavy-Duty Frame Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/metal-frame-fixing-screw-1.png" alt="Metal Frame Fixing Screw" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=METAL+FRAME+FIXING+SCREW+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/metal-frame-fixing-screw-2.png" alt="Metal Frame Fixing Screw view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=METAL+FRAME+FIXING+SCREW+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Metal Frame Fixing Screw</div>
+          <div class="product-meta">Heavy-Duty Frame Screw</div>
+          <div class="product-spec">— &nbsp;·&nbsp; —</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('grub-screw','Grub Screw (Socket Set Screw)','Bolts & Screws','DIN 913 / 916','M3–M20','Grade 12.9','Set Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/grub-screw-1.png" alt="Grub Screw (Socket Set Screw)" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=GRUB+SCREW+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/grub-screw-2.png" alt="Grub Screw (Socket Set Screw) view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=GRUB+SCREW+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Grub Screw (Socket Set Screw)</div>
+          <div class="product-meta">Set Screw</div>
+          <div class="product-spec">DIN 913 / 916 &nbsp;·&nbsp; M3–M20</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('lifting-eye-bolt','Lifting Eye Bolt','Bolts & Screws','DIN 580','M8–M36','4.6 / SS 304','Eye Bolt / Ring Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/lifting-eye-bolt-1.png" alt="Lifting Eye Bolt" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=LIFTING+EYE+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/lifting-eye-bolt-2.png" alt="Lifting Eye Bolt view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=LIFTING+EYE+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Lifting Eye Bolt</div>
+          <div class="product-meta">Eye Bolt / Ring Bolt</div>
+          <div class="product-spec">DIN 580 &nbsp;·&nbsp; M8–M36</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('long-eye-bolt','Long Eye Bolt','Bolts & Screws','—','M6–M24','MS / SS 304','Extended Shank Eye Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/long-eye-bolt-1.png" alt="Long Eye Bolt" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=LONG+EYE+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/long-eye-bolt-2.png" alt="Long Eye Bolt view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=LONG+EYE+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Long Eye Bolt</div>
+          <div class="product-meta">Extended Shank Eye Bolt</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M6–M24</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('self-drilling-screw','Self Drilling Screw','Bolts & Screws','ISO 15480','ST 4.2–6.3','Carbon Steel / Bi-metal','Tek Screw / Drill-Point Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/self-drilling-screw-1.png" alt="Self Drilling Screw" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SELF+DRILLING+SCREW+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/self-drilling-screw-2.png" alt="Self Drilling Screw view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SELF+DRILLING+SCREW+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Self Drilling Screw</div>
+          <div class="product-meta">Tek Screw / Drill-Point Screw</div>
+          <div class="product-spec">ISO 15480 &nbsp;·&nbsp; ST 4.2–6.3</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('u-bolt','U Bolt','Bolts & Screws','Custom / BS','M8–M24','MS / GI','Pipe Clamp Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" src="images/products/u-bolt-1.png" alt="U Bolt" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=U+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/u-bolt-2.png" alt="U Bolt view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=U+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">U Bolt</div>
+          <div class="product-meta">Pipe Clamp Bolt</div>
+          <div class="product-spec">Custom / BS &nbsp;·&nbsp; M8–M24</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Nuts" onclick="openProduct('hex-nut','Hex Nut','Nuts','DIN 934','M3–M64','6 / 8 / SS 304/316','Hexagon Nut')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" src="images/products/hex-nut-1.png" alt="Hex Nut" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=HEX+NUT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/hex-nut-2.png" alt="Hex Nut view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=HEX+NUT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Hex Nut</div>
+          <div class="product-meta">Hexagon Nut</div>
+          <div class="product-spec">DIN 934 &nbsp;·&nbsp; M3–M64</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Nuts" onclick="openProduct('ss-nut','Ss Nut (Stainless Steel Nut)','Nuts','DIN 934','M4–M64','SS 304 / SS 316 / A2 / A4','SS Hex Nut / A2 Nut')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" src="images/products/ss-nut-1.png" alt="Ss Nut (Stainless Steel Nut)" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SS+NUT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/ss-nut-2.png" alt="Ss Nut (Stainless Steel Nut) view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SS+NUT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Ss Nut (Stainless Steel Nut)</div>
+          <div class="product-meta">SS Hex Nut / A2 Nut</div>
+          <div class="product-spec">DIN 934 &nbsp;·&nbsp; M4–M64</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Nuts" onclick="openProduct('lock-nut','Lock Nuts (Nylon Insert)','Nuts','DIN 985','M4–M36','A2 / A4 / SS 304/316','Nylon Lock Nut / Nyloc')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" src="images/products/lock-nut-1.png" alt="Lock Nuts (Nylon Insert)" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=LOCK+NUT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/lock-nut-2.png" alt="Lock Nuts (Nylon Insert) view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=LOCK+NUT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Lock Nuts (Nylon Insert)</div>
+          <div class="product-meta">Nylon Lock Nut / Nyloc</div>
+          <div class="product-spec">DIN 985 &nbsp;·&nbsp; M4–M36</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Nuts" onclick="openProduct('cap-nut','Cap Nut','Nuts','DIN 1587','M4–M24','6 / 8 / SS 304','Acorn Nut / Dome Nut')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" src="images/products/cap-nut-1.png" alt="Cap Nut" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=CAP+NUT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/cap-nut-2.png" alt="Cap Nut view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=CAP+NUT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Cap Nut</div>
+          <div class="product-meta">Acorn Nut / Dome Nut</div>
+          <div class="product-spec">DIN 1587 &nbsp;·&nbsp; M4–M24</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Nuts" onclick="openProduct('eye-nut','Eye Nut','Nuts','DIN 582','M6–M36','Carbon Steel / SS 304','Lifting Eye Nut / Ring Nut')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" src="images/products/eye-nut-1.png" alt="Eye Nut" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=EYE+NUT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/eye-nut-2.png" alt="Eye Nut view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=EYE+NUT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Eye Nut</div>
+          <div class="product-meta">Lifting Eye Nut / Ring Nut</div>
+          <div class="product-spec">DIN 582 &nbsp;·&nbsp; M6–M36</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Washers & SS Hardware" onclick="openProduct('ss-fastener-set','SS Nuts Bolts Washers','Washers & SS Hardware','DIN 125/934/933','M4–M36','SS 304 / SS 316 / A2','Stainless Steel Fastener Set')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Washers &amp; SS Hardware</span>
+          <img class="pimg-main" src="images/products/ss-fastener-set-1.png" alt="SS Nuts Bolts Washers" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SS+FASTENER+SET+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/ss-fastener-set-2.png" alt="SS Nuts Bolts Washers view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SS+FASTENER+SET+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">SS Nuts Bolts Washers</div>
+          <div class="product-meta">Stainless Steel Fastener Set</div>
+          <div class="product-spec">DIN 125/934/933 &nbsp;·&nbsp; M4–M36</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Structural Steel" onclick="openProduct('c-channel','C Channel','Structural Steel','—','25–150mm','MS (Mild Steel)','Mild Steel C Channel / Strut Channel')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Structural Steel</span>
+          <img class="pimg-main" src="images/products/c-channel-1.png" alt="C Channel" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=C+CHANNEL+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/c-channel-2.png" alt="C Channel view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=C+CHANNEL+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">C Channel</div>
+          <div class="product-meta">Mild Steel C Channel / Strut Channel</div>
+          <div class="product-spec">— &nbsp;·&nbsp; 25–150mm</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('wedge-anchor','Wedge Anchor','Anchors','DIN 529','M8–M24','Carbon Steel','Through Bolt / Wedge Anchor (Through Bolt)')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/wedge-anchor-1.png" alt="Wedge Anchor" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=WEDGE+ANCHOR+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/wedge-anchor-2.png" alt="Wedge Anchor view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=WEDGE+ANCHOR+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Wedge Anchor</div>
+          <div class="product-meta">Through Bolt / Wedge Anchor (Through Bolt)</div>
+          <div class="product-spec">DIN 529 &nbsp;·&nbsp; M8–M24</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('drop-in-anchor','Drop In Anchor','Anchors','—','M6–M20','Carbon Steel / SS','Internal Expansion Anchor')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/drop-in-anchor-1.png" alt="Drop In Anchor" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=DROP+IN+ANCHOR+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/drop-in-anchor-2.png" alt="Drop In Anchor view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=DROP+IN+ANCHOR+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Drop In Anchor</div>
+          <div class="product-meta">Internal Expansion Anchor</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M6–M20</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('sleeve-anchor','Sleeve Anchor','Anchors','DIN 7715','M6–M20','Zinc Alloy / Carbon Steel','Expansion Sleeve Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/sleeve-anchor-1.png" alt="Sleeve Anchor" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SLEEVE+ANCHOR+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/sleeve-anchor-2.png" alt="Sleeve Anchor view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SLEEVE+ANCHOR+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Sleeve Anchor</div>
+          <div class="product-meta">Expansion Sleeve Bolt</div>
+          <div class="product-spec">DIN 7715 &nbsp;·&nbsp; M6–M20</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('fix-bolt','Fix Bolt (Rawal Bolt)','Anchors','—','M6–M16','Carbon Steel','Rawl Bolt / Expansion Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/fix-bolt-1.png" alt="Fix Bolt (Rawal Bolt)" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FIX+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/fix-bolt-2.png" alt="Fix Bolt (Rawal Bolt) view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FIX+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Fix Bolt (Rawal Bolt)</div>
+          <div class="product-meta">Rawl Bolt / Expansion Bolt</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M6–M16</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('ss-rawl-bolt','SS Rawl Bolt 304 Grade 01','Anchors','—','M6–M16','SS 304 Grade 01','SS Fix Bolt / SS Rawal Bolt')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/ss-rawl-bolt-1.png" alt="SS Rawl Bolt 304 Grade 01" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SS+RAWL+BOLT+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/ss-rawl-bolt-2.png" alt="SS Rawl Bolt 304 Grade 01 view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SS+RAWL+BOLT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">SS Rawl Bolt 304 Grade 01</div>
+          <div class="product-meta">SS Fix Bolt / SS Rawal Bolt</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M6–M16</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('pipe-anchor','Pipe Anchor (Expansion Bolt)','Anchors','—','—','Carbon Steel / MS','Pipe Clamp Anchor')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/pipe-anchor-1.png" alt="Pipe Anchor (Expansion Bolt)" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=PIPE+ANCHOR+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/pipe-anchor-2.png" alt="Pipe Anchor (Expansion Bolt) view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=PIPE+ANCHOR+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Pipe Anchor (Expansion Bolt)</div>
+          <div class="product-meta">Pipe Clamp Anchor</div>
+          <div class="product-spec">— &nbsp;·&nbsp; —</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('rawalplug','Rawalplug','Anchors','—','6–12mm','Nylon / Polypropylene','Plastic Wall Plug / Nylon Rawlplug')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/rawalplug-1.png" alt="Rawalplug" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=RAWALPLUG+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/rawalplug-2.png" alt="Rawalplug view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=RAWALPLUG+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Rawalplug</div>
+          <div class="product-meta">Plastic Wall Plug / Nylon Rawlplug</div>
+          <div class="product-spec">— &nbsp;·&nbsp; 6–12mm</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('chemical-anchor','Chemical Anchor','Anchors','—','M8–M30','Epoxy / Vinylester','Injectable Resin Anchor')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/chemical-anchor-1.png" alt="Chemical Anchor" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=CHEMICAL+ANCHOR+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/chemical-anchor-2.png" alt="Chemical Anchor view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=CHEMICAL+ANCHOR+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Chemical Anchor</div>
+          <div class="product-meta">Injectable Resin Anchor</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('fischer-epoxy','Fischer Epoxy','Anchors','—','M8–M30','Fischer Epoxy Resin','Fischer Brand Epoxy Anchor')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/fischer-epoxy-1.png" alt="Fischer Epoxy" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FISCHER+EPOXY+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/fischer-epoxy-2.png" alt="Fischer Epoxy view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FISCHER+EPOXY+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Fischer Epoxy</div>
+          <div class="product-meta">Fischer Brand Epoxy Anchor</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('fixcher-epoxy','Fixcher Epoxy','Anchors','—','M8–M30','Epoxy Resin','Fischer/Fixcher Epoxy Anchor')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/fixcher-epoxy-1.png" alt="Fixcher Epoxy" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FIXCHER+EPOXY+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/fixcher-epoxy-2.png" alt="Fixcher Epoxy view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FIXCHER+EPOXY+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Fixcher Epoxy</div>
+          <div class="product-meta">Fischer/Fixcher Epoxy Anchor</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('epoxy-local','Epoxy Local','Anchors','—','M8–M30','Epoxy Resin (Local)','Local Epoxy Anchor')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/epoxy-local-1.png" alt="Epoxy Local" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=EPOXY+LOCAL+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/epoxy-local-2.png" alt="Epoxy Local view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=EPOXY+LOCAL+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Epoxy Local</div>
+          <div class="product-meta">Local Epoxy Anchor</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('fischer','Fischer','Anchors','—','M6–M30','Various (Fischer)','Fischer Brand Anchor Range')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/fischer-1.png" alt="Fischer" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FISCHER+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/fischer-2.png" alt="Fischer view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FISCHER+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Fischer</div>
+          <div class="product-meta">Fischer Brand Anchor Range</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M6–M30</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Anchors" onclick="openProduct('eye-nut-anchor','Eye Nut Anchor','Anchors','—','M8–M24','Carbon Steel / SS','Anchoring Eye Nut')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Anchors</span>
+          <img class="pimg-main" src="images/products/eye-nut-anchor-1.png" alt="Eye Nut Anchor" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=EYE+NUT+ANCHOR+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/eye-nut-anchor-2.png" alt="Eye Nut Anchor view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=EYE+NUT+ANCHOR+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Eye Nut Anchor</div>
+          <div class="product-meta">Anchoring Eye Nut</div>
+          <div class="product-spec">— &nbsp;·&nbsp; M8–M24</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Rods & Bars" onclick="openProduct('thread-rod','Thread Rods','Rods & Bars','DIN 975','M6–M36','SS 304 / SS 316 / CS','All-Thread Stud / Threaded Bar')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Rods &amp; Bars</span>
+          <img class="pimg-main" src="images/products/thread-rod-1.png" alt="Thread Rods" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=THREAD+ROD+VIEW+1')" />
+          <img class="pimg-hover" src="images/products/thread-rod-2.png" alt="Thread Rods view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=THREAD+ROD+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Thread Rods</div>
+          <div class="product-meta">All-Thread Stud / Threaded Bar</div>
+          <div class="product-spec">DIN 975 &nbsp;·&nbsp; M6–M36</div>
+          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+<div id="page-detail" class="page">
+
+  <div class="page-hero">
+    <div class="navbar-inner" style="height:auto;overflow:visible;padding-top:0;padding-bottom:0;">
+      <div class="breadcrumb">
+        <span onclick="goPage('home')" style="cursor:pointer;opacity:.6;">Home</span>
+        <svg width="12" height="12"><use href="#i-chevron-r"/></svg>
+        <span onclick="goPage('products')" style="cursor:pointer;opacity:.6;">Products</span>
+        <svg width="12" height="12"><use href="#i-chevron-r"/></svg>
+        <span id="d-breadcrumb">Product</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar-inner" style="height:auto;overflow:visible;padding-top:2rem;padding-bottom:4rem;">
+    <div class="detail-body">
+
+      <!-- Image Area -->
+      <div class="detail-image-area">
+        <!-- Main image with arrow controls -->
+        <div class="detail-main-icon" style="position:relative;overflow:hidden;">
+          <img id="d-img-main"
+               src="https://placehold.co/600x480/111111/e8681a?text=SELECT+A+PRODUCT"
+               alt="Product"
+               style="width:100%;height:100%;object-fit:cover;display:block;background:#ffffff;transition:opacity 0.25s ease;" />
+          <!-- Image counter badge -->
+          <div id="d-img-badge" style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,.7);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.1em;padding:4px 10px;">VIEW 1 / 2</div>
+          <!-- Left arrow -->
+          <button onclick="detailImg(-1)" id="d-arrow-l" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:36px;height:36px;background:transparent;border:2px solid #111;border-radius:0;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;color:#111;font-size:16px;transition:opacity .2s,background .2s,color .2s;" onmouseenter="this.style.background='#e8681a';this.style.borderColor='#e8681a';this.style.color='#fff'" onmouseleave="this.style.background='transparent';this.style.borderColor='#111';this.style.color='#111'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,2 4,7 9,12"/></svg></button>
+          <!-- Right arrow -->
+          <button onclick="detailImg(1)" id="d-arrow-r-btn" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:36px;height:36px;background:transparent;border:2px solid #111;border-radius:0;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;color:#111;font-size:16px;transition:background .2s,border-color .2s,color .2s;" onmouseenter="this.style.background='#e8681a';this.style.borderColor='#e8681a';this.style.color='#fff'" onmouseleave="this.style.background='transparent';this.style.borderColor='#111';this.style.color='#111'"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,2 10,7 5,12"/></svg></button>
+        </div>
+        <!-- Thumbnail strip -->
+        <div class="detail-thumbs">
+          <div class="d-thumb active" id="d-thumb-0" onclick="setDetailImg(0)" title="View 1">
+            <img id="d-timg-0" src="https://placehold.co/120x96/111111/e8681a?text=1" alt="View 1"
+                 style="width:100%;height:100%;object-fit:cover;" />
+            <span style="position:absolute;bottom:4px;right:6px;font-size:.6rem;font-weight:700;color:rgba(255,255,255,.7);">1</span>
+          </div>
+          <div class="d-thumb" id="d-thumb-1" onclick="setDetailImg(1)" title="View 2">
+            <img id="d-timg-1" src="https://placehold.co/120x96/1a1a1a/e8681a?text=2" alt="View 2"
+                 style="width:100%;height:100%;object-fit:cover;" />
+            <span style="position:absolute;bottom:4px;right:6px;font-size:.6rem;font-weight:700;color:rgba(255,255,255,.7);">2</span>
+          </div>
+        </div>
+      </div>
+
+<!-- Info Area -->
+      <div class="detail-info">
+        <div class="detail-cat" id="d-cat">—</div>
+        <h1 class="detail-name" id="d-title">Select a product</h1>
+
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0;">
+          <span style="background:var(--orange);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:.2rem .6rem;">DIN 931</span>
+          <span style="border:var(--border);font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:.2rem .6rem;">ISO 4014</span>
+          <span style="border:var(--border);font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:.2rem .6rem;">ASTM A307</span>
+        </div>
+
+        <p style="color:var(--gray-mid);font-size:.9rem;line-height:1.6;margin-bottom:1.5rem;">
+          Heavy hex structural bolts with full or partial thread, designed for high-load structural and mechanical applications. Available in multiple grades and materials for diverse industrial requirements.
+        </p>
+
+        <table class="spec-table">
+          <tbody>
+            <tr class="spec-row">
+              <td class="spec-key">Size Range</td>
+              <td class="spec-val">M6 – M36</td>
+            </tr>
+            <tr class="spec-row">
+              <td class="spec-key">Length Range</td>
+              <td class="spec-val">20mm – 300mm</td>
+            </tr>
+            <tr class="spec-row">
+              <td class="spec-key">Grade</td>
+              <td class="spec-val">4.6 / 8.8 / 10.9 / 12.9</td>
+            </tr>
+            <tr class="spec-row">
+              <td class="spec-key">Material</td>
+              <td class="spec-val">Mild Steel / SS304 / SS316 / High Tensile</td>
+            </tr>
+            <tr class="spec-row">
+              <td class="spec-key">Finish</td>
+              <td class="spec-val">Plain / Hot-Dip Galvanized / Zinc Plated</td>
+            </tr>
+            <tr class="spec-row">
+              <td class="spec-key">Thread Type</td>
+              <td class="spec-val">Coarse (UNC) / Fine (UNF)</td>
+            </tr>
+            <tr class="spec-row">
+              <td class="spec-key">Standard</td>
+              <td class="spec-val">DIN 931 / ISO 4014</td>
+            </tr>
+            <tr class="spec-row">
+              <td class="spec-key">MOQ</td>
+              <td class="spec-val">50 pcs (negotiable for bulk)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+          <button class="btn-primary" onclick="goPage('contact')" style="flex:1;min-width:180px;">REQUEST A QUOTE</button>
+          <a href="https://wa.me/923333869952?text=Hi%2C%20I%20need%20a%20quote%20for%20Hex%20Head%20Bolt" target="_blank" class="btn-ghost" style="flex:1;min-width:180px;text-align:center;text-decoration:none;">
+            <svg width="16" height="16"><use href="#i-wa"/></svg> WHATSAPP US
+          </a>
+        </div>
+
+        <div style="margin-top:1.5rem;padding:1rem;background:var(--gray-light);border-left:3px solid var(--orange);font-size:.82rem;color:var(--gray-mid);line-height:1.5;">
+          <strong style="color:var(--black);display:block;margin-bottom:.25rem;">BULK ORDERS WELCOME</strong>
+          We supply to contractors, manufacturers, and trading companies. Call us at <strong>0333-3869952</strong> for pricing on large quantities.
+        </div>
+      </div>
+
+    </div><!-- /detail-body -->
+  </div>
+
+  <!-- Related Products — dynamic, populated by openProduct() -->
+  <div style="background:#f5f5f5;padding:2.5rem 0;border-top:2px solid #111;">
+    <div class="navbar-inner" style="height:auto;overflow:visible;">
+      <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;">
+        <div class="section-label" style="margin:0;">YOU MAY ALSO NEED</div>
+      </div>
+      <div id="related-products-row" style="display:flex;gap:16px;overflow-x:auto;padding-bottom:4px;">
+        <!-- JS-populated -->
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-detail -->
+
+<!-- ═══════════════════════════════════════════════════════════════ ABOUT PAGE -->
+
+<div id="page-about" class="page">
+
+  <!-- ── HERO: 2-col grid, explicit heights, no class conflicts ── -->
+  <div style="display:grid;grid-template-columns:55% 45%;min-height:520px;border-bottom:2px solid #111;">
+    <!-- LEFT: Black, large heading -->
+    <div style="background:#111111;padding:clamp(2.5rem,6vw,5rem) clamp(2rem,5vw,4rem);display:flex;flex-direction:column;justify-content:center;color:#ffffff;">
+      <div style="font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#e8681a;display:flex;align-items:center;gap:.5rem;margin-bottom:1.5rem;">
+        <span style="width:2rem;height:2px;background:#e8681a;display:inline-block;"></span>ESTABLISHED IN KARACHI
+      </div>
+      <h1 style="font-size:clamp(2rem,4.5vw,3.75rem);font-weight:900;text-transform:uppercase;line-height:1;letter-spacing:-.02em;margin:0 0 1.5rem;color:#ffffff;">
+        THE PEOPLE WHO KEEP<br><span style="color:#e8681a;">INDUSTRY TOGETHER</span>
+      </h1>
+      <p style="color:rgba(255,255,255,.62);font-size:.93rem;line-height:1.75;max-width:460px;margin:0 0 2rem;">
+        For over a decade, Bolt &amp; Screw Trading has been Karachi's trusted source for industrial fasteners. From a small shop in Murad Khan Road to a full-catalog distributor, we've grown by keeping our word on quality and delivery.
+      </p>
+      <blockquote style="border-left:3px solid #e8681a;padding-left:1rem;margin:0;font-size:.88rem;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:rgba(255,255,255,.55);line-height:1.4;">
+        "WE DON'T JUST SELL FASTENERS —<br>WE KEEP YOUR OPERATIONS RUNNING."
+      </blockquote>
+    </div>
+
+    <!-- RIGHT: Dark, stats 2x2 grid -->
+    <div style="background:#1a1a1a;display:grid;grid-template-columns:1fr 1fr;gap:0;">
+      <div style="border-right:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+        <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">10+</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">YEARS IN BUSINESS</div>
+      </div>
+      <div style="border-bottom:1px solid #2a2a2a;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+        <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">50+</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">PRODUCT TYPES</div>
+      </div>
+      <div style="border-right:1px solid #2a2a2a;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+        <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">500+</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">CLIENTS SERVED</div>
+      </div>
+      <div style="padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+        <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">8</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">INDUSTRIES SERVED</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STORY SECTION: white bg, 2 columns ── -->
+  <div style="background:#ffffff;padding:5rem 0;border-bottom:2px solid #111;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+      
+      <!-- Left: Story text -->
+      <div>
+        <div style="font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#e8681a;display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;">
+          <span style="width:2rem;height:2px;background:#e8681a;display:inline-block;"></span>OUR STORY
+        </div>
+        <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1;margin:0 0 1.5rem;">
+          FROM ONE SHOP TO<br><span style="color:#e8681a;">FULL CATALOG</span>
+        </h2>
+        <p style="color:#666;font-size:.9rem;line-height:1.8;margin:0 0 1rem;">
+          Bolt &amp; Screw Trading started with a simple idea — make it easier for contractors and engineers in Karachi to source the exact hardware they need, without the runaround. We set up shop at Fazal Chamber, Murad Khan Road, and built our inventory around what local industry actually needed.
+        </p>
+        <p style="color:#666;font-size:.9rem;line-height:1.8;margin:0 0 1rem;">
+          Over the years, our catalog grew from basic hex bolts and nuts to a comprehensive range covering anchors, specialty screws, threaded rods, and more. We work directly with manufacturers to ensure consistent quality and competitive pricing on every order.
+        </p>
+        <p style="color:#666;font-size:.9rem;line-height:1.8;margin:0;">
+          Today we serve construction companies, textile mills, oil &amp; gas contractors, and machine shops across Karachi and beyond. Every order, big or small, gets the same attention to accuracy and speed.
+        </p>
+      </div>
+
+      <!-- Right: Why clients stay -->
+      <div style="background:#111111;padding:2.5rem;border-left:4px solid #e8681a;">
+        <div style="font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#e8681a;margin-bottom:1.5rem;">WHY CLIENTS STAY</div>
+        
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:30px;height:30px;background:#e8681a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;">
+              <svg width="14" height="14" fill="white"><use href="#i-check"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;">Ready Stock</div>
+              <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;line-height:1.5;">Most standard items available for same-day or next-day collection.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:30px;height:30px;background:#e8681a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;">
+              <svg width="14" height="14" fill="white"><use href="#i-check"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;">Verified Quality</div>
+              <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;line-height:1.5;">DIN/ISO-grade fasteners from certified mills only. No substitutes without notice.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:30px;height:30px;background:#e8681a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;">
+              <svg width="14" height="14" fill="white"><use href="#i-check"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;">Bulk Pricing</div>
+              <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;line-height:1.5;">Tiered pricing for contractors, distributors, and project managers.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div style="width:30px;height:30px;background:#e8681a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;">
+              <svg width="14" height="14" fill="white"><use href="#i-check"/></svg>
+            </div>
+            <div>
+              <div style="font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;">Expert Advice</div>
+              <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;line-height:1.5;">Our team helps you spec the right fastener for your load and environment.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── VALUES SECTION: full black strip ── -->
+  <div style="background:#111111;padding:5rem 0;border-bottom:2px solid #1a1a1a;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+      <div style="font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#e8681a;margin-bottom:.75rem;">WHAT DRIVES US</div>
+      <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:900;text-transform:uppercase;color:#ffffff;margin:0 0 2.5rem;letter-spacing:-.02em;">
+        OUR CORE <span style="color:#e8681a;">VALUES</span>
+      </h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
+          <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="22" height="22" fill="white"><use href="#i-award"/></svg>
+          </div>
+          <h3 style="font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;margin:0 0 .5rem;">Quality First</h3>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">We stock only what we'd use ourselves. Every product is sourced from verified manufacturers meeting international standards.</p>
+        </div>
+        <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
+          <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="22" height="22" fill="white"><use href="#i-zap"/></svg>
+          </div>
+          <h3 style="font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;margin:0 0 .5rem;">Fast Response</h3>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">Quotes within the hour, orders fulfilled the same day for in-stock items. We know your timeline matters.</p>
+        </div>
+        <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
+          <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="22" height="22" fill="white"><use href="#i-truck"/></svg>
+          </div>
+          <h3 style="font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;margin:0 0 .5rem;">Reliable Delivery</h3>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">Delivery to job sites across Karachi. Coordination with freight partners for outstation orders.</p>
+        </div>
+        <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
+          <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="22" height="22" fill="white"><use href="#i-package"/></svg>
+          </div>
+          <h3 style="font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;margin:0 0 .5rem;">Full Catalog</h3>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">One stop for bolts, nuts, washers, anchors, rods, and specialty hardware. Less sourcing, more building.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CTA BANNER ── -->
+  <div style="background:#e8681a;padding:3.5rem 0;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
+      <div>
+        <div style="font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.5);">READY TO ORDER?</div>
+        <h2 style="font-size:clamp(1.4rem,3vw,2.25rem);font-weight:900;text-transform:uppercase;margin:.35rem 0 0;line-height:1.1;color:#111111;">LET'S TALK ABOUT YOUR NEXT PROJECT</h2>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <button onclick="goPage('contact')" style="background:#111111;color:#ffffff;border:none;padding:.875rem 2rem;font-family:var(--font);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;">SEND AN INQUIRY</button>
+        <a href="tel:+923333869952" style="background:transparent;color:#111111;border:2px solid #111111;padding:.875rem 2rem;font-family:var(--font);font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;">
+          <svg width="14" height="14"><use href="#i-phone"/></svg> 0333-3869952
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-about -->
+
+<div id="page-contact" class="page">
+
+  <div class="contact-page-hero">
+    <div class="navbar-inner" style="height:auto;overflow:visible;">
+      <div class="breadcrumb">
+        <span onclick="goPage('home')" style="cursor:pointer;opacity:.6;">Home</span>
+        <svg width="12" height="12"><use href="#i-chevron-r"/></svg>
+        <span>Contact</span>
+      </div>
+      <h1 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;text-transform:uppercase;line-height:1.05;margin:1rem 0 .5rem;">GET IN TOUCH<br><span style="color:var(--orange);">WE'LL RESPOND FAST</span></h1>
+      <p style="color:rgba(255,255,255,.6);font-size:.92rem;max-width:500px;">Send us your requirements or just call. Our team is available 6 days a week for product inquiries, bulk orders, and technical questions.</p>
+    </div>
+  </div>
+
+  <div class="navbar-inner" style="height:auto;overflow:visible;padding-top:3rem;padding-bottom:4rem;">
+    <div class="contact-layout">
+
+      <!-- Info Column -->
+      <div class="contact-info-col">
+
+        <div class="section-label">FIND US</div>
+
+        <div class="contact-detail">
+          <div class="cd-icon">
+            <svg width="20" height="20"><use href="#i-map"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem;">Our Shop</div>
+            <div style="color:var(--gray-mid);font-size:.88rem;line-height:1.6;">Shop No. 12D, Fazal Chamber<br>Katchi Gali No. 3, Murad Khan Road<br>Karachi, Pakistan</div>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="cd-icon">
+            <svg width="20" height="20"><use href="#i-phone"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem;">Phone / WhatsApp</div>
+            <a href="tel:+923333869952" style="color:var(--black);text-decoration:none;font-size:.9rem;font-weight:600;">0333-3869952</a><br>
+            <span style="color:var(--gray-mid);font-size:.8rem;">Mon–Sat, 9am – 7pm PKT</span>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="cd-icon">
+            <svg width="20" height="20"><use href="#i-mail"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem;">Email</div>
+            <a href="mailto:info@boltnscrewtrading.pk" style="color:var(--orange);text-decoration:none;font-size:.88rem;">info@boltnscrewtrading.pk</a><br>
+            <span style="color:var(--gray-mid);font-size:.8rem;">Replies within 2–4 hours</span>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-block" style="position:relative;overflow:hidden;border:2px solid #111111;border-radius:0;cursor:pointer;" onclick="window.open('https://maps.app.goo.gl/nF9SxTmxqkZMbuxu8','_blank')">
+          <!-- OpenStreetMap embed — no API key needed, shows real tiles with pin -->
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=67.0080%2C24.8590%2C67.0200%2C24.8660&amp;layer=mapnik&amp;marker=24.8625%2C67.0140"
+            width="100%" height="100%"
+            style="border:0;display:block;pointer-events:none;"
+            loading="lazy"
+            title="Bolt &amp; Screw Trading — Murad Khan Road, Karachi"></iframe>
+          <!-- Transparent click overlay → opens Google Maps -->
+          <div style="position:absolute;inset:0;z-index:2;"></div>
+          <!-- Bottom button -->
+          <div style="position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(232,104,26,.92);display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 0;">
+            <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            <span style="font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#fff;">Open in Google Maps</span>
+          </div>
+        </div>
+
+        <!-- Social -->
+        <div class="section-label" style="margin-top:2rem;">FOLLOW US</div>
+        <div class="social-list">
+          <a href="https://wa.me/923333869952" target="_blank" class="social-item" style="color:inherit;text-decoration:none;">
+            <svg width="20" height="20"><use href="#i-wa"/></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://www.instagram.com/boltnscrewtrading1" target="_blank" class="social-item" style="color:inherit;text-decoration:none;">
+            <svg width="20" height="20"><use href="#i-ig"/></svg>
+            <span>@boltnscrewtrading1</span>
+          </a>
+          <a href="https://www.facebook.com/share/18xwmiFygT/" target="_blank" class="social-item" style="color:inherit;text-decoration:none;">
+            <svg width="20" height="20"><use href="#i-fb"/></svg>
+            <span>Bolt and Screw Trading</span>
+          </a>
+        </div>
+
+      </div><!-- /contact-info-col -->
+
+      <!-- Form Column -->
+      <div class="contact-form-col">
+        <div class="inquiry-form">
+          <div class="form-title">SEND AN INQUIRY</div>
+          <p style="color:var(--gray-mid);font-size:.85rem;margin-bottom:1.5rem;line-height:1.5;">Fill in the form below and we'll get back to you with pricing and availability within a few hours.</p>
+
+          <div class="form-grid2">
+            <div>
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-input" placeholder="Ahmed Malik" />
+            </div>
+            <div>
+              <label class="form-label">Company Name</label>
+              <input type="text" class="form-input" placeholder="ABC Construction Ltd." />
+            </div>
+          </div>
+
+          <div class="form-grid2">
+            <div>
+              <label class="form-label">Phone / WhatsApp *</label>
+              <input type="tel" class="form-input" placeholder="0300-0000000" />
+            </div>
+            <div>
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" placeholder="ahmed@company.com" />
+            </div>
+          </div>
+
+          <label class="form-label">Product Category *</label>
+          <select class="form-select">
+            <option value="">Select a category…</option>
+            <option>Bolts &amp; Screws</option>
+            <option>Nuts</option>
+            <option>Washers</option>
+            <option>Anchors &amp; Studs</option>
+            <option>Threaded Rods</option>
+            <option>Pins &amp; Clips</option>
+            <option>Multiple / Mixed Order</option>
+            <option>Not Sure — Need Help</option>
+          </select>
+
+          <label class="form-label">Product Details *</label>
+          <textarea class="form-textarea" placeholder="Example: M12×60mm Hex Head Bolt, Grade 8.8, Zinc Plated, DIN 931 — Qty: 500 pcs. Please include size, grade, quantity, and any standard if known."></textarea>
+
+          <div class="form-grid2" style="margin-top:0;">
+            <div>
+              <label class="form-label">Estimated Quantity</label>
+              <input type="text" class="form-input" placeholder="e.g. 500 pcs / 50 kg" />
+            </div>
+            <div>
+              <label class="form-label">Required By</label>
+              <input type="text" class="form-input" placeholder="e.g. Within 1 week" />
+            </div>
+          </div>
+
+          <button class="form-submit">SEND INQUIRY →</button>
+
+          <p style="font-size:.75rem;color:var(--gray-mid);margin-top:1rem;line-height:1.5;text-align:center;">
+            Or reach us directly on <a href="https://wa.me/923333869952" target="_blank" style="color:var(--orange);text-decoration:none;font-weight:700;">WhatsApp ↗</a> for a faster reply.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /contact-layout -->
+  </div>
+
+</div><!-- /page-contact -->
+
+<!-- ═══════════════════════════════════════════════════════════════ JAVASCRIPT -->
+<script>
+// ── Page Router ──────────────────────────────────────────────────────────────
+/* ── Page history for back-navigation ── */
+var _pageHistory = [];
+var _currentPage = 'home';
+
+function goPage(id, _fromBack) {
+  if (!_fromBack && _currentPage && _currentPage !== id) {
+    _pageHistory.push(_currentPage);
+  }
+  _currentPage = id;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + id);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  // Update nav active state using onclick-passed page id
+  document.querySelectorAll('.nav-link').forEach(l => {
+    const onc = l.getAttribute('onclick') || '';
+    const match = onc.match(/goPage\('([^']+)'/);
+    l.classList.toggle('active', match && match[1] === id);
+  });
+  closeMobileNav();
+  // Show/hide back button
+  var bb = document.getElementById('global-back-btn');
+  if (bb) bb.style.display = _pageHistory.length > 0 ? 'flex' : 'none';
+}
+
+function goBack() {
+  if (_pageHistory.length === 0) return;
+  var prev = _pageHistory.pop();
+  goPage(prev, true);
+}
+
+// ── Mobile Nav ────────────────────────────────────────────────────────────────
+function openMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  nav.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  nav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── Category Filter (Home page strip) ────────────────────────────────────────
+function setCat(el, cat) {
+  document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  // In production this would filter the product grid
+  const cards = document.querySelectorAll('#page-home .product-card');
+  cards.forEach(card => {
+    const tag = card.querySelector('.pcat-tag');
+    if (!tag) return;
+    const cardCat = tag.textContent.trim().toLowerCase();
+    if (cat === 'all') {
+      card.style.display = '';
+    } else {
+      const match = cardCat.includes(cat) || cat.includes(cardCat);
+      card.style.display = match ? '' : 'none';
+    }
+  });
+}
+
+// ── Hero Stats counter animation ──────────────────────────────────────────────
+function animateCounters() {
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    let current = 0;
+    const step = Math.ceil(target / 40);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = current + suffix;
+      if (current >= target) clearInterval(timer);
+    }, 30);
+  });
+}
+
+// ── Product card hover effect ─────────────────────────────────────────────────
+function initCardHovers() {
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const svg = card.querySelector('svg');
+      if (svg) svg.style.transform = 'scale(1.08) rotate(-3deg)';
+    });
+    card.addEventListener('mouseleave', () => {
+      const svg = card.querySelector('svg');
+      if (svg) svg.style.transform = '';
+    });
+  });
+}
+
+// ── Products page search ──────────────────────────────────────────────────────
+function initSearch() {
+  const searchInput = document.querySelector('#page-products .search-bar input');
+  if (!searchInput) return;
+  searchInput.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    document.querySelectorAll('#page-products .product-card').forEach(card => {
+      const name = card.querySelector('.product-name');
+      const text = card.textContent.toLowerCase();
+      card.style.display = (!q || text.includes(q)) ? '' : 'none';
+    });
+  });
+}
+
+// ── Scroll: sticky nav shadow ─────────────────────────────────────────────────
+function initNavScroll() {
+  const nav = document.querySelector('.navbar');
+  if (!nav) return;
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 20
+      ? '0 4px 24px rgba(0,0,0,.15)'
+      : 'none';
+  }, { passive: true });
+}
+
+// ── Form submission (mock) ────────────────────────────────────────────────────
+function initForms() {
+  document.querySelectorAll('.form-submit').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const form = this.closest('.inquiry-form');
+      const inputs = form.querySelectorAll('input[type="text"], input[type="tel"], input[type="email"], textarea');
+      let valid = true;
+      inputs.forEach(i => {
+        if (i.getAttribute('placeholder') && !i.value.trim()) {
+          i.style.borderColor = '#e74c3c';
+          valid = false;
+        } else {
+          i.style.borderColor = '';
+        }
+      });
+      if (valid) {
+        this.textContent = 'INQUIRY SENT ✓';
+        this.style.background = '#27ae60';
+        this.disabled = true;
+        setTimeout(() => {
+          this.textContent = 'SEND INQUIRY →';
+          this.style.background = '';
+          this.disabled = false;
+          inputs.forEach(i => i.value = '');
+        }, 3000);
+      }
+    });
+  });
+}
+
+// ── Nav link wiring (onclick already wired in HTML) ──────────────────────────
+function initNav() {
+  // Nav links use direct onclick="goPage()" - nothing extra needed
+  // Just ensure mobile-nav links also call goPage
+  document.querySelectorAll('.mobile-nav .nav-link').forEach(l => {
+    if (!l.getAttribute('onclick')) {
+      const page = l.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+      l.addEventListener('click', () => goPage(page));
+    }
+  });
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initNav();
+  initCardHovers();
+  initSearch();
+  initNavScroll();
+  initForms();
+  // Animate stats on load
+  setTimeout(animateCounters, 400);
+});
+
+function filterProducts(btn) {
+  var cat = btn.getAttribute('data-cat');
+  document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  var cards = document.querySelectorAll('#product-grid .product-card');
+  var count = 0;
+  cards.forEach(function(c) {
+    var show = cat === 'all' || c.getAttribute('data-cat') === cat;
+    c.style.display = show ? '' : 'none';
+    if (show) count++;
+  });
+  var el = document.getElementById('prod-count');
+  if (el) el.innerHTML = 'Showing <strong>' + count + '</strong> product' + (count !== 1 ? 's' : '');
+}
+function syncSidebar(cb, cat) {
+  var btn = document.querySelector('.cat-filter-btn[data-cat="' + (cat === 'all' ? 'all' : cat) + '"]');
+  if (btn) filterProducts(btn);
+}
+
+/* ── Product detail image state ── */
+
+
+/* ── Detail-page image loader: tries .png then .jpg (uses relative path, no abs-URL parsing) ── */
+function setImgWithFallback(el, src, placeholder) {
+  var dotIdx = src.lastIndexOf('.');
+  var ext    = src.slice(dotIdx + 1).toLowerCase();
+  var altSrc = src.slice(0, dotIdx + 1) + (ext === 'png' ? 'jpg' : 'png');
+  el.onerror = function() {
+    el.onerror = function() { el.onerror = null; el.src = placeholder; };
+    el.src = altSrc;
+  };
+  el.src = src;
+}
+
+/* ── Image format fallback: tries .png→.jpg or .jpg→.png before placeholder ── */
+function imgFallback(el, placeholder) {
+  var s = el.src;
+  if (s.indexOf('.png') > -1) {
+    el.onerror = function() { el.onerror = null; el.src = placeholder; };
+    el.src = s.replace(/\.png([?#]|$)/, '.jpg$1');
+  } else if (s.indexOf('.jpg') > -1) {
+    el.onerror = function() { el.onerror = null; el.src = placeholder; };
+    el.src = s.replace(/\.jpg([?#]|$)/, '.png$1');
+  } else {
+    el.onerror = null;
+    el.src = placeholder;
+  }
+}
+var _dSlug = '', _dIdx = 0;
+var _dImgs = ['',''];
+
+function openProduct(slug, name, cat, std, size, grade, alias) {
+  _dSlug = slug;
+  _dIdx  = 0;
+  _dImgs = [
+    'images/products/' + slug + '-1.png',
+    'images/products/' + slug + '-2.png'
+  ];
+  /* update main image */
+  var mi = document.getElementById('d-img-main');
+  if (mi) { mi.alt = name; setImgWithFallback(mi, _dImgs[0], 'https://placehold.co/600x600/111111/e8681a?text=NO+IMAGE'); }
+  /* update thumbnails */
+  var t0 = document.getElementById('d-timg-0');
+  var t1 = document.getElementById('d-timg-1');
+  if (t0) { t0.alt = name + ' view 1'; setImgWithFallback(t0, _dImgs[0], 'https://placehold.co/160x160/111111/e8681a?text=1'); }
+  if (t1) { t1.alt = name + ' view 2'; setImgWithFallback(t1, _dImgs[1], 'https://placehold.co/160x160/1a1a1a/e8681a?text=2'); }
+  /* update breadcrumb + title */
+  var bc = document.getElementById('d-breadcrumb');
+  var dt = document.getElementById('d-title');
+  var dc = document.getElementById('d-cat');
+  if (bc) bc.textContent = name;
+  if (dt) dt.textContent = name;
+  if (dc) dc.textContent = cat.toUpperCase();
+  /* badge */
+  _updateDetailBadge();
+  /* active thumb */
+  _syncDetailThumbs();
+  _renderRelatedProducts(_dSlug);
+  goPage('detail');
+}
+
+function detailImg(dir) {
+  _dIdx = (_dIdx + dir + _dImgs.length) % _dImgs.length;
+  var mi = document.getElementById('d-img-main');
+  if (mi) {
+    mi.style.opacity = '0';
+    setTimeout(function(){
+      setImgWithFallback(mi, _dImgs[_dIdx], 'https://placehold.co/600x600/111111/e8681a?text=NO+IMAGE');
+      mi.style.opacity = '1';
+    }, 200);
+  }
+  _updateDetailBadge();
+  _syncDetailThumbs();
+}
+
+function setDetailImg(idx) {
+  _dIdx = idx;
+  var mi = document.getElementById('d-img-main');
+  if (mi) {
+    mi.style.opacity = '0';
+    setTimeout(function(){
+      setImgWithFallback(mi, _dImgs[idx], 'https://placehold.co/600x600/111111/e8681a?text=NO+IMAGE');
+      mi.style.opacity = '1';
+    }, 200);
+  }
+  _updateDetailBadge();
+  _syncDetailThumbs();
+}
+
+function _updateDetailBadge() {
+  var b = document.getElementById('d-img-badge');
+  if (b) b.textContent = 'VIEW ' + (_dIdx + 1) + ' / 2';
+}
+
+function _syncDetailThumbs() {
+  for (var i = 0; i < 2; i++) {
+    var th = document.getElementById('d-thumb-' + i);
+    if (th) th.classList.toggle('active', i === _dIdx);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SEMANTIC PRODUCT SEARCH
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Full product catalog with searchable tags */
+var SEARCH_CATALOG = [
+  {slug:'hex-bolt',            name:'Hexagonal Bolt',              alias:'Hex Head Bolt',                      cat:'Bolts & Screws',       tags:['hex','bolt','hexagonal','structural','heavy','din933','din931','m6','m64','4.8','8.8','10.9','zinc','hdg','galvanized']},
+  {slug:'allen-bolt',          name:'Allen Bolt',                  alias:'Socket Head Cap Screw',              cat:'Bolts & Screws',       tags:['allen','socket','cap','screw','din912','8.8','12.9','black oxide','precision','machine']},
+  {slug:'socket-cap-screw',    name:'Socket Head Cap Screw',       alias:'Allen Bolt',                         cat:'Bolts & Screws',       tags:['allen','socket','cap','screw','din912','8.8','12.9','ss304','stainless']},
+  {slug:'button-head-allen-bolt',name:'Button Head Allen Bolt',    alias:'Button Head Socket Cap Screw',       cat:'Bolts & Screws',       tags:['button','head','allen','socket','din7380','8.8','10.9','low profile','flat']},
+  {slug:'csk-allen-bolt',      name:'CSK Allen Bolt',              alias:'Countersunk Socket Cap Screw',       cat:'Bolts & Screws',       tags:['countersunk','csk','allen','socket','flush','din7991','8.8','12.9']},
+  {slug:'csk-cut-screw',       name:'CSK Cut Screw',               alias:'Countersunk Self-Tapping Screw',     cat:'Bolts & Screws',       tags:['countersunk','csk','self tapping','wood','sheet metal','cut','self-tapping']},
+  {slug:'csk-machine-screw',   name:'CSK Machine Screw',           alias:'Countersunk Machine Screw',          cat:'Bolts & Screws',       tags:['countersunk','csk','machine','screw','din963','965','m3','m12','flat head']},
+  {slug:'frame-fixing-screw',  name:'Frame Fixing Screw',          alias:'Window Door Frame Anchor Screw',     cat:'Bolts & Screws',       tags:['frame','fixing','window','door','anchor','concrete','masonry','long']},
+  {slug:'metal-frame-fixing-screw',name:'Metal Frame Fixing Screw',alias:'Heavy-Duty Frame Screw',            cat:'Bolts & Screws',       tags:['metal','frame','heavy','duty','fixing','steel']},
+  {slug:'grub-screw',          name:'Grub Screw',                  alias:'Set Screw / Socket Set Screw',       cat:'Bolts & Screws',       tags:['grub','set screw','headless','din913','din916','12.9','shaft','keyway']},
+  {slug:'lifting-eye-bolt',    name:'Lifting Eye Bolt',            alias:'Eye Bolt / Ring Bolt',               cat:'Bolts & Screws',       tags:['lifting','eye','ring','rigging','load','din580','crane','hook']},
+  {slug:'long-eye-bolt',       name:'Long Eye Bolt',               alias:'Extended Shank Eye Bolt',            cat:'Bolts & Screws',       tags:['long','eye','extended','shank','ring','lifting','rigging']},
+  {slug:'self-drilling-screw', name:'Self Drilling Screw',         alias:'Tek Screw / Drill-Point Screw',      cat:'Bolts & Screws',       tags:['self drilling','tek','drill point','roofing','sheet','metal','self-drilling']},
+  {slug:'u-bolt',              name:'U Bolt',                      alias:'Pipe Clamp Bolt',                    cat:'Bolts & Screws',       tags:['u bolt','pipe','clamp','strap','conduit','gi','ms','round']},
+  {slug:'flange-bolt',         name:'Flange Bolt',                 alias:'Hex Flange Bolt',                    cat:'Bolts & Screws',       tags:['flange','hex','din6921','serrated','8.8','automotive']},
+  {slug:'carriage-bolt',       name:'Carriage Bolt',               alias:'Coach Bolt',                         cat:'Bolts & Screws',       tags:['carriage','coach','round head','square neck','din603','4.6','8.8','wood']},
+  {slug:'hex-nut',             name:'Hex Nut',                     alias:'Hexagon Nut',                        cat:'Nuts',                 tags:['nut','hex','hexagon','din934','m3','m64','zinc','galvanized','standard']},
+  {slug:'lock-nut',            name:'Lock Nut',                    alias:'Nylon Insert Lock Nut / Nyloc',      cat:'Nuts',                 tags:['lock','nylon','nyloc','prevailing','torque','din985','locking','vibration','self-locking']},
+  {slug:'ss-nut',              name:'SS Nut',                      alias:'Stainless Steel Nut / A2 Nut',       cat:'Nuts',                 tags:['stainless','ss','a2','a4','304','316','rust','corrosion','hex nut']},
+  {slug:'cap-nut',             name:'Cap Nut',                     alias:'Acorn Nut / Dome Nut',               cat:'Nuts',                 tags:['cap','acorn','dome','decorative','din1587','cover','bolt end']},
+  {slug:'eye-nut',             name:'Eye Nut',                     alias:'Lifting Eye Nut / Ring Nut',         cat:'Nuts',                 tags:['eye','ring','lifting','rigging','din582','crane','load','hook']},
+  {slug:'ss-fastener-set',     name:'SS Nuts Bolts Washers',       alias:'Stainless Steel Fastener Set',       cat:'Washers & SS Hardware',tags:['stainless','ss','304','316','set','kit','combination','nuts','bolts','washers','din125','din934']},
+  {slug:'c-channel',           name:'C Channel',                   alias:'Mild Steel C Channel / Strut Channel',cat:'Structural Steel',   tags:['channel','c channel','strut','unistrut','cable tray','support','steel','mild','structural']},
+  {slug:'wedge-anchor',        name:'Wedge Anchor',                alias:'Through Bolt / Wedge Anchor',        cat:'Anchors',             tags:['wedge','anchor','concrete','masonry','din529','heavy','load','expansion','through bolt']},
+  {slug:'sleeve-anchor',       name:'Sleeve Anchor',               alias:'Expansion Sleeve Bolt',              cat:'Anchors',             tags:['sleeve','expansion','anchor','hollow','masonry','brick','din7715','zinc alloy']},
+  {slug:'drop-in-anchor',      name:'Drop In Anchor',              alias:'Internal Expansion Anchor',          cat:'Anchors',             tags:['drop in','drop-in','internal','expansion','flush','concrete','female','threaded']},
+  {slug:'fix-bolt',            name:'Fix Bolt',                    alias:'Rawl Bolt / Expansion Bolt',         cat:'Anchors',             tags:['rawl','rawal','fix','expansion','concrete','wall','bolt','carbon']},
+  {slug:'ss-rawl-bolt',        name:'SS Rawl Bolt',                alias:'SS Fix Bolt / SS Rawal Bolt',        cat:'Anchors',             tags:['stainless','ss','304','rawl','rawal','fix','expansion','concrete','wall']},
+  {slug:'pipe-anchor',         name:'Pipe Anchor',                 alias:'Pipe Clamp Anchor',                  cat:'Anchors',             tags:['pipe','anchor','clamp','expansion','ms','carbon','fixing']},
+  {slug:'rawalplug',           name:'Rawalplug',                   alias:'Plastic Wall Plug / Nylon Rawlplug', cat:'Anchors',             tags:['rawlplug','wall plug','nylon','plastic','dowel','drill','masonry','brick','wall']},
+  {slug:'chemical-anchor',     name:'Chemical Anchor',             alias:'Injectable Resin Anchor',            cat:'Anchors',             tags:['chemical','epoxy','resin','injectable','vinylester','high load','rebar','heavy','concrete']},
+  {slug:'fischer-epoxy',       name:'Fischer Epoxy',               alias:'Fischer Brand Epoxy Anchor',         cat:'Anchors',             tags:['fischer','epoxy','resin','brand','anchor','concrete','heavy']},
+  {slug:'fixcher-epoxy',       name:'Fixcher Epoxy',               alias:'Fischer Fixcher Epoxy Anchor',       cat:'Anchors',             tags:['fixcher','fischer','epoxy','resin','anchor','concrete']},
+  {slug:'epoxy-local',         name:'Epoxy Local',                 alias:'Local Epoxy Anchor',                 cat:'Anchors',             tags:['epoxy','local','resin','anchor','concrete','chemical','affordable']},
+  {slug:'fischer',             name:'Fischer',                     alias:'Fischer Brand Anchor Range',         cat:'Anchors',             tags:['fischer','brand','anchor','range','concrete','masonry','all type']},
+  {slug:'eye-nut-anchor',      name:'Eye Nut Anchor',              alias:'Anchoring Eye Nut',                  cat:'Anchors',             tags:['eye','nut','anchor','ring','lifting','anchoring']},
+  {slug:'thread-rod',          name:'Thread Rods',                 alias:'All-Thread Stud / Threaded Bar',     cat:'Rods & Bars',         tags:['threaded','rod','stud','all-thread','bar','din975','ss304','carbon','1m','3m','long']}
+];
+
+/* Synonym expansion — common search words → additional match tokens */
+var SEARCH_SYNONYMS = {
+  'concrete': ['anchor','wedge','sleeve','drop in','fix bolt','rawl','chemical','epoxy'],
+  'wall':     ['anchor','rawlplug','sleeve','plug','fixing','expansion'],
+  'masonry':  ['anchor','wedge','sleeve','rawlplug','plug','wall'],
+  'stainless':['ss','304','316','a2','a4','rust','corrosion'],
+  'ss':       ['stainless','304','316','rust'],
+  'allen':    ['socket','cap screw','hex socket','allen key'],
+  'socket':   ['allen','cap screw','hex socket'],
+  'galvanized':['hdg','gi','zinc','hot dip'],
+  'zinc':     ['galvanized','plated','hdg','gi'],
+  'lock':     ['nylon','nyloc','locking','prevailing','vibration'],
+  'nyloc':    ['lock nut','nylon insert','locking'],
+  'lifting':  ['eye bolt','eye nut','ring','crane','rigging','load'],
+  'crane':    ['lifting','eye bolt','eye nut','ring','rigging'],
+  'rigging':  ['lifting','eye','ring'],
+  'plug':     ['rawlplug','wall plug','anchor','sleeve'],
+  'rawl':     ['rawlplug','fix bolt','rawal','expansion'],
+  'rawal':    ['rawlplug','fix bolt','rawl','expansion'],
+  'pipe':     ['u bolt','pipe anchor','clamp','conduit'],
+  'channel':  ['c channel','strut','unistrut'],
+  'strut':    ['c channel','unistrut'],
+  'epoxy':    ['chemical anchor','resin','injectable','fischer'],
+  'chemical': ['epoxy','resin','anchor','injectable'],
+  'fixing':   ['anchor','frame screw','rawlplug','sleeve'],
+  'frame':    ['frame fixing screw','door','window','anchor'],
+  'door':     ['frame fixing screw','frame anchor'],
+  'window':   ['frame fixing screw','frame anchor'],
+  'countersunk':['csk','flat head','flush'],
+  'csk':      ['countersunk','flat head','flush'],
+  'flat':     ['washer','countersunk','csk'],
+  'washer':   ['flat washer','spring','disc','din125'],
+  'threaded': ['thread rod','stud','all thread','din975'],
+  'rod':      ['thread rod','threaded bar','stud'],
+  'stud':     ['thread rod','threaded rod','all thread'],
+  'nut':      ['hex nut','lock nut','cap nut','eye nut','ss nut'],
+  'bolt':     ['hex bolt','u bolt','carriage','flange','fix bolt','eye bolt'],
+  'screw':    ['allen bolt','csk','machine screw','self drilling','grub','set screw'],
+  'self tapping':['self drilling','tek screw','drill point'],
+  'tek':      ['self drilling','drill point'],
+  'grub':     ['set screw','headless','socket set'],
+  'set screw':['grub','headless'],
+  'coach':    ['carriage bolt'],
+  'carriage': ['coach bolt'],
+  'flange':   ['flange bolt','hex flange'],
+  'structural':['hex bolt','c channel','flange','8.8','10.9'],
+  'heavy':    ['hex bolt','wedge anchor','chemical','lifting','structural'],
+  'roofing':  ['self drilling','tek','drill point'],
+  'ring':     ['eye bolt','eye nut','lifting','rigging'],
+  'expansion':['wedge anchor','sleeve anchor','drop in','fix bolt','rawal'],
+  'acorn':    ['cap nut','dome nut'],
+  'dome':     ['cap nut','acorn nut'],
+  'cap nut':  ['acorn','dome'],
+  'fastener': ['bolt','nut','washer','screw','set']
+};
+
+function _expandQuery(q) {
+  var tokens = q.toLowerCase().trim().split(/\s+/);
+  var expanded = tokens.slice();
+  tokens.forEach(function(t) {
+    if (SEARCH_SYNONYMS[t]) {
+      SEARCH_SYNONYMS[t].forEach(function(s){ if(expanded.indexOf(s)<0) expanded.push(s); });
+    }
+    // also try 2-word combos for multi-word synonyms
+    Object.keys(SEARCH_SYNONYMS).forEach(function(k){
+      if(q.toLowerCase().indexOf(k)>-1 && k.indexOf(' ')>-1){
+        SEARCH_SYNONYMS[k].forEach(function(s){ if(expanded.indexOf(s)<0) expanded.push(s); });
+      }
+    });
+  });
+  return expanded;
+}
+
+function _scoreProduct(p, tokens) {
+  var searchable = (p.name+' '+p.alias+' '+p.cat+' '+p.tags.join(' ')).toLowerCase();
+  var score = 0;
+  tokens.forEach(function(t){
+    if(!t) return;
+    if(searchable.indexOf(t)>-1) score += 2;           // exact token in any field
+    if(p.name.toLowerCase().indexOf(t)>-1) score += 3; // token in name = bonus
+    // partial match (at least 3 chars)
+    if(t.length >= 3){
+      if(searchable.split(' ').some(function(w){ return w.indexOf(t)>-1 || t.indexOf(w)>-1 && w.length>=3; })) score += 1;
+    }
+  });
+  return score;
+}
+
+function runSearch(query, context) {
+  /* context: 'products' (filter grid) or 'home' (go to products page) */
+  var q = (query || '').trim();
+  if(context === 'home'){
+    window._pendingSearch = q;
+    goPage('products');
+    setTimeout(function(){ runSearch(q,'products'); }, 80);
+    return;
+  }
+  /* Products page: filter cards */
+  var cards = document.querySelectorAll('#product-grid .product-card');
+  var countEl = document.getElementById('prod-count');
+  if(!q){
+    /* clear search: show all / re-apply cat filter */
+    cards.forEach(function(c){ c.style.display=''; });
+    var activeBtn = document.querySelector('.cat-filter-btn.active');
+    if(activeBtn) filterProducts(activeBtn);
+    return;
+  }
+  var tokens = _expandQuery(q);
+  /* Score each product */
+  var results = [];
+  SEARCH_CATALOG.forEach(function(p){
+    var sc = _scoreProduct(p, tokens);
+    if(sc > 0) results.push({slug: p.slug, score: sc});
+  });
+  var matchingSlugs = results.map(function(r){ return r.slug; });
+  var count = 0;
+  cards.forEach(function(c){
+    var onc = c.getAttribute('onclick') || '';
+    var m = onc.match(/openProduct\('([^']+)'/);
+    var slug = m ? m[1] : '';
+    var show = matchingSlugs.indexOf(slug) > -1;
+    c.style.display = show ? '' : 'none';
+    if(show) count++;
+  });
+  if(countEl) countEl.innerHTML = q
+    ? 'Showing <strong>'+count+'</strong> result'+(count!==1?'s':'')+' for "<em>'+q+'</em>"'
+    : 'Showing <strong>'+count+'</strong> product'+(count!==1?'s':'');
+  /* Reset cat filter active state */
+  if(q) document.querySelectorAll('.cat-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+}
+
+/* Called on page load if a pending search came from home */
+document.addEventListener('DOMContentLoaded', function(){
+  if(window._pendingSearch){ runSearch(window._pendingSearch,'products'); window._pendingSearch=''; }
+});
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+function _homeSearch() {
+  var q = document.getElementById('home-search-input').value.trim();
+  if(!q) { goPage('products'); return; }
+  window._pendingSearch = q;
+  goPage('products');
+  setTimeout(function(){
+    runSearch(q, 'products');
+    var inp = document.getElementById('products-search-input');
+    if(inp){ inp.value = q; var c=document.getElementById('products-search-clear'); if(c) c.classList.add('visible'); }
+  }, 100);
+}
+
+/* ── Dynamic related products ────────────────────────────────────────────── */
+function _buildRelatedProducts(currentSlug) {
+  var current = null;
+  for(var i=0;i<SEARCH_CATALOG.length;i++){
+    if(SEARCH_CATALOG[i].slug === currentSlug){ current = SEARCH_CATALOG[i]; break; }
+  }
+  if(!current) return [];
+
+  /* Score all other products by shared tags + same category */
+  var scored = [];
+  SEARCH_CATALOG.forEach(function(p){
+    if(p.slug === currentSlug) return;
+    var score = 0;
+    /* Same category → strong signal */
+    if(p.cat === current.cat) score += 4;
+    /* Shared tags */
+    current.tags.forEach(function(t){
+      if(p.tags.indexOf(t) > -1) score += 2;
+    });
+    /* Shared words in name/alias */
+    var cn = (current.name+' '+current.alias).toLowerCase();
+    var pn = (p.name+' '+p.alias).toLowerCase();
+    cn.split(' ').forEach(function(w){
+      if(w.length>3 && pn.indexOf(w)>-1) score += 1;
+    });
+    if(score > 0) scored.push({p:p, score:score});
+  });
+
+  scored.sort(function(a,b){ return b.score - a.score; });
+  return scored.slice(0,3).map(function(s){ return s.p; });
+}
+
+function _renderRelatedProducts(currentSlug) {
+  var _rph = 'https://placehold.co/400x320/f5f5f5/e8681a?text=IMAGE';
+  var row = document.getElementById('related-products-row');
+  if(!row) return;
+  var related = _buildRelatedProducts(currentSlug);
+  if(!related.length){ row.innerHTML=''; return; }
+  var html = '';
+  for(var i=0;i<related.length;i++){
+    var p = related[i];
+    var safeName  = p.name.replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    var safeCat   = p.cat.replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    var safeAlias = p.alias.replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    html += '<div class="rel-card"'
+          + ' data-slug="' + p.slug + '"'
+          + ' data-name="' + safeName + '"'
+          + ' data-cat="' + safeCat + '"'
+          + ' data-alias="' + safeAlias + '"'
+          + ' onclick="_openRelated(this)">'
+          + '<div class="rel-img">'
+          + '<img src="images/products/' + p.slug + '-1.png" alt="' + safeName + '"'
+          + ' style="width:100%;height:100%;object-fit:cover;"'
+          + ' onerror="this.onerror=null;this.src=_rph" /></div>'
+          + '<div class="rel-body">'
+          + '<div class="rel-name">' + safeName + '</div>'
+          + '<div class="rel-meta">' + safeAlias + '</div>'
+          + '<button class="rel-btn">View Product →</button>'
+          + '</div></div>';
+  }
+  row.innerHTML = html;
+}
+
+
+function _openRelated(el) {
+  var slug  = el.getAttribute('data-slug');
+  var name  = el.getAttribute('data-name');
+  var cat   = el.getAttribute('data-cat');
+  var alias = el.getAttribute('data-alias');
+  openProduct(slug, name, cat, '—', '—', '—', alias);
+}
+/* ────────────────────────────────────────────────────────────────────────── */
+</script>
+<style>
+.fg-title{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:var(--border);}
+.filter-group{margin-bottom:1.75rem;}
+.product-name{font-size:.92rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--black);line-height:1.25;margin-bottom:.25rem;}
+.value-card h3{font-size:.85rem;}
+
+/* ── Category filter bar ── */
+.cat-filter-btn{background:none;border:none;border-bottom:3px solid transparent;padding:14px 18px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--g500);white-space:nowrap;transition:var(--ease);}
+.cat-filter-btn:hover{color:var(--black);}
+.cat-filter-btn.active{color:var(--black);border-bottom-color:var(--orange);}
+.cat-count{font-weight:400;opacity:.6;}
+/* ── Product meta & spec lines ── */
+.product-meta{font-size:.72rem;color:var(--g500);margin-bottom:.2rem;font-weight:500;}
+.product-spec{font-size:.7rem;color:var(--g600);letter-spacing:.03em;margin-bottom:.6rem;}
+.btn-quote-sm{display:inline-flex;align-items:center;gap:6px;background:var(--black);color:var(--white);border:none;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;cursor:pointer;transition:var(--ease);}
+.btn-quote-sm:hover{background:var(--orange);}
+.btn-quote-sm svg{width:10px;height:10px;}
+
+/* ── Product card dual-image hover ── */
+.product-img-area{position:relative;overflow:hidden;background:#ffffff;}
+.pimg-main,.pimg-hover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease;}
+.pimg-main{opacity:1;z-index:1;background:#ffffff;}
+.pimg-hover{opacity:0;z-index:2;background:#ffffff;}
+.product-card:hover .pimg-hover{opacity:1;}
+.product-card:hover .pimg-main{opacity:0;}
+
+/* ── Detail thumbnail strip ── */
+.d-thumb{position:relative;width:80px;height:80px;background:#f5f5f5;border:2px solid transparent;cursor:pointer;overflow:hidden;transition:border-color .2s;}
+.d-thumb:hover{border-color:var(--orange);}
+.d-thumb.active{border-color:var(--orange);}
+#d-arrow-l{opacity:1;}
+
+/* ── Search bar ────────────────────────────────────────────────────────── */
+.search-bar{display:flex;align-items:stretch;background:#fff;border:2px solid #111111;height:46px;width:100%;box-sizing:border-box;transition:border-color .2s;}
+.search-bar:focus-within{border-color:var(--orange);}
+.search-bar input{flex:1 1 0;min-width:0;border:none;outline:none;font-family:var(--font);font-size:.88rem;font-weight:500;color:var(--black);padding:0 14px;background:transparent;height:100%;box-sizing:border-box;}
+.search-bar input::placeholder{color:#bbb;font-weight:400;}
+.search-bar-btn{width:46px;min-width:46px;background:#111111;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;}
+.search-bar-btn:hover{background:var(--orange);}
+.search-bar-clear{width:34px;min-width:34px;background:transparent;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;color:#bbb;font-size:15px;line-height:1;flex-shrink:0;padding:0;transition:color .15s;}
+.search-bar-clear:hover{color:#111;}
+.search-bar-clear.visible{display:flex;}
+.hero-search{margin-top:1.75rem;width:100%;max-width:500px;}
+.products-search-row{width:100%;margin-bottom:14px;}
+
+/* ── Related product cards (horizontal strip) ── */
+.rel-card{flex:0 0 220px;width:220px;border:1px solid #e0e0e0;background:#fff;cursor:pointer;transition:border-color .2s,box-shadow .2s;}
+.rel-card:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.rel-img{width:100%;height:160px;position:relative;overflow:hidden;background:#fff;}
+.rel-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.rel-body{padding:12px 14px;}
+.rel-name{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#111;line-height:1.2;margin-bottom:4px;}
+.rel-meta{font-size:.72rem;color:#888;margin-bottom:10px;}
+.rel-btn{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);background:none;border:none;cursor:pointer;padding:0;font-family:var(--font);}
+#related-products-row::-webkit-scrollbar{height:4px;}
+#related-products-row::-webkit-scrollbar-track{background:#e0e0e0;}
+#related-products-row::-webkit-scrollbar-thumb{background:var(--orange);}
+</style>
+</body>
+</html>

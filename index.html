@@ -402,6 +402,117 @@ footer{background:var(--black);border-top:var(--border)}
   .contact-teaser{padding:32px 16px}
   .footer-bottom{padding:14px 16px}
 }
+/* ══ COMPREHENSIVE MOBILE RESPONSIVE FIXES ══ */
+@media(max-width:768px){
+  /* Dev banner — smaller on mobile */
+  .dev-banner{font-size:8px;padding:5px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+  /* Navbar */
+  .navbar-inner{padding:0 16px;height:56px;}
+
+  /* Hero */
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:36px 20px 28px;}
+  .hero-heading{font-size:clamp(28px,8vw,42px);}
+  .hero-right{padding:24px 20px;min-height:220px;}
+  .hero-big-text{font-size:clamp(22px,7vw,32px);}
+  .hero-strip{gap:16px;flex-wrap:wrap;}
+  .hero-search{max-width:100%;}
+
+  /* Category strip */
+  .cat-strip{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .cat-item{min-width:100px;}
+
+  /* Stats bar */
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .stat-item:nth-child(-n+2){border-bottom:1px solid #252525;}
+
+  /* Products grid */
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+  .grid3{grid-template-columns:repeat(2,1fr);}
+
+  /* Products page layout */
+  .products-layout{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .products-main{padding:16px;}
+
+  /* Product detail */
+  .detail-body{grid-template-columns:1fr;}
+  .detail-image-area{min-height:260px;border-right:none;border-bottom:var(--border);}
+  .detail-info{padding:24px 16px;}
+  .spec-row{grid-template-columns:120px 1fr;}
+
+  /* Related products cards */
+  .rel-card{min-width:200px;}
+
+  /* Industries */
+  .industries-grid{grid-template-columns:repeat(2,1fr);}
+
+  /* Why section */
+  .why-section{grid-template-columns:1fr;gap:0;padding:32px 16px;}
+
+  /* CTA banner */
+  .cta-banner{flex-direction:column;align-items:flex-start;padding:32px 16px;gap:24px;}
+  .cta-right{align-items:flex-start;}
+
+  /* Contact teaser */
+  .contact-teaser{grid-template-columns:1fr;padding:32px 16px;}
+
+  /* Footer */
+  .footer-top{grid-template-columns:1fr;gap:24px;padding:32px 16px;}
+  .footer-bottom{padding:14px 16px;flex-direction:column;align-items:flex-start;gap:8px;}
+
+  /* About page — inline style overrides */
+  .mob-about-hero{grid-template-columns:1fr !important;min-height:auto !important;}
+  .mob-about-stats{grid-template-columns:1fr 1fr !important;}
+  .mob-story-grid{grid-template-columns:1fr !important;gap:2rem !important;padding:0 1rem !important;}
+  .mob-values-grid{grid-template-columns:1fr !important;}
+
+  /* About page sections */
+  .about-hero{grid-template-columns:1fr;}
+  .about-hero-right{min-height:180px;}
+  .about-story{grid-template-columns:1fr;gap:2rem;padding:32px 16px;}
+
+  /* Page hero breadcrumb areas */
+  .page-hero{padding:24px 16px;}
+  .page-hero-inner{flex-direction:column;align-items:flex-start;}
+
+  /* Contact page */
+  .contact-page-hero{grid-template-columns:1fr;padding:32px 16px;}
+  .contact-layout{grid-template-columns:1fr;}
+  .contact-info-col{border-right:none;border-bottom:var(--border);padding:32px 16px;}
+  .contact-form-col{padding:32px 16px;}
+  .map-block{height:200px;}
+
+  /* Form */
+  .form-grid2{grid-template-columns:1fr;}
+
+  /* WA float button */
+  .wa-float{width:50px;height:50px;border-radius:50%;padding:0;justify-content:center;bottom:14px;right:14px;}
+  .wa-lbl{display:none;}
+
+  /* Products toolbar */
+  .products-toolbar{flex-wrap:wrap;gap:8px;}
+  .products-count{width:100%;}
+
+  /* Navbar inner content sections */
+  .navbar-inner[style]{padding-left:16px !important;padding-right:16px !important;}
+
+  /* Back button position */
+  #global-back-btn{top:73px;}
+}
+
+@media(max-width:480px){
+  .hero-heading{font-size:clamp(24px,9vw,36px);}
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+  .grid3{grid-template-columns:1fr;}
+  .industries-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .mob-about-stats{grid-template-columns:1fr 1fr !important;}
+  .detail-info .btn-primary,.detail-info .btn-ghost{width:100%;text-align:center;justify-content:center;}
+  .hero-strip{flex-direction:column;gap:12px;}
+}
+
 </style>
 </head>
 <body>
@@ -1541,7 +1652,7 @@ footer{background:var(--black);border-top:var(--border)}
 <div id="page-about" class="page">
 
   <!-- ── HERO: 2-col grid, explicit heights, no class conflicts ── -->
-  <div style="display:grid;grid-template-columns:55% 45%;min-height:520px;border-bottom:2px solid #111;">
+  <div class="mob-about-hero" style="display:grid;grid-template-columns:55% 45%;min-height:520px;border-bottom:2px solid #111;">
     <!-- LEFT: Black, large heading -->
     <div style="background:#111111;padding:clamp(2.5rem,6vw,5rem) clamp(2rem,5vw,4rem);display:flex;flex-direction:column;justify-content:center;color:#ffffff;">
       <div style="font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#e8681a;display:flex;align-items:center;gap:.5rem;margin-bottom:1.5rem;">
@@ -1559,7 +1670,7 @@ footer{background:var(--black);border-top:var(--border)}
     </div>
 
     <!-- RIGHT: Dark, stats 2x2 grid -->
-    <div style="background:#1a1a1a;display:grid;grid-template-columns:1fr 1fr;gap:0;">
+    <div class="mob-about-stats" style="background:#1a1a1a;display:grid;grid-template-columns:1fr 1fr;gap:0;">
       <div style="border-right:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
         <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">10+</div>
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">YEARS IN BUSINESS</div>
@@ -1581,7 +1692,7 @@ footer{background:var(--black);border-top:var(--border)}
 
   <!-- ── STORY SECTION: white bg, 2 columns ── -->
   <div style="background:#ffffff;padding:5rem 0;border-bottom:2px solid #111;">
-    <div style="max-width:1280px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+    <div class="mob-story-grid" style="max-width:1280px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
       
       <!-- Left: Story text -->
       <div>
@@ -1656,7 +1767,7 @@ footer{background:var(--black);border-top:var(--border)}
       <h2 style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:900;text-transform:uppercase;color:#ffffff;margin:0 0 2.5rem;letter-spacing:-.02em;">
         OUR CORE <span style="color:#e8681a;">VALUES</span>
       </h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+      <div class="mob-values-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
         <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
           <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
             <svg width="22" height="22" fill="white"><use href="#i-award"/></svg>

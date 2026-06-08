@@ -6,7 +6,9 @@
 <title>Bolt &amp; Screw Trading — Mockup v2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<!-- Non-blocking font load: page renders immediately; fonts swap in when ready -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"></noscript>
 <style>
 :root{
   --black:#111111;--black-2:#1a1a1a;--black-3:#242424;
@@ -28,15 +30,15 @@ input,select,textarea{font-family:var(--font)}
 ul,ol{list-style:none}
 
 /* DEV BANNER */
-.dev-banner{background:var(--black);color:var(--orange);text-align:center;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:7px 16px;position:sticky;top:0;z-index:1000}
+.dev-banner{display:none}
 .dev-banner span{color:var(--g500);font-weight:400;letter-spacing:.06em}
 
 /* PAGE SYSTEM */
 .page{display:none}.page.active{display:block}
 
 /* NAVBAR */
-.navbar{background:var(--white);border-bottom:var(--border);position:sticky;top:29px;z-index:100}
-.navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:76px;max-width:1280px;margin:0 auto}
+.navbar{background:var(--white);border-bottom:var(--border);position:sticky;top:0;z-index:100}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:96px;max-width:1280px;margin:0 auto}
 .nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
 .nav-logo-mark{display:none}
 .nav-logo-mark svg{width:20px;height:20px;color:var(--orange)}
@@ -45,14 +47,14 @@ ul,ol{list-style:none}
 .nav-logo-name .o{color:var(--orange)}
 .nav-logo-sub{font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g400)}
 .nav-links{display:flex;align-items:center;gap:32px}
-.nav-link{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g600);padding-bottom:2px;border-bottom:2px solid transparent;transition:color var(--ease),border-color var(--ease);cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;font-family:var(--font)}
+.nav-link{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--g600);padding-bottom:2px;border-bottom:2px solid transparent;transition:color var(--ease),border-color var(--ease);cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;font-family:var(--font)}
 .nav-link:hover,.nav-link.active{color:var(--black);border-bottom-color:var(--orange)}
 .nav-actions{display:flex;align-items:center;gap:16px}
-.nav-phone{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--g500)}
-.nav-phone svg{width:14px;height:14px;color:var(--orange)}
-.nav-cta{background:var(--black);color:var(--orange);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;transition:background var(--ease),color var(--ease);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.nav-phone{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--g500)}
+.nav-phone svg{width:16px;height:16px;color:var(--orange)}
+.nav-cta{background:var(--black);color:var(--orange);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:12px 22px;transition:background var(--ease),color var(--ease);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
 .nav-cta:hover{background:var(--orange);color:var(--white)}
-.nav-cta svg{width:14px;height:14px}
+.nav-cta svg{width:16px;height:16px}
 .nav-hamburger{display:none;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer}
 .nav-hamburger svg{width:22px;height:22px;color:var(--black)}
 
@@ -151,7 +153,7 @@ ul,ol{list-style:none}
 .product-card{background:var(--white);cursor:pointer;transition:background var(--ease);display:flex;flex-direction:column;border:1px solid var(--g200)}
 .product-card:hover{background:var(--g50)}
 .product-card:hover .product-btn{background:var(--orange);color:var(--white)}
-.product-img-area{aspect-ratio:4/3;background:#ffffff;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--g200)}
+.product-img-area{background:#ffffff;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--g200);padding-top:75%}@supports (aspect-ratio:4/3){.product-img-area{padding-top:0;aspect-ratio:4/3}}.product-img-area>*{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain}@supports (aspect-ratio:4/3){.product-img-area>*{position:static;width:100%;height:100%;object-fit:contain}}
 .product-img-area svg.p-icon{width:80px;height:80px;color:rgba(255,255,255,.2);flex-shrink:0}
 .pcat-tag{position:absolute;top:10px;left:10px;background:var(--orange);color:var(--white);font-size:8px;font-weight:800;padding:3px 8px;letter-spacing:.1em;text-transform:uppercase;z-index:1}
 .product-body{padding:14px 14px 12px;flex:1;display:flex;flex-direction:column}
@@ -203,7 +205,7 @@ ul,ol{list-style:none}
 .form-title{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--black);margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--orange)}
 .form-row{margin-bottom:14px}
 .form-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
-.form-label{display:block;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--black);margin-bottom:6px}
+.form-label{display:block;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--black);margin-top:14px;margin-bottom:6px}
 .form-label .req{color:var(--orange)}
 .form-input{width:100%;background:#f9f9f9;border:1px solid #cccccc;color:var(--black);font-size:12px;font-family:var(--font);font-weight:500;padding:10px 12px;outline:none;transition:border-color var(--ease);-webkit-appearance:none;appearance:none;display:block}
 .form-input:focus{border-color:var(--orange)}
@@ -505,7 +507,7 @@ footer{background:var(--black);border-top:var(--border)}
 @media(max-width:480px){
   .hero-heading{font-size:clamp(24px,9vw,36px);}
   .product-grid{grid-template-columns:repeat(2,1fr);}
-  .grid3{grid-template-columns:1fr;}
+  .grid3{grid-template-columns:repeat(2,1fr);}
   .industries-grid{grid-template-columns:1fr 1fr;}
   .footer-top{grid-template-columns:1fr;}
   .mob-about-stats{grid-template-columns:1fr 1fr !important;}
@@ -513,6 +515,44 @@ footer{background:var(--black);border-top:var(--border)}
   .hero-strip{flex-direction:column;gap:12px;}
 }
 
+
+/* ── CONTACT / CONTENT PAGE LAYOUT FIXES ── */
+@media(max-width:768px){
+  /* All content-area navbar-inners (inside .page) stack vertically */
+  .page .navbar-inner{
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
+    gap:0;
+  }
+  /* Contact hero heading size */
+  .contact-page-hero h1{font-size:clamp(1.6rem,7vw,2.4rem) !important;line-height:1.05 !important;}
+  .contact-page-hero .sub-p,
+  .contact-page-hero p{font-size:.85rem !important;max-width:100% !important;margin-top:.5rem;}
+  /* Products hero heading */
+  .page-hero h1,[class*="page-hero"] h1{font-size:clamp(1.8rem,8vw,2.8rem) !important;}
+  /* Contact layout full-width */
+  .contact-layout{grid-template-columns:1fr !important;}
+  .contact-info-col{padding:24px 16px !important;border-right:none !important;border-bottom:var(--border);}
+  .contact-form-col{padding:24px 16px !important;}
+  .map-block{height:220px;}
+  /* Products page hero */
+  #page-products .navbar-inner h1,
+  #page-products .navbar-inner p{max-width:100% !important;}
+  /* About page */
+  #page-about .navbar-inner h1,
+  #page-about .navbar-inner h2{max-width:100% !important;}
+  /* Section padding reset for all page content */
+  .page .navbar-inner[style*="padding-top"]{padding-top:2rem !important;padding-bottom:2.5rem !important;}
+  /* Stat items in about page */
+  .mob-about-stats > div{padding:1.5rem 1rem !important;}
+  .mob-about-stats > div div:first-child{font-size:2rem !important;}
+}
+@media(max-width:480px){
+  .contact-page-hero h1{font-size:clamp(1.5rem,8vw,2rem) !important;}
+  .page .navbar-inner{padding-left:14px !important;padding-right:14px !important;}
+}
 </style>
 </head>
 <body>
@@ -582,15 +622,14 @@ footer{background:var(--black);border-top:var(--border)}
 </svg>
 
 <!-- DEV BANNER -->
-<div class="dev-banner">UI Mockup v2 — Bolt &amp; Screw Trading <span>| Click nav links to explore pages | Style C: Bold Editorial</span></div>
+
 
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-inner">
     <div class="nav-logo" onclick="goPage('home')" style="cursor:pointer;">
-      <img src="logo.png" height="68" alt="Bolt and Screw Trading"
-           style="display:block;height:68px;width:auto;max-width:180px;object-fit:contain;"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+<img src="logo.png" alt="Bolt and Screw Trading"
+           style="display:block;height:110px;width:auto;max-width:340px;object-fit:contain;" />
       <span style="display:none;align-items:center;gap:8px;font-size:20px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:48px;"><span style="color:var(--orange);font-size:22px;">&#9650;</span> BOLT &amp; SCREW</span>
     </div>
     <div class="nav-links">
@@ -611,9 +650,7 @@ footer{background:var(--black);border-top:var(--border)}
 <div class="mobile-nav" id="mobile-nav">
   <div class="mobile-nav-header">
     <div class="nav-logo" onclick="goPage('home');closeMobileNav();" style="cursor:pointer;">
-      <img src="logo.png" height="56" alt="Bolt and Screw Trading"
-           style="display:block;height:56px;width:auto;max-width:160px;object-fit:contain;filter:brightness(0) invert(1);"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+<img src="logo.png" alt="Bolt and Screw Trading" style="display:block;height:80px;width:auto;filter:invert(1) hue-rotate(180deg);" />
       <span style="display:none;font-size:26px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:56px;"><span style="color:var(--orange);">&#9650;</span> BOLT &amp; SCREW</span>
     </div>
     <button class="mobile-close-btn" onclick="closeMobileNav()"><svg><use href="#i-x"/></svg></button>
@@ -683,11 +720,11 @@ footer{background:var(--black);border-top:var(--border)}
 
   <!-- CATEGORY STRIP -->
   <div class="cat-strip">
-    <div class="cat-item active" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-all"/></svg></div><div class="cat-label">All</div><span class="cat-count">50+</span></div>
-    <div class="cat-item" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-bolt"/></svg></div><div class="cat-label">Bolts &amp; Screws</div><span class="cat-count">22</span></div>
-    <div class="cat-item" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-nut"/></svg></div><div class="cat-label">Nuts</div><span class="cat-count">10</span></div>
-    <div class="cat-item" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-washer"/></svg></div><div class="cat-label">Washers</div><span class="cat-count">8</span></div>
-    <div class="cat-item" onclick="setCat(this)"><div class="cat-icon"><svg><use href="#cat-anchor"/></svg></div><div class="cat-label">Anchors</div><span class="cat-count">7</span></div>
+    <div class="cat-item active" onclick="goToCategory('all')"><div class="cat-icon"><svg><use href="#cat-all"/></svg></div><div class="cat-label">All</div><span class="cat-count">50+</span></div>
+    <div class="cat-item" onclick="goToCategory('Bolts &amp; Screws')"><div class="cat-icon"><svg><use href="#cat-bolt"/></svg></div><div class="cat-label">Bolts &amp; Screws</div><span class="cat-count">22</span></div>
+    <div class="cat-item" onclick="goToCategory('Nuts')"><div class="cat-icon"><svg><use href="#cat-nut"/></svg></div><div class="cat-label">Nuts</div><span class="cat-count">10</span></div>
+    <div class="cat-item" onclick="goToCategory('Washers &amp; SS Hardware')"><div class="cat-icon"><svg><use href="#cat-washer"/></svg></div><div class="cat-label">Washers</div><span class="cat-count">8</span></div>
+    <div class="cat-item" onclick="goToCategory('Anchors')"><div class="cat-icon"><svg><use href="#cat-anchor"/></svg></div><div class="cat-label">Anchors</div><span class="cat-count">7</span></div>
   </div>
 
   <!-- STATS BAR -->
@@ -716,7 +753,7 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">Hexagonal Bolt</div>
           <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 933 / 931 · M6–M64</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" onclick="openProduct('allen-bolt','Allen Bolt (Socket Cap Screw)','Bolts & Screws','DIN 912','M3–M48','8.8 / 12.9 / SS 304','Socket Head Cap Screw')">
@@ -730,7 +767,7 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">Allen Bolt (Socket Cap Screw)</div>
           <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 912 · M3–M48</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" onclick="openProduct('hex-nut','Hex Nut','Nuts','DIN 934','M3–M64','6 / 8 / SS 304/316','Hexagon Nut')">
@@ -744,7 +781,7 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">Hex Nut</div>
           <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 934 · M3–M64</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" onclick="openProduct('wedge-anchor','Wedge Anchor','Anchors','DIN 529','M8–M24','Carbon Steel','Through Bolt / Wedge Anchor')">
@@ -758,7 +795,7 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">Wedge Anchor</div>
           <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 529 · M8–M24</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" onclick="openProduct('ss-fastener-set','SS Nuts Bolts Washers','Washers & SS Hardware','DIN 125/934/933','M4–M36','SS 304 / SS 316','Stainless Steel Fastener Set')">
@@ -772,7 +809,7 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">SS Nuts Bolts Washers</div>
           <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 125/934/933 · M4–M36</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" onclick="openProduct('lock-nut','Lock Nuts (Nylon Insert)','Nuts','DIN 985','M4–M36','A2 / A4 / SS 304','Nylon Lock Nut / Nyloc')">
@@ -786,7 +823,7 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">Lock Nuts (Nylon Insert)</div>
           <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 985 · M4–M36</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" onclick="openProduct('sleeve-anchor','Sleeve Anchor','Anchors','DIN 7715','M6–M20','Zinc Alloy','Expansion Sleeve Bolt')">
@@ -800,7 +837,7 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">Sleeve Anchor</div>
           <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 7715 · M6–M20</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" onclick="openProduct('thread-rod','Thread Rods','Rods & Bars','DIN 975','M6–M36','SS 304 / CS','All-Thread Stud / Threaded Bar')">
@@ -814,7 +851,7 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">Thread Rods</div>
           <div class="product-spec" style="font-size:.7rem;color:var(--g600);margin:.2rem 0 .5rem;">DIN 975 · M6–M36</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       </div>
@@ -895,9 +932,7 @@ footer{background:var(--black);border-top:var(--border)}
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">
-          <img src="logo.png" height="72" alt="Bolt and Screw Trading"
-               style="display:block;height:72px;width:auto;"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+          <img src="logo.png" alt="Bolt and Screw Trading" style="display:block;height:96px;width:auto;filter:invert(1) hue-rotate(180deg);" />
           <div style="display:none;">
             <div style="font-size:28px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:1;">BOLT &amp; SCREW</div>
             <div style="font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-top:4px;">TRADING</div>
@@ -1010,7 +1045,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Hexagonal Bolt</div>
           <div class="product-meta">Hex Head Bolt</div>
           <div class="product-spec">DIN 933 / 931 &nbsp;·&nbsp; M6–M64</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('allen-bolt','Allen Bolt (Socket Cap Screw)','Bolts & Screws','DIN 912','M3–M48','8.8 / 12.9 / SS 304/316','Socket Head Cap Screw')">
@@ -1025,7 +1060,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Allen Bolt (Socket Cap Screw)</div>
           <div class="product-meta">Socket Head Cap Screw</div>
           <div class="product-spec">DIN 912 &nbsp;·&nbsp; M3–M48</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('button-head-allen-bolt','Button Head Allen Bolt','Bolts & Screws','DIN 7380','M3–M30','8.8 / 10.9 / SS 304','Button Head Socket Cap Screw')">
@@ -1040,7 +1075,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Button Head Allen Bolt</div>
           <div class="product-meta">Button Head Socket Cap Screw</div>
           <div class="product-spec">DIN 7380 &nbsp;·&nbsp; M3–M30</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('csk-allen-bolt','CSK Allen Bolt','Bolts & Screws','DIN 7991','M3–M30','8.8 / 12.9 / SS 304','Countersunk Socket Cap Screw')">
@@ -1055,7 +1090,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">CSK Allen Bolt</div>
           <div class="product-meta">Countersunk Socket Cap Screw</div>
           <div class="product-spec">DIN 7991 &nbsp;·&nbsp; M3–M30</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('csk-cut-screw','CSK Cut Screw','Bolts & Screws','—','No. 4–No. 14','Carbon Steel','Countersunk Self-Tapping Screw')">
@@ -1070,7 +1105,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">CSK Cut Screw</div>
           <div class="product-meta">Countersunk Self-Tapping Screw</div>
           <div class="product-spec">— &nbsp;·&nbsp; No. 4–No. 14</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('csk-machine-screw','CSK Machine Screw','Bolts & Screws','DIN 963 / 965','M3–M12','4.8 / SS 304','Countersunk Machine Screw')">
@@ -1085,7 +1120,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">CSK Machine Screw</div>
           <div class="product-meta">Countersunk Machine Screw</div>
           <div class="product-spec">DIN 963 / 965 &nbsp;·&nbsp; M3–M12</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('frame-fixing-screw','Frame Fixing Screw','Bolts & Screws','—','6×60 – 10×200mm','Carbon Steel / SS','Window / Door Frame Anchor Screw')">
@@ -1100,7 +1135,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Frame Fixing Screw</div>
           <div class="product-meta">Window / Door Frame Anchor Screw</div>
           <div class="product-spec">— &nbsp;·&nbsp; 6×60 – 10×200mm</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('metal-frame-fixing-screw','Metal Frame Fixing Screw','Bolts & Screws','—','—','Carbon Steel','Heavy-Duty Frame Screw')">
@@ -1115,7 +1150,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Metal Frame Fixing Screw</div>
           <div class="product-meta">Heavy-Duty Frame Screw</div>
           <div class="product-spec">— &nbsp;·&nbsp; —</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('grub-screw','Grub Screw (Socket Set Screw)','Bolts & Screws','DIN 913 / 916','M3–M20','Grade 12.9','Set Screw')">
@@ -1130,7 +1165,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Grub Screw (Socket Set Screw)</div>
           <div class="product-meta">Set Screw</div>
           <div class="product-spec">DIN 913 / 916 &nbsp;·&nbsp; M3–M20</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('lifting-eye-bolt','Lifting Eye Bolt','Bolts & Screws','DIN 580','M8–M36','4.6 / SS 304','Eye Bolt / Ring Bolt')">
@@ -1145,7 +1180,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Lifting Eye Bolt</div>
           <div class="product-meta">Eye Bolt / Ring Bolt</div>
           <div class="product-spec">DIN 580 &nbsp;·&nbsp; M8–M36</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('long-eye-bolt','Long Eye Bolt','Bolts & Screws','—','M6–M24','MS / SS 304','Extended Shank Eye Bolt')">
@@ -1160,7 +1195,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Long Eye Bolt</div>
           <div class="product-meta">Extended Shank Eye Bolt</div>
           <div class="product-spec">— &nbsp;·&nbsp; M6–M24</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('self-drilling-screw','Self Drilling Screw','Bolts & Screws','ISO 15480','ST 4.2–6.3','Carbon Steel / Bi-metal','Tek Screw / Drill-Point Screw')">
@@ -1175,7 +1210,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Self Drilling Screw</div>
           <div class="product-meta">Tek Screw / Drill-Point Screw</div>
           <div class="product-spec">ISO 15480 &nbsp;·&nbsp; ST 4.2–6.3</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('u-bolt','U Bolt','Bolts & Screws','Custom / BS','M8–M24','MS / GI','Pipe Clamp Bolt')">
@@ -1190,7 +1225,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">U Bolt</div>
           <div class="product-meta">Pipe Clamp Bolt</div>
           <div class="product-spec">Custom / BS &nbsp;·&nbsp; M8–M24</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Nuts" onclick="openProduct('hex-nut','Hex Nut','Nuts','DIN 934','M3–M64','6 / 8 / SS 304/316','Hexagon Nut')">
@@ -1205,7 +1240,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Hex Nut</div>
           <div class="product-meta">Hexagon Nut</div>
           <div class="product-spec">DIN 934 &nbsp;·&nbsp; M3–M64</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Nuts" onclick="openProduct('ss-nut','Ss Nut (Stainless Steel Nut)','Nuts','DIN 934','M4–M64','SS 304 / SS 316 / A2 / A4','SS Hex Nut / A2 Nut')">
@@ -1220,7 +1255,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Ss Nut (Stainless Steel Nut)</div>
           <div class="product-meta">SS Hex Nut / A2 Nut</div>
           <div class="product-spec">DIN 934 &nbsp;·&nbsp; M4–M64</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Nuts" onclick="openProduct('lock-nut','Lock Nuts (Nylon Insert)','Nuts','DIN 985','M4–M36','A2 / A4 / SS 304/316','Nylon Lock Nut / Nyloc')">
@@ -1235,7 +1270,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Lock Nuts (Nylon Insert)</div>
           <div class="product-meta">Nylon Lock Nut / Nyloc</div>
           <div class="product-spec">DIN 985 &nbsp;·&nbsp; M4–M36</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Nuts" onclick="openProduct('cap-nut','Cap Nut','Nuts','DIN 1587','M4–M24','6 / 8 / SS 304','Acorn Nut / Dome Nut')">
@@ -1250,7 +1285,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Cap Nut</div>
           <div class="product-meta">Acorn Nut / Dome Nut</div>
           <div class="product-spec">DIN 1587 &nbsp;·&nbsp; M4–M24</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Nuts" onclick="openProduct('eye-nut','Eye Nut','Nuts','DIN 582','M6–M36','Carbon Steel / SS 304','Lifting Eye Nut / Ring Nut')">
@@ -1265,7 +1300,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Eye Nut</div>
           <div class="product-meta">Lifting Eye Nut / Ring Nut</div>
           <div class="product-spec">DIN 582 &nbsp;·&nbsp; M6–M36</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Washers & SS Hardware" onclick="openProduct('ss-fastener-set','SS Nuts Bolts Washers','Washers & SS Hardware','DIN 125/934/933','M4–M36','SS 304 / SS 316 / A2','Stainless Steel Fastener Set')">
@@ -1280,7 +1315,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">SS Nuts Bolts Washers</div>
           <div class="product-meta">Stainless Steel Fastener Set</div>
           <div class="product-spec">DIN 125/934/933 &nbsp;·&nbsp; M4–M36</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Structural Steel" onclick="openProduct('c-channel','C Channel','Structural Steel','—','25–150mm','MS (Mild Steel)','Mild Steel C Channel / Strut Channel')">
@@ -1295,7 +1330,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">C Channel</div>
           <div class="product-meta">Mild Steel C Channel / Strut Channel</div>
           <div class="product-spec">— &nbsp;·&nbsp; 25–150mm</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('wedge-anchor','Wedge Anchor','Anchors','DIN 529','M8–M24','Carbon Steel','Through Bolt / Wedge Anchor (Through Bolt)')">
@@ -1310,7 +1345,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Wedge Anchor</div>
           <div class="product-meta">Through Bolt / Wedge Anchor (Through Bolt)</div>
           <div class="product-spec">DIN 529 &nbsp;·&nbsp; M8–M24</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('drop-in-anchor','Drop In Anchor','Anchors','—','M6–M20','Carbon Steel / SS','Internal Expansion Anchor')">
@@ -1325,7 +1360,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Drop In Anchor</div>
           <div class="product-meta">Internal Expansion Anchor</div>
           <div class="product-spec">— &nbsp;·&nbsp; M6–M20</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('sleeve-anchor','Sleeve Anchor','Anchors','DIN 7715','M6–M20','Zinc Alloy / Carbon Steel','Expansion Sleeve Bolt')">
@@ -1340,7 +1375,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Sleeve Anchor</div>
           <div class="product-meta">Expansion Sleeve Bolt</div>
           <div class="product-spec">DIN 7715 &nbsp;·&nbsp; M6–M20</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('fix-bolt','Fix Bolt (Rawal Bolt)','Anchors','—','M6–M16','Carbon Steel','Rawl Bolt / Expansion Bolt')">
@@ -1355,7 +1390,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Fix Bolt (Rawal Bolt)</div>
           <div class="product-meta">Rawl Bolt / Expansion Bolt</div>
           <div class="product-spec">— &nbsp;·&nbsp; M6–M16</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('ss-rawl-bolt','SS Rawl Bolt 304 Grade 01','Anchors','—','M6–M16','SS 304 Grade 01','SS Fix Bolt / SS Rawal Bolt')">
@@ -1370,7 +1405,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">SS Rawl Bolt 304 Grade 01</div>
           <div class="product-meta">SS Fix Bolt / SS Rawal Bolt</div>
           <div class="product-spec">— &nbsp;·&nbsp; M6–M16</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('pipe-anchor','Pipe Anchor (Expansion Bolt)','Anchors','—','—','Carbon Steel / MS','Pipe Clamp Anchor')">
@@ -1385,7 +1420,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Pipe Anchor (Expansion Bolt)</div>
           <div class="product-meta">Pipe Clamp Anchor</div>
           <div class="product-spec">— &nbsp;·&nbsp; —</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('rawalplug','Rawalplug','Anchors','—','6–12mm','Nylon / Polypropylene','Plastic Wall Plug / Nylon Rawlplug')">
@@ -1400,7 +1435,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Rawalplug</div>
           <div class="product-meta">Plastic Wall Plug / Nylon Rawlplug</div>
           <div class="product-spec">— &nbsp;·&nbsp; 6–12mm</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('chemical-anchor','Chemical Anchor','Anchors','—','M8–M30','Epoxy / Vinylester','Injectable Resin Anchor')">
@@ -1415,7 +1450,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Chemical Anchor</div>
           <div class="product-meta">Injectable Resin Anchor</div>
           <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('fischer-epoxy','Fischer Epoxy','Anchors','—','M8–M30','Fischer Epoxy Resin','Fischer Brand Epoxy Anchor')">
@@ -1430,7 +1465,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Fischer Epoxy</div>
           <div class="product-meta">Fischer Brand Epoxy Anchor</div>
           <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('fixcher-epoxy','Fixcher Epoxy','Anchors','—','M8–M30','Epoxy Resin','Fischer/Fixcher Epoxy Anchor')">
@@ -1445,7 +1480,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Fixcher Epoxy</div>
           <div class="product-meta">Fischer/Fixcher Epoxy Anchor</div>
           <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('epoxy-local','Epoxy Local','Anchors','—','M8–M30','Epoxy Resin (Local)','Local Epoxy Anchor')">
@@ -1460,7 +1495,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Epoxy Local</div>
           <div class="product-meta">Local Epoxy Anchor</div>
           <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('fischer','Fischer','Anchors','—','M6–M30','Various (Fischer)','Fischer Brand Anchor Range')">
@@ -1475,7 +1510,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Fischer</div>
           <div class="product-meta">Fischer Brand Anchor Range</div>
           <div class="product-spec">— &nbsp;·&nbsp; M6–M30</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Anchors" onclick="openProduct('eye-nut-anchor','Eye Nut Anchor','Anchors','—','M8–M24','Carbon Steel / SS','Anchoring Eye Nut')">
@@ -1490,7 +1525,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Eye Nut Anchor</div>
           <div class="product-meta">Anchoring Eye Nut</div>
           <div class="product-spec">— &nbsp;·&nbsp; M8–M24</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
       <div class="product-card" data-cat="Rods & Bars" onclick="openProduct('thread-rod','Thread Rods','Rods & Bars','DIN 975','M6–M36','SS 304 / SS 316 / CS','All-Thread Stud / Threaded Bar')">
@@ -1505,7 +1540,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">Thread Rods</div>
           <div class="product-meta">All-Thread Stud / Threaded Bar</div>
           <div class="product-spec">DIN 975 &nbsp;·&nbsp; M6–M36</div>
-          <button class="btn-quote-sm" onclick="event.stopPropagation();goPage('contact')">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
 
@@ -1618,7 +1653,7 @@ footer{background:var(--black);border-top:var(--border)}
         </table>
 
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <button class="btn-primary" onclick="goPage('contact')" style="flex:1;min-width:180px;">REQUEST A QUOTE</button>
+          <button class="btn-primary" onclick="goPageWithProduct(_dCat, _dName, _dStd, _dSize, _dGrade)" style="flex:1;min-width:180px;">REQUEST A QUOTE</button>
           <a href="https://wa.me/923333869952?text=Hi%2C%20I%20need%20a%20quote%20for%20Hex%20Head%20Bolt" target="_blank" class="btn-ghost" style="flex:1;min-width:180px;text-align:center;text-decoration:none;">
             <svg width="16" height="16"><use href="#i-wa"/></svg> WHATSAPP US
           </a>
@@ -1918,27 +1953,27 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="form-grid2">
             <div>
               <label class="form-label">Full Name *</label>
-              <input type="text" class="form-input" placeholder="Ahmed Malik" />
+              <input type="text" class="form-input" id="inquiry-name" placeholder="Ahmed Malik" />
             </div>
             <div>
               <label class="form-label">Company Name</label>
-              <input type="text" class="form-input" placeholder="ABC Construction Ltd." />
+              <input type="text" class="form-input" id="inquiry-company" placeholder="ABC Construction Ltd." />
             </div>
           </div>
 
           <div class="form-grid2">
             <div>
               <label class="form-label">Phone / WhatsApp *</label>
-              <input type="tel" class="form-input" placeholder="0300-0000000" />
+              <input type="tel" class="form-input" id="inquiry-phone" placeholder="0300-0000000" />
             </div>
             <div>
               <label class="form-label">Email Address</label>
-              <input type="email" class="form-input" placeholder="ahmed@company.com" />
+              <input type="email" class="form-input" id="inquiry-email" placeholder="ahmed@company.com" />
             </div>
           </div>
 
           <label class="form-label">Product Category *</label>
-          <select class="form-select">
+          <select class="form-select" id="inquiry-category">
             <option value="">Select a category…</option>
             <option>Bolts &amp; Screws</option>
             <option>Nuts</option>
@@ -1951,16 +1986,16 @@ footer{background:var(--black);border-top:var(--border)}
           </select>
 
           <label class="form-label">Product Details *</label>
-          <textarea class="form-textarea" placeholder="Example: M12×60mm Hex Head Bolt, Grade 8.8, Zinc Plated, DIN 931 — Qty: 500 pcs. Please include size, grade, quantity, and any standard if known."></textarea>
+          <textarea class="form-textarea" id="inquiry-details" placeholder="Example: M12×60mm Hex Head Bolt, Grade 8.8, Zinc Plated, DIN 931 — Qty: 500 pcs. Please include size, grade, quantity, and any standard if known."></textarea>
 
           <div class="form-grid2" style="margin-top:0;">
             <div>
               <label class="form-label">Estimated Quantity</label>
-              <input type="text" class="form-input" placeholder="e.g. 500 pcs / 50 kg" />
+              <input type="text" class="form-input" id="inquiry-qty" placeholder="e.g. 500 pcs / 50 kg" />
             </div>
             <div>
               <label class="form-label">Required By</label>
-              <input type="text" class="form-input" placeholder="e.g. Within 1 week" />
+              <input type="text" class="form-input" id="inquiry-by" placeholder="e.g. Within 1 week" />
             </div>
           </div>
 
@@ -2098,33 +2133,80 @@ function initNavScroll() {
   }, { passive: true });
 }
 
-// ── Form submission (mock) ────────────────────────────────────────────────────
+// ── Form submission → WhatsApp ────────────────────────────────────────────────
 function initForms() {
   document.querySelectorAll('.form-submit').forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      const form = this.closest('.inquiry-form');
-      const inputs = form.querySelectorAll('input[type="text"], input[type="tel"], input[type="email"], textarea');
-      let valid = true;
-      inputs.forEach(i => {
-        if (i.getAttribute('placeholder') && !i.value.trim()) {
-          i.style.borderColor = '#e74c3c';
+
+      // Grab values
+      var name     = (document.getElementById('inquiry-name')     || {}).value || '';
+      var company  = (document.getElementById('inquiry-company')  || {}).value || '';
+      var phone    = (document.getElementById('inquiry-phone')    || {}).value || '';
+      var email    = (document.getElementById('inquiry-email')    || {}).value || '';
+      var category = (document.getElementById('inquiry-category') || {}).value || '';
+      var details  = (document.getElementById('inquiry-details')  || {}).value || '';
+      var qty      = (document.getElementById('inquiry-qty')      || {}).value || '';
+      var by       = (document.getElementById('inquiry-by')       || {}).value || '';
+
+      // Validate required fields
+      var required = [
+        {id:'inquiry-name',     val:name},
+        {id:'inquiry-phone',    val:phone},
+        {id:'inquiry-category', val:category},
+        {id:'inquiry-details',  val:details}
+      ];
+      var valid = true;
+      required.forEach(function(f) {
+        var el = document.getElementById(f.id);
+        if (!f.val.trim()) {
+          if (el) el.style.borderColor = '#e74c3c';
           valid = false;
         } else {
-          i.style.borderColor = '';
+          if (el) el.style.borderColor = '';
         }
       });
-      if (valid) {
-        this.textContent = 'INQUIRY SENT ✓';
-        this.style.background = '#27ae60';
-        this.disabled = true;
-        setTimeout(() => {
-          this.textContent = 'SEND INQUIRY →';
-          this.style.background = '';
-          this.disabled = false;
-          inputs.forEach(i => i.value = '');
-        }, 3000);
-      }
+      if (!valid) return;
+
+      // Build WhatsApp message
+      var lines = [];
+      lines.push('*NEW INQUIRY — Bolt & Screw Co.*');
+      lines.push('');
+      lines.push('*Name:* ' + name.trim());
+      if (company.trim()) lines.push('*Company:* ' + company.trim());
+      lines.push('*Phone:* ' + phone.trim());
+      if (email.trim()) lines.push('*Email:* ' + email.trim());
+      lines.push('');
+      lines.push('*Category:* ' + category);
+      lines.push('*Product Details:*');
+      lines.push(details.trim());
+      if (qty.trim())  lines.push('');
+      if (qty.trim())  lines.push('*Estimated Quantity:* ' + qty.trim());
+      if (by.trim())   lines.push('*Required By:* ' + by.trim());
+      lines.push('');
+      lines.push('_Sent via website inquiry form_');
+
+      var msg = lines.join('\n');
+      var url = 'https://wa.me/923333869952?text=' + encodeURIComponent(msg);
+
+      // Open WhatsApp
+      window.open(url, '_blank');
+
+      // Brief success state then reset
+      this.textContent = 'OPENING WHATSAPP ✓';
+      this.style.background = '#25d366';
+      this.disabled = true;
+      var allInputs = document.querySelectorAll('#inquiry-name,#inquiry-company,#inquiry-phone,#inquiry-email,#inquiry-category,#inquiry-details,#inquiry-qty,#inquiry-by');
+      var self = this;
+      setTimeout(function() {
+        self.textContent = 'SEND INQUIRY →';
+        self.style.background = '';
+        self.disabled = false;
+        allInputs.forEach(function(i) {
+          if (i.tagName === 'SELECT') i.selectedIndex = 0;
+          else i.value = '';
+        });
+      }, 3000);
     });
   });
 }
@@ -2152,6 +2234,14 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(animateCounters, 400);
 });
 
+
+function goToCategory(cat) {
+  goPage('products');
+  setTimeout(function() {
+    var btn = document.querySelector('.cat-filter-btn[data-cat="' + cat + '"]');
+    if (btn) filterProducts(btn);
+  }, 50);
+}
 function filterProducts(btn) {
   var cat = btn.getAttribute('data-cat');
   document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
@@ -2204,8 +2294,13 @@ var _dSlug = '', _dIdx = 0;
 var _dImgs = ['',''];
 
 function openProduct(slug, name, cat, std, size, grade, alias) {
-  _dSlug = slug;
-  _dIdx  = 0;
+  _dSlug  = slug;
+  _dCat   = cat;
+  _dName  = name;
+  _dStd   = std;
+  _dSize  = size;
+  _dGrade = grade;
+  _dIdx   = 0;
   _dImgs = [
     'images/products/' + slug + '-1.png',
     'images/products/' + slug + '-2.png'
@@ -2539,6 +2634,61 @@ function _openRelated(el) {
   openProduct(slug, name, cat, '—', '—', '—', alias);
 }
 /* ────────────────────────────────────────────────────────────────────────── */
+
+/* ── Quote with product context ─────────────────────────────────────────── */
+function goPageWithProduct(cat, name, std, size, grade) {
+  goPage('contact');
+  // Map catalog category → form select option text
+  var catMap = {
+    'Bolts & Screws'       : 'Bolts & Screws',
+    'Nuts'                 : 'Nuts',
+    'Washers & SS Hardware': 'Washers',
+    'Structural Steel'     : 'Multiple / Mixed Order',
+    'Anchors'              : 'Anchors & Studs',
+    'Rods & Bars'          : 'Threaded Rods'
+  };
+  var mapped = catMap[cat] || cat || '';
+  var sel = document.getElementById('inquiry-category');
+  if (sel && mapped) {
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].text === mapped) { sel.selectedIndex = i; break; }
+    }
+  }
+  var details = document.getElementById('inquiry-details');
+  if (details && name && name !== 'Select a product') {
+    var lines = [name];
+    var specs = [];
+    if (std   && std   !== '—') specs.push('Standard: ' + std);
+    if (size  && size  !== '—') specs.push('Size: ' + size);
+    if (grade && grade !== '—') specs.push('Grade: ' + grade);
+    if (specs.length) lines.push(specs.join(' | '));
+    lines.push('');
+    lines.push('Quantity: ');
+    details.value = lines.join('\n');
+    // Place cursor at end
+    setTimeout(function(){ details.focus(); details.setSelectionRange(details.value.length, details.value.length); }, 80);
+  }
+}
+
+function requestQuoteFromCard(btn) {
+  event.stopPropagation();
+  var card = btn.closest('[data-cat]');
+  if (!card) { goPage('contact'); return; }
+  var cat = card.getAttribute('data-cat') || '';
+  // Parse product details from the card's openProduct() onclick
+  var onc = card.getAttribute('onclick') || '';
+  var m = onc.match(/openProduct\(([^)]+)\)/);
+  var name = '', std = '', size = '', grade = '';
+  if (m) {
+    var args = m[1].match(/'((?:[^'\\]|\\.)*)'/g) || [];
+    var clean = function(s){ return s ? s.replace(/^'|'$/g,'') : ''; };
+    name  = clean(args[1]);
+    std   = clean(args[3]);
+    size  = clean(args[4]);
+    grade = clean(args[5]);
+  }
+  goPageWithProduct(cat, name, std, size, grade);
+}
 </script>
 <style>
 .fg-title{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:var(--border);}

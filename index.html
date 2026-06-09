@@ -518,13 +518,23 @@ footer{background:var(--black);border-top:var(--border)}
 
 /* ── CONTACT / CONTENT PAGE LAYOUT FIXES ── */
 @media(max-width:768px){
-  /* Content-area navbar-inners that are section wrappers (not filter bars) */
-  .page .navbar-inner[style*="padding-top:0"][style*="padding-bottom:0"]:not([style*="min-width"]){
+  /* All content-area navbar-inners stack vertically (cat-filter-bar no longer uses navbar-inner) */
+  .page .navbar-inner{
     flex-direction:column !important;
     align-items:flex-start !important;
     padding-left:16px !important;
     padding-right:16px !important;
     gap:0;
+    max-width:100% !important;
+    overflow:hidden !important;
+  }
+  /* Ensure text inside page sections never overflows */
+  .page .navbar-inner h1,
+  .page .navbar-inner h2,
+  .page .navbar-inner p{
+    max-width:100% !important;
+    width:100% !important;
+    box-sizing:border-box !important;
   }
   /* Contact hero heading size */
   .contact-page-hero h1{font-size:clamp(1.6rem,7vw,2.4rem) !important;line-height:1.05 !important;}
@@ -555,13 +565,38 @@ footer{background:var(--black);border-top:var(--border)}
 }
 
 /* ══ CATEGORY FILTER BAR ══ */
-.cat-filter-bar{border-bottom:var(--border);background:var(--white);position:sticky;top:80px;z-index:50;}
-.cat-filter-scroll{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 24px;gap:0;}
+.cat-filter-bar{border-bottom:var(--border);background:var(--white);position:sticky;top:80px;z-index:50;display:flex;align-items:stretch;}
+.cat-filter-scroll{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 24px;gap:0;flex:1;}
 .cat-filter-scroll::-webkit-scrollbar{display:none;}
+
+/* Mobile filter toggle button (hidden on desktop) */
+.mob-filter-toggle{display:none;align-items:center;gap:5px;padding:0 14px;font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;border-left:var(--border);color:var(--black);cursor:pointer;flex-shrink:0;white-space:nowrap;}
+.mob-filter-toggle svg{color:var(--orange);}
+.mob-filter-toggle.active{background:var(--black);color:var(--white);}
+.mob-filter-toggle.active svg{color:var(--orange);}
+
+/* Mobile filter panel */
+.mob-filter-panel{display:none;background:var(--g50);border-bottom:var(--border);padding:16px;overflow:hidden;}
+.mob-filter-panel.open{display:block;}
+.mob-filter-inner{display:flex;flex-direction:column;gap:16px;}
+.mob-filter-section{}
+.mob-filter-heading{font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.mob-filter-heading::before{content:'';width:16px;height:2px;background:var(--orange);}
+.mob-filter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.mob-chip{display:inline-flex;align-items:center;padding:6px 12px;border:1.5px solid var(--g300);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;background:var(--white);color:var(--g600);border-radius:0;transition:all var(--ease);}
+.mob-chip input{position:absolute;opacity:0;width:0;height:0;}
+.mob-chip.active{background:var(--black);color:var(--white);border-color:var(--black);}
+.mob-chip:hover:not(.active){border-color:var(--black);color:var(--black);}
+
 @media(max-width:768px){
   .cat-filter-bar{top:62px;}
   .cat-filter-scroll{padding:0 12px;}
   .cat-filter-btn{padding:10px 14px;font-size:.72rem;}
+  .mob-filter-toggle{display:flex;}
+}
+@media(min-width:769px){
+  .mob-filter-panel{display:none !important;}
+  .mob-filter-toggle{display:none !important;}
 }
 
 /* ══ TARGETED MOBILE POLISH FIXES ══ */
@@ -1028,6 +1063,39 @@ footer{background:var(--black);border-top:var(--border)}
       <button class="cat-filter-btn" data-cat="Structural Steel" onclick="filterProducts(this)">Structural Steel <span class="cat-count">(1)</span></button>
       <button class="cat-filter-btn" data-cat="Anchors" onclick="filterProducts(this)">Anchors <span class="cat-count">(13)</span></button>
       <button class="cat-filter-btn" data-cat="Rods & Bars" onclick="filterProducts(this)">Rods &amp; Bars <span class="cat-count">(1)</span></button>
+    </div>
+    <button class="mob-filter-toggle" id="mob-filter-toggle" onclick="toggleMobFilter()">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+      FILTER
+    </button>
+  </div>
+
+  <!-- Mobile Filter Panel -->
+  <div class="mob-filter-panel" id="mob-filter-panel">
+    <div class="mob-filter-inner">
+      <div class="mob-filter-section">
+        <div class="mob-filter-heading">CATEGORY</div>
+        <div class="mob-filter-chips">
+          <label class="mob-chip active" id="mfc-all"><input type="radio" name="mob-cat" value="all" checked onchange="mobCatFilter('all',this)"> All (34)</label>
+          <label class="mob-chip" id="mfc-bolts"><input type="radio" name="mob-cat" value="Bolts & Screws" onchange="mobCatFilter('Bolts & Screws',this)"> Bolts &amp; Screws</label>
+          <label class="mob-chip" id="mfc-nuts"><input type="radio" name="mob-cat" value="Nuts" onchange="mobCatFilter('Nuts',this)"> Nuts</label>
+          <label class="mob-chip" id="mfc-washers"><input type="radio" name="mob-cat" value="Washers & SS Hardware" onchange="mobCatFilter('Washers & SS Hardware',this)"> Washers &amp; SS</label>
+          <label class="mob-chip" id="mfc-steel"><input type="radio" name="mob-cat" value="Structural Steel" onchange="mobCatFilter('Structural Steel',this)"> Structural Steel</label>
+          <label class="mob-chip" id="mfc-anchors"><input type="radio" name="mob-cat" value="Anchors" onchange="mobCatFilter('Anchors',this)"> Anchors</label>
+          <label class="mob-chip" id="mfc-rods"><input type="radio" name="mob-cat" value="Rods & Bars" onchange="mobCatFilter('Rods & Bars',this)"> Rods &amp; Bars</label>
+        </div>
+      </div>
+      <div class="mob-filter-section">
+        <div class="mob-filter-heading">MATERIAL</div>
+        <div class="mob-filter-chips" id="mob-material-chips">
+          <label class="mob-chip active" id="mfm-all"><input type="radio" name="mob-mat" value="all" checked onchange="mobMatFilter('all',this)"> All Materials</label>
+          <label class="mob-chip" id="mfm-ms"><input type="radio" name="mob-mat" value="Mild Steel" onchange="mobMatFilter('Mild Steel',this)"> Mild Steel</label>
+          <label class="mob-chip" id="mfm-ss304"><input type="radio" name="mob-mat" value="SS 304" onchange="mobMatFilter('SS 304',this)"> SS 304</label>
+          <label class="mob-chip" id="mfm-ss316"><input type="radio" name="mob-mat" value="SS 316" onchange="mobMatFilter('SS 316',this)"> SS 316</label>
+          <label class="mob-chip" id="mfm-ht"><input type="radio" name="mob-mat" value="High Tensile" onchange="mobMatFilter('High Tensile',this)"> High Tensile</label>
+          <label class="mob-chip" id="mfm-hdg"><input type="radio" name="mob-mat" value="Galvanised" onchange="mobMatFilter('Galvanised',this)"> Galvanised</label>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2310,6 +2378,57 @@ function filterProducts(btn) {
 function syncSidebar(cb, cat) {
   var btn = document.querySelector('.cat-filter-btn[data-cat="' + (cat === 'all' ? 'all' : cat) + '"]');
   if (btn) filterProducts(btn);
+}
+
+// ── Auto-populate data-grade on product cards from onclick params ──────────────
+(function(){
+  document.querySelectorAll('#product-grid .product-card').forEach(function(c){
+    var oc = c.getAttribute('onclick') || '';
+    var m = oc.match(/openProduct\([^,]+,[^,]+,[^,]+,[^,]+,[^,]+,'([^']+)'/);
+    if (m) c.setAttribute('data-grade', m[1].toLowerCase());
+  });
+})();
+
+// ── Mobile filter panel ────────────────────────────────────────────────────────
+var _mobActiveMat = 'all';
+
+function toggleMobFilter() {
+  var panel = document.getElementById('mob-filter-panel');
+  var btn   = document.getElementById('mob-filter-toggle');
+  var open  = panel.classList.toggle('open');
+  btn.classList.toggle('active', open);
+}
+
+function mobCatFilter(cat, input) {
+  // Sync category bar
+  var btn = document.querySelector('.cat-filter-btn[data-cat="' + cat + '"]');
+  if (btn) filterProducts(btn);
+  // Update chip active state
+  document.querySelectorAll('#mob-filter-panel .mob-filter-chips:first-of-type .mob-chip').forEach(function(c){ c.classList.remove('active'); });
+  if (input) input.closest('.mob-chip').classList.add('active');
+  // Re-apply material filter on top
+  applyMatFilter(_mobActiveMat);
+}
+
+function mobMatFilter(mat, input) {
+  _mobActiveMat = mat;
+  document.querySelectorAll('#mob-material-chips .mob-chip').forEach(function(c){ c.classList.remove('active'); });
+  if (input) input.closest('.mob-chip').classList.add('active');
+  applyMatFilter(mat);
+}
+
+function applyMatFilter(mat) {
+  if (mat === 'all') return; // no further restriction
+  var cards = document.querySelectorAll('#product-grid .product-card');
+  cards.forEach(function(c) {
+    if (c.style.display === 'none') return; // already hidden by cat filter
+    var grade = (c.getAttribute('data-grade') || '').toLowerCase();
+    var show  = grade.indexOf(mat.toLowerCase()) > -1;
+    c.style.display = show ? '' : 'none';
+  });
+  var visible = document.querySelectorAll('#product-grid .product-card:not([style*="display: none"])').length;
+  var el = document.getElementById('prod-count');
+  if (el) el.innerHTML = 'Showing <strong>' + visible + '</strong> product' + (visible !== 1 ? 's' : '');
 }
 
 /* ── Product detail image state ── */

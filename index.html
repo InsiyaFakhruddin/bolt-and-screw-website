@@ -72,9 +72,9 @@ ul,ol{list-style:none}
     max-width:100%;
     box-sizing:border-box;
   }
-  .nav-hamburger{display:flex;grid-column:1;order:unset}
-  .nav-logo{grid-column:2;justify-content:center}
-  .nav-actions{grid-column:3;justify-content:flex-end}
+  .nav-hamburger{display:flex;grid-column:1;grid-row:1;order:unset}
+  .nav-logo{grid-column:2;grid-row:1;justify-content:center}
+  .nav-actions{grid-column:3;grid-row:1;justify-content:flex-end}
   .nav-links,.nav-phone{display:none}
 }
 
@@ -233,7 +233,7 @@ ul,ol{list-style:none}
 .form-select:focus{border-color:var(--orange)}
 .form-input,.form-select,.form-textarea{width:100%;background:#f9f9f9;border:1px solid #cccccc;color:var(--black);font-size:12px;font-family:var(--font);font-weight:500;padding:10px 12px;outline:none;transition:border-color var(--ease);-webkit-appearance:none;appearance:none}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--orange)}
-.form-input::placeholder,.form-textarea::placeholder{color:var(--g600);font-weight:400}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--g300);font-weight:400}
 .form-select option{background:#222;color:var(--white)}
 .form-textarea{min-height:80px;resize:vertical;line-height:1.6}
 .form-submit{width:100%;background:var(--orange);color:var(--white);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:13px;margin-top:8px;transition:background var(--ease);cursor:pointer;border:none;font-family:var(--font);display:flex;align-items:center;justify-content:center;gap:8px}
@@ -261,10 +261,12 @@ footer{background:var(--black);border-top:var(--border)}
 .footer-bottom p{font-size:10px;color:var(--g700)}
 
 /* WHATSAPP FLOAT */
-.wa-float{position:fixed;bottom:24px;right:24px;z-index:150;display:flex;align-items:center;gap:10px;background:#25d366;color:var(--white);padding:12px 18px 12px 14px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 4px 20px rgba(37,211,102,.35);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease)}
-.wa-float:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.45)}
-.wa-float svg{width:20px;height:20px;flex-shrink:0}
-.wa-float .wa-lbl{font-size:10px}
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:150;display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:50%;background:var(--orange);color:var(--white);box-shadow:0 4px 20px rgba(232,104,26,.4);cursor:pointer;transition:transform var(--ease),box-shadow var(--ease);text-decoration:none}
+.wa-float:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 28px rgba(232,104,26,.55)}
+.wa-float svg{width:26px;height:26px;flex-shrink:0;color:var(--white)}
+.wa-float .wa-lbl{display:none}
+.wa-float-tip{position:fixed;bottom:86px;right:16px;z-index:149;background:var(--black);color:var(--white);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:2px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity var(--ease)}
+.wa-float:hover ~ .wa-float-tip{opacity:1}
 
 /* PRODUCTS PAGE */
 .page-hero{background:var(--black);padding:40px 48px 32px;border-bottom:var(--border)}
@@ -411,7 +413,7 @@ footer{background:var(--black);border-top:var(--border)}
   .grid3{grid-template-columns:1fr}
   .form-grid2{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
-  .wa-float{width:52px;height:52px;padding:0;border-radius:50%;justify-content:center;bottom:16px;right:16px}
+  .wa-float{width:50px;height:50px;bottom:16px;right:16px}
   .wa-lbl{display:none}
   .products-toolbar{flex-wrap:wrap}
   .products-count{width:100%}
@@ -508,7 +510,7 @@ footer{background:var(--black);border-top:var(--border)}
   .form-grid2{grid-template-columns:1fr;}
 
   /* WA float button */
-  .wa-float{width:50px;height:50px;border-radius:50%;padding:0;justify-content:center;bottom:14px;right:14px;}
+  .wa-float{width:48px;height:48px;bottom:14px;right:14px;}
   .wa-lbl{display:none;}
 
   /* Products toolbar */
@@ -2161,6 +2163,19 @@ footer{background:var(--black);border-top:var(--border)}
   </div>
 
 </div><!-- /page-contact -->
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<a class="wa-float"
+   href="https://wa.me/923333869952?text=Hi%21%20I%27m%20inquiring%20via%20boltandscrewtrading.com%20%E2%80%94%20I%27d%20like%20to%20know%20more%20about%20your%20products."
+   target="_blank"
+   rel="noopener"
+   title="Chat on WhatsApp">
+  <!-- Chat bubble icon -->
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+</a>
+<div class="wa-float-tip">Inquiry via Website</div>
 
 <!-- ═══════════════════════════════════════════════════════════════ JAVASCRIPT -->
 <script>

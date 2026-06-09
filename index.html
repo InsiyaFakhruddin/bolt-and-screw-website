@@ -59,21 +59,23 @@ ul,ol{list-style:none}
 .nav-hamburger:hover{background:rgba(255,255,255,.08)}
 .nav-hamburger svg{width:22px;height:22px;color:var(--orange)}
 
-/* ── Mobile navbar: hamburger | logo centered | cta ── */
+/* ── Mobile navbar: hamburger | logo centered | cta ──
+   IMPORTANT: scope to .navbar > .navbar-inner only.
+   Other .navbar-inner elements are page-content wrappers — must NOT get this grid. ── */
 @media(max-width:1024px){
-  .navbar-inner{
+  .navbar > .navbar-inner{
     display:grid;
     grid-template-columns:40px 1fr 40px;
     align-items:center;
     padding:6px 16px;
     gap:8px;
+    max-width:100%;
+    box-sizing:border-box;
   }
-  /* hamburger already order:-1 from earlier rule — grid makes order irrelevant, position by column */
-  .nav-hamburger{display:flex;grid-column:1}
+  .nav-hamburger{display:flex;grid-column:1;order:unset}
   .nav-logo{grid-column:2;justify-content:center}
   .nav-actions{grid-column:3;justify-content:flex-end}
   .nav-links,.nav-phone{display:none}
-  /* CTA: compact square with just the arrow on mobile ≤640 */
 }
 
 /* MOBILE NAV */
@@ -425,8 +427,8 @@ footer{background:var(--black);border-top:var(--border)}
   /* Dev banner — smaller on mobile */
   .dev-banner{font-size:8px;padding:5px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
-  /* Navbar */
-  /* navbar-inner grid handles this */
+  /* Navbar — handled by .navbar > .navbar-inner grid rule */
+  /* Page content wrappers that share .navbar-inner class get their own treatment below */
 
   /* Hero */
   .hero{grid-template-columns:1fr;}

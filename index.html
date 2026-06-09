@@ -55,7 +55,7 @@ ul,ol{list-style:none}
 .nav-cta{background:var(--black);color:var(--orange);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:12px 22px;transition:background var(--ease),color var(--ease);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
 .nav-cta:hover{background:var(--orange);color:var(--white)}
 .nav-cta svg{width:16px;height:16px}
-.nav-hamburger{display:none;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer}
+.nav-hamburger{display:none;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .nav-hamburger svg{width:22px;height:22px;color:var(--black)}
 
 /* MOBILE NAV */
@@ -345,7 +345,7 @@ footer{background:var(--black);border-top:var(--border)}
 @media(max-width:1024px){
   .navbar-inner{padding:0 24px}
   .nav-links,.nav-phone{display:none}
-  .nav-hamburger{display:flex}
+  .nav-hamburger{display:flex;order:-1}
   .hero{grid-template-columns:1fr}
   .hero-left{padding:48px 24px 40px}
   .hero-right{padding:32px 24px;min-height:300px}
@@ -518,8 +518,8 @@ footer{background:var(--black);border-top:var(--border)}
 
 /* ── CONTACT / CONTENT PAGE LAYOUT FIXES ── */
 @media(max-width:768px){
-  /* All content-area navbar-inners (inside .page) stack vertically */
-  .page .navbar-inner{
+  /* Content-area navbar-inners (inside .page) that act as section wrappers */
+  .page .navbar-inner[style*="height:auto"]{
     flex-direction:column !important;
     align-items:flex-start !important;
     padding-left:16px !important;
@@ -552,6 +552,41 @@ footer{background:var(--black);border-top:var(--border)}
 @media(max-width:480px){
   .contact-page-hero h1{font-size:clamp(1.5rem,8vw,2rem) !important;}
   .page .navbar-inner{padding-left:14px !important;padding-right:14px !important;}
+}
+
+/* ══ TARGETED MOBILE POLISH FIXES ══ */
+
+/* Logo: shrink to fit 56px mobile navbar */
+@media(max-width:640px){
+  .nav-logo-img{max-height:36px !important;}
+}
+
+/* Hamburger already set to order:-1 above → moves to left automatically */
+
+/* Hero decorative circle: hide on mobile so it doesn't bleed over search */
+@media(max-width:768px){
+  .hero-left{overflow:hidden}
+  .hero-left::after{display:none}
+}
+
+/* Inline breadcrumb back button (replaces floating button on mobile) */
+.bc-back{
+  display:none;
+  width:28px;height:28px;
+  background:var(--black);color:var(--white);
+  border:none;cursor:pointer;
+  align-items:center;justify-content:center;
+  flex-shrink:0;padding:0;margin-right:6px;
+  transition:background var(--ease);
+}
+.bc-back svg{width:14px;height:14px;color:#fff}
+.bc-back:hover{background:var(--orange)}
+
+@media(max-width:768px){
+  /* Hide the floating fixed back button — replaced by inline bc-back */
+  #global-back-btn{display:none !important}
+  /* Show inline back button only when there is history */
+  body.has-back .bc-back{display:flex}
 }
 </style>
 </head>
@@ -629,7 +664,8 @@ footer{background:var(--black);border-top:var(--border)}
   <div class="navbar-inner">
     <div class="nav-logo" onclick="goPage('home')" style="cursor:pointer;">
 <img src="logo.png" alt="Bolt and Screw Trading"
-           style="display:block;height:110px;width:auto;max-width:340px;object-fit:contain;" />
+           class="nav-logo-img"
+           style="display:block;height:auto;max-height:72px;width:auto;max-width:220px;object-fit:contain;" />
       <span style="display:none;align-items:center;gap:8px;font-size:20px;font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:48px;"><span style="color:var(--orange);font-size:22px;">&#9650;</span> BOLT &amp; SCREW</span>
     </div>
     <div class="nav-links">
@@ -960,6 +996,7 @@ footer{background:var(--black);border-top:var(--border)}
   <div class="page-hero">
     <div class="navbar-inner" style="height:auto;overflow:visible;padding-top:0;padding-bottom:0;">
       <div class="breadcrumb">
+        <button class="bc-back" onclick="goBack()" title="Go back"><svg fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
         <span onclick="goPage('home')" style="cursor:pointer;opacity:.6;">Home</span>
         <svg width="12" height="12"><use href="#i-chevron-r"/></svg>
         <span>Products</span>
@@ -1558,6 +1595,7 @@ footer{background:var(--black);border-top:var(--border)}
   <div class="page-hero">
     <div class="navbar-inner" style="height:auto;overflow:visible;padding-top:0;padding-bottom:0;">
       <div class="breadcrumb">
+        <button class="bc-back" onclick="goBack()" title="Go back"><svg fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
         <span onclick="goPage('home')" style="cursor:pointer;opacity:.6;">Home</span>
         <svg width="12" height="12"><use href="#i-chevron-r"/></svg>
         <span onclick="goPage('products')" style="cursor:pointer;opacity:.6;">Products</span>
@@ -1858,6 +1896,7 @@ footer{background:var(--black);border-top:var(--border)}
   <div class="contact-page-hero">
     <div class="navbar-inner" style="height:auto;overflow:visible;">
       <div class="breadcrumb">
+        <button class="bc-back" onclick="goBack()" title="Go back"><svg fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
         <span onclick="goPage('home')" style="cursor:pointer;opacity:.6;">Home</span>
         <svg width="12" height="12"><use href="#i-chevron-r"/></svg>
         <span>Contact</span>
@@ -2037,9 +2076,11 @@ function goPage(id, _fromBack) {
     l.classList.toggle('active', match && match[1] === id);
   });
   closeMobileNav();
-  // Show/hide back button
+  // Show/hide back button (desktop: floating fixed; mobile: inline bc-back in breadcrumb)
   var bb = document.getElementById('global-back-btn');
-  if (bb) bb.style.display = _pageHistory.length > 0 ? 'flex' : 'none';
+  var hasBack = _pageHistory.length > 0;
+  if (bb) bb.style.display = hasBack ? 'flex' : 'none';
+  document.body.classList.toggle('has-back', hasBack);
 }
 
 function goBack() {
@@ -2724,29 +2765,4 @@ function requestQuoteFromCard(btn) {
 
 /* ── Search bar ────────────────────────────────────────────────────────── */
 .search-bar{display:flex;align-items:stretch;background:#fff;border:2px solid #111111;height:46px;width:100%;box-sizing:border-box;transition:border-color .2s;}
-.search-bar:focus-within{border-color:var(--orange);}
-.search-bar input{flex:1 1 0;min-width:0;border:none;outline:none;font-family:var(--font);font-size:.88rem;font-weight:500;color:var(--black);padding:0 14px;background:transparent;height:100%;box-sizing:border-box;}
-.search-bar input::placeholder{color:#bbb;font-weight:400;}
-.search-bar-btn{width:46px;min-width:46px;background:#111111;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;}
-.search-bar-btn:hover{background:var(--orange);}
-.search-bar-clear{width:34px;min-width:34px;background:transparent;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;color:#bbb;font-size:15px;line-height:1;flex-shrink:0;padding:0;transition:color .15s;}
-.search-bar-clear:hover{color:#111;}
-.search-bar-clear.visible{display:flex;}
-.hero-search{margin-top:1.75rem;width:100%;max-width:500px;}
-.products-search-row{width:100%;margin-bottom:14px;}
-
-/* ── Related product cards (horizontal strip) ── */
-.rel-card{flex:0 0 220px;width:220px;border:1px solid #e0e0e0;background:#fff;cursor:pointer;transition:border-color .2s,box-shadow .2s;}
-.rel-card:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(0,0,0,.1);}
-.rel-img{width:100%;height:160px;position:relative;overflow:hidden;background:#fff;}
-.rel-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.rel-body{padding:12px 14px;}
-.rel-name{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#111;line-height:1.2;margin-bottom:4px;}
-.rel-meta{font-size:.72rem;color:#888;margin-bottom:10px;}
-.rel-btn{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);background:none;border:none;cursor:pointer;padding:0;font-family:var(--font);}
-#related-products-row::-webkit-scrollbar{height:4px;}
-#related-products-row::-webkit-scrollbar-track{background:#e0e0e0;}
-#related-products-row::-webkit-scrollbar-thumb{background:var(--orange);}
-</style>
-</body>
-</html>
+.search-bar:focus-within{bor

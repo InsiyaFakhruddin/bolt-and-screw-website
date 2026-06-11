@@ -56,6 +56,48 @@ ul,ol{list-style:none}
 @keyframes card-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .product-card.card-animate{animation:card-in .4s ease forwards;opacity:0}
 
+/* ── Hero right stagger ── */
+.hr-anim{opacity:0;transform:translateY(20px)}
+.hr-anim.go{animation:hero-in .6s ease forwards}
+
+/* ── Chip pop-in ── */
+@keyframes chip-pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+.hero-chip{opacity:0}
+.hero-chip.chip-go{animation:chip-pop .45s cubic-bezier(.34,1.56,.64,1) forwards}
+
+/* ── Industry / values stagger ── */
+@keyframes ind-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.industry-card{opacity:0}
+.industry-card.ind-go{animation:ind-in .5s ease forwards}
+
+/* ── Why-us items slide from right ── */
+@keyframes why-slide{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+.why-item{opacity:0}
+.why-item.why-go{animation:why-slide .5s ease forwards}
+
+/* ── Slide from left / right (story, values) ── */
+@keyframes slide-left{from{opacity:0;transform:translateX(-36px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slide-right{from{opacity:0;transform:translateX(36px)}to{opacity:1;transform:translateX(0)}}
+.anim-from-left{opacity:0}.anim-from-left.go{animation:slide-left .6s ease forwards}
+.anim-from-right{opacity:0}.anim-from-right.go{animation:slide-right .6s ease forwards}
+
+/* ── Values cards stagger ── */
+.val-card{opacity:0}
+.val-card.val-go{animation:ind-in .5s ease forwards}
+
+/* ── Checkmark / contact / form items ── */
+@keyframes row-in{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
+.anim-row{opacity:0}
+.anim-row.row-go{animation:row-in .45s ease forwards}
+
+/* ── Spec table rows ── */
+@keyframes spec-in{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
+.spec-row{opacity:0;animation:spec-in .35s ease forwards}
+
+/* ── Product image zoom-in ── */
+@keyframes img-zoom{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.d-img-zoom{animation:img-zoom .4s cubic-bezier(.25,.46,.45,.94) forwards}
+
 /* NAVBAR */
 .navbar{background:var(--black);border-bottom:none;position:sticky;top:0;z-index:100}
 .navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:8px 48px;height:auto;max-width:1280px;margin:0 auto}
@@ -836,17 +878,17 @@ footer{background:var(--black);border-top:var(--border)}
     </div>
     <div class="hero-right">
       <div>
-        <div class="hero-tag">Est. · Murad Khan Road, Karachi</div>
-        <div class="hero-big-text">PREMIUM<br><span class="dim">FAST</span>ENERS<br><span class="dim">FOR EVERY</span><br>INDUSTRY</div>
+        <div class="hero-tag hr-anim" style="animation-delay:.15s">Est. · Murad Khan Road, Karachi</div>
+        <div class="hero-big-text hr-anim" style="animation-delay:.3s">PREMIUM<br><span class="dim">FAST</span>ENERS<br><span class="dim">FOR EVERY</span><br>INDUSTRY</div>
       </div>
       <div>
-        <div class="hero-chips-block">
+        <div class="hero-chips-block hr-anim" style="animation-delay:.45s">
           <div class="hero-chips-lbl">Products in stock</div>
           <div class="hero-chips">
             <span class="hero-chip">Hex Bolts</span><span class="hero-chip">Socket Screws</span><span class="hero-chip">Hex Nuts</span><span class="hero-chip">Flat Washers</span><span class="hero-chip">Wedge Anchors</span><span class="hero-chip">Carriage Bolts</span><span class="hero-chip">Lock Nuts</span><span class="hero-chip">Threaded Rod</span>
           </div>
         </div>
-        <div class="hero-stats">
+        <div class="hero-stats hr-anim" style="animation-delay:.6s">
           <div class="hero-stat"><div class="n">50+</div><div class="l">Products</div></div>
           <div class="hero-stat"><div class="n">100+</div><div class="l">Clients</div></div>
           <div class="hero-stat"><div class="n">All</div><div class="l">Grades</div></div>
@@ -1000,14 +1042,14 @@ footer{background:var(--black);border-top:var(--border)}
       <h2 style="background:var(--orange)">Industries We Serve</h2><div class="sh-accent" style="background:#333"></div><div class="sh-line" style="border-color:#333"></div>
     </div>
     <div class="industries-grid">
-      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-building"/></svg></div><div class="industry-name">Construction</div><div class="industry-desc">Foundation bolts, anchors and structural fasteners for civil and commercial projects.</div></div>
-      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-factory"/></svg></div><div class="industry-name">Manufacturing</div><div class="industry-desc">Precision fasteners for machinery assembly, production lines and equipment fabrication.</div></div>
-      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-zap"/></svg></div><div class="industry-name">Power &amp; Energy</div><div class="industry-desc">High-grade fasteners for power plants, substations and energy infrastructure.</div></div>
-      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-shirt"/></svg></div><div class="industry-name">Textile Sector</div><div class="industry-desc">Specialised bolts and screws for textile machinery maintenance and installation.</div></div>
-      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-flame"/></svg></div><div class="industry-name">Oil &amp; Gas</div><div class="industry-desc">Stainless and alloy fasteners for pipelines, refineries and petrochemical plants.</div></div>
-      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-truck"/></svg></div><div class="industry-name">Transportation</div><div class="industry-desc">Automotive and transport-grade bolts meeting strict safety specifications.</div></div>
-      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-mountain"/></svg></div><div class="industry-name">Mining &amp; Minerals</div><div class="industry-desc">Hardened heavy-duty fasteners for mining equipment and extraction machinery.</div></div>
-      <div class="industry-card"><div class="industry-icon"><svg><use href="#i-leaf"/></svg></div><div class="industry-name">Agriculture</div><div class="industry-desc">Corrosion-resistant fasteners for farm equipment and agricultural infrastructure.</div></div>
+      <div class="industry-card" data-ind="0"><div class="industry-icon"><svg><use href="#i-building"/></svg></div><div class="industry-name">Construction</div><div class="industry-desc">Foundation bolts, anchors and structural fasteners for civil and commercial projects.</div></div>
+      <div class="industry-card" data-ind="1"><div class="industry-icon"><svg><use href="#i-factory"/></svg></div><div class="industry-name">Manufacturing</div><div class="industry-desc">Precision fasteners for machinery assembly, production lines and equipment fabrication.</div></div>
+      <div class="industry-card" data-ind="2"><div class="industry-icon"><svg><use href="#i-zap"/></svg></div><div class="industry-name">Power &amp; Energy</div><div class="industry-desc">High-grade fasteners for power plants, substations and energy infrastructure.</div></div>
+      <div class="industry-card" data-ind="3"><div class="industry-icon"><svg><use href="#i-shirt"/></svg></div><div class="industry-name">Textile Sector</div><div class="industry-desc">Specialised bolts and screws for textile machinery maintenance and installation.</div></div>
+      <div class="industry-card" data-ind="4"><div class="industry-icon"><svg><use href="#i-flame"/></svg></div><div class="industry-name">Oil &amp; Gas</div><div class="industry-desc">Stainless and alloy fasteners for pipelines, refineries and petrochemical plants.</div></div>
+      <div class="industry-card" data-ind="5"><div class="industry-icon"><svg><use href="#i-truck"/></svg></div><div class="industry-name">Transportation</div><div class="industry-desc">Automotive and transport-grade bolts meeting strict safety specifications.</div></div>
+      <div class="industry-card" data-ind="6"><div class="industry-icon"><svg><use href="#i-mountain"/></svg></div><div class="industry-name">Mining &amp; Minerals</div><div class="industry-desc">Hardened heavy-duty fasteners for mining equipment and extraction machinery.</div></div>
+      <div class="industry-card" data-ind="7"><div class="industry-icon"><svg><use href="#i-leaf"/></svg></div><div class="industry-name">Agriculture</div><div class="industry-desc">Corrosion-resistant fasteners for farm equipment and agricultural infrastructure.</div></div>
     </div>
   </section>
 
@@ -1021,10 +1063,10 @@ footer{background:var(--black);border-top:var(--border)}
     </div>
     <div class="why-right">
       <div class="why-items">
-        <div class="why-item"><div class="why-num">01</div><div class="why-text"><h4>International Standards</h4><p>All products certified to DIN, ISO and ANSI standards — every grade, size and material clearly specified.</p></div></div>
-        <div class="why-item"><div class="why-num">02</div><div class="why-text"><h4>Wide Range in Stock</h4><p>50+ product types across bolts, nuts, washers, screws and anchors. Most orders fulfilled same day.</p></div></div>
-        <div class="why-item"><div class="why-num">03</div><div class="why-text"><h4>Expert Guidance</h4><p>Not sure which grade or size? Our team helps you specify the right fastener for your application.</p></div></div>
-        <div class="why-item"><div class="why-num">04</div><div class="why-text"><h4>Bulk &amp; Retail Orders</h4><p>Competitive pricing for wholesale with flexible quantities for smaller purchase requirements.</p></div></div>
+        <div class="why-item" data-why="0"><div class="why-num">01</div><div class="why-text"><h4>International Standards</h4><p>All products certified to DIN, ISO and ANSI standards — every grade, size and material clearly specified.</p></div></div>
+        <div class="why-item" data-why="1"><div class="why-num">02</div><div class="why-text"><h4>Wide Range in Stock</h4><p>50+ product types across bolts, nuts, washers, screws and anchors. Most orders fulfilled same day.</p></div></div>
+        <div class="why-item" data-why="2"><div class="why-num">03</div><div class="why-text"><h4>Expert Guidance</h4><p>Not sure which grade or size? Our team helps you specify the right fastener for your application.</p></div></div>
+        <div class="why-item" data-why="3"><div class="why-num">04</div><div class="why-text"><h4>Bulk &amp; Retail Orders</h4><p>Competitive pricing for wholesale with flexible quantities for smaller purchase requirements.</p></div></div>
       </div>
     </div>
   </section>
@@ -1822,19 +1864,19 @@ footer{background:var(--black);border-top:var(--border)}
     <!-- RIGHT: Dark, stats 2x2 grid -->
     <div class="mob-about-stats" style="background:#1a1a1a;display:grid;grid-template-columns:1fr 1fr;gap:0;">
       <div style="border-right:1px solid #2a2a2a;border-bottom:1px solid #2a2a2a;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-        <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">10+</div>
+        <div class="about-stat-num" data-target="10" data-suffix="+" style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">10+</div>
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">YEARS IN BUSINESS</div>
       </div>
       <div style="border-bottom:1px solid #2a2a2a;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-        <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">50+</div>
+        <div class="about-stat-num" data-target="50" data-suffix="+" style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">50+</div>
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">PRODUCT TYPES</div>
       </div>
       <div style="border-right:1px solid #2a2a2a;padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-        <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">500+</div>
+        <div class="about-stat-num" data-target="500" data-suffix="+" style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">500+</div>
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">CLIENTS SERVED</div>
       </div>
       <div style="padding:3rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-        <div style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">8</div>
+        <div class="about-stat-num" data-target="8" data-suffix="" style="font-size:3rem;font-weight:900;color:#e8681a;line-height:1;">8</div>
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem;">INDUSTRIES SERVED</div>
       </div>
     </div>
@@ -1843,9 +1885,9 @@ footer{background:var(--black);border-top:var(--border)}
   <!-- ── STORY SECTION: white bg, 2 columns ── -->
   <div style="background:#ffffff;padding:5rem 0;border-bottom:2px solid #111;">
     <div class="mob-story-grid" style="max-width:1280px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
-      
+
       <!-- Left: Story text -->
-      <div>
+      <div class="anim-from-left">
         <div style="font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#e8681a;display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;">
           <span style="width:2rem;height:2px;background:#e8681a;display:inline-block;"></span>OUR STORY
         </div>
@@ -1864,11 +1906,11 @@ footer{background:var(--black);border-top:var(--border)}
       </div>
 
       <!-- Right: Why clients stay -->
-      <div style="background:#111111;padding:2.5rem;border-left:4px solid #e8681a;">
+      <div class="anim-from-right" style="background:#111111;padding:2.5rem;border-left:4px solid #e8681a;">
         <div style="font-size:.7rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#e8681a;margin-bottom:1.5rem;">WHY CLIENTS STAY</div>
         
         <div style="display:flex;flex-direction:column;gap:1.25rem;">
-          <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="anim-row" style="display:flex;gap:1rem;align-items:flex-start;">
             <div style="width:30px;height:30px;background:#e8681a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;">
               <svg width="14" height="14" fill="white"><use href="#i-check"/></svg>
             </div>
@@ -1877,7 +1919,7 @@ footer{background:var(--black);border-top:var(--border)}
               <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;line-height:1.5;">Most standard items available for same-day or next-day collection.</div>
             </div>
           </div>
-          <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="anim-row" style="display:flex;gap:1rem;align-items:flex-start;">
             <div style="width:30px;height:30px;background:#e8681a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;">
               <svg width="14" height="14" fill="white"><use href="#i-check"/></svg>
             </div>
@@ -1886,7 +1928,7 @@ footer{background:var(--black);border-top:var(--border)}
               <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;line-height:1.5;">DIN/ISO-grade fasteners from certified mills only. No substitutes without notice.</div>
             </div>
           </div>
-          <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="anim-row" style="display:flex;gap:1rem;align-items:flex-start;">
             <div style="width:30px;height:30px;background:#e8681a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;">
               <svg width="14" height="14" fill="white"><use href="#i-check"/></svg>
             </div>
@@ -1895,7 +1937,7 @@ footer{background:var(--black);border-top:var(--border)}
               <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem;line-height:1.5;">Tiered pricing for contractors, distributors, and project managers.</div>
             </div>
           </div>
-          <div style="display:flex;gap:1rem;align-items:flex-start;">
+          <div class="anim-row" style="display:flex;gap:1rem;align-items:flex-start;">
             <div style="width:30px;height:30px;background:#e8681a;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:.1rem;">
               <svg width="14" height="14" fill="white"><use href="#i-check"/></svg>
             </div>
@@ -1918,28 +1960,28 @@ footer{background:var(--black);border-top:var(--border)}
         OUR CORE <span style="color:#e8681a;">VALUES</span>
       </h2>
       <div class="mob-values-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
-        <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
+        <div class="val-card" style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
           <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
             <svg width="22" height="22" fill="white"><use href="#i-award"/></svg>
           </div>
           <h3 style="font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;margin:0 0 .5rem;">Quality First</h3>
           <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">We stock only what we'd use ourselves. Every product is sourced from verified manufacturers meeting international standards.</p>
         </div>
-        <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
+        <div class="val-card" style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
           <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
             <svg width="22" height="22" fill="white"><use href="#i-zap"/></svg>
           </div>
           <h3 style="font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;margin:0 0 .5rem;">Fast Response</h3>
           <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">Quotes within the hour, orders fulfilled the same day for in-stock items. We know your timeline matters.</p>
         </div>
-        <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
+        <div class="val-card" style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
           <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
             <svg width="22" height="22" fill="white"><use href="#i-truck"/></svg>
           </div>
           <h3 style="font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ffffff;margin:0 0 .5rem;">Reliable Delivery</h3>
           <p style="font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7;margin:0;">Delivery to job sites across Karachi. Coordination with freight partners for outstation orders.</p>
         </div>
-        <div style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
+        <div class="val-card" style="background:#1a1a1a;padding:2rem;border-top:3px solid #e8681a;">
           <div style="width:44px;height:44px;background:#e8681a;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
             <svg width="22" height="22" fill="white"><use href="#i-package"/></svg>
           </div>
@@ -1991,7 +2033,7 @@ footer{background:var(--black);border-top:var(--border)}
 
         <div class="section-label">FIND US</div>
 
-        <div class="contact-detail">
+        <div class="contact-detail anim-row">
           <div class="cd-icon">
             <svg width="20" height="20"><use href="#i-map"/></svg>
           </div>
@@ -2001,7 +2043,7 @@ footer{background:var(--black);border-top:var(--border)}
           </div>
         </div>
 
-        <div class="contact-detail">
+        <div class="contact-detail anim-row">
           <div class="cd-icon">
             <svg width="20" height="20"><use href="#i-phone"/></svg>
           </div>
@@ -2012,7 +2054,7 @@ footer{background:var(--black);border-top:var(--border)}
           </div>
         </div>
 
-        <div class="contact-detail">
+        <div class="contact-detail anim-row">
           <div class="cd-icon">
             <svg width="20" height="20"><use href="#i-mail"/></svg>
           </div>
@@ -2066,7 +2108,7 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="form-title">SEND AN INQUIRY</div>
           <p style="color:var(--gray-mid);font-size:.85rem;margin-bottom:1.5rem;line-height:1.5;">Fill in the form below and we'll get back to you with pricing and availability within a few hours.</p>
 
-          <div class="form-grid2">
+          <div class="form-grid2 anim-row">
             <div>
               <label class="form-label">Full Name *</label>
               <input type="text" class="form-input" id="inquiry-name" placeholder="Ahmed Malik" />
@@ -2077,7 +2119,7 @@ footer{background:var(--black);border-top:var(--border)}
             </div>
           </div>
 
-          <div class="form-grid2">
+          <div class="form-grid2 anim-row">
             <div>
               <label class="form-label">Phone / WhatsApp *</label>
               <input type="tel" class="form-input" id="inquiry-phone" placeholder="0300-0000000" />
@@ -2088,8 +2130,8 @@ footer{background:var(--black);border-top:var(--border)}
             </div>
           </div>
 
-          <label class="form-label">Product Category *</label>
-          <select class="form-select" id="inquiry-category">
+          <label class="form-label anim-row">Product Category *</label>
+          <select class="form-select anim-row" id="inquiry-category">
             <option value="">Select a category…</option>
             <option>Bolts &amp; Screws</option>
             <option>Nuts</option>
@@ -2101,10 +2143,10 @@ footer{background:var(--black);border-top:var(--border)}
             <option>Not Sure — Need Help</option>
           </select>
 
-          <label class="form-label">Product Details *</label>
-          <textarea class="form-textarea" id="inquiry-details" placeholder="Example: M12×60mm Hex Head Bolt, Grade 8.8, Zinc Plated, DIN 931 — Qty: 500 pcs. Please include size, grade, quantity, and any standard if known."></textarea>
+          <label class="form-label anim-row">Product Details *</label>
+          <textarea class="form-textarea anim-row" id="inquiry-details" placeholder="Example: M12×60mm Hex Head Bolt, Grade 8.8, Zinc Plated, DIN 931 — Qty: 500 pcs. Please include size, grade, quantity, and any standard if known."></textarea>
 
-          <div class="form-grid2" style="margin-top:0;">
+          <div class="form-grid2 anim-row" style="margin-top:0;">
             <div>
               <label class="form-label">Estimated Quantity</label>
               <input type="text" class="form-input" id="inquiry-qty" placeholder="e.g. 500 pcs / 50 kg" />
@@ -2115,7 +2157,7 @@ footer{background:var(--black);border-top:var(--border)}
             </div>
           </div>
 
-          <button class="form-submit">SEND INQUIRY →</button>
+          <button class="form-submit anim-row">SEND INQUIRY →</button>
 
           <p style="font-size:.75rem;color:var(--gray-mid);margin-top:1rem;line-height:1.5;text-align:center;">
             Or reach us directly on <a href="https://wa.me/923333869952" target="_blank" style="color:var(--orange);text-decoration:none;font-weight:700;">WhatsApp ↗</a> for a faster reply.
@@ -2169,6 +2211,15 @@ function goPage(id, _fromBack) {
         // Stagger product cards when entering products page
         if (id === 'products') {
           staggerCards(target);
+        }
+        // Home page: re-trigger hero right + chips animations
+        if (id === 'home') {
+          setTimeout(initHeroRightAnim, 60);
+          setTimeout(initChipAnim, 80);
+        }
+        // About page: count-up stats
+        if (id === 'about') {
+          setTimeout(initAboutCountUp, 150);
         }
         // Always re-run scroll reveal for the new page
         initScrollReveal();
@@ -2266,13 +2317,48 @@ function initScrollReveal() {
   if (_revealObserver) _revealObserver.disconnect();
   _revealObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        _revealObserver.unobserve(e.target);
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      el.classList.add('visible');
+
+      // Industry cards stagger
+      if (el.classList.contains('industry-card')) {
+        var idx = parseInt(el.getAttribute('data-ind') || '0', 10);
+        el.style.animationDelay = (idx * 75) + 'ms';
+        el.classList.add('ind-go');
       }
+      // Why-us items slide in
+      if (el.classList.contains('why-item')) {
+        var idx = parseInt(el.getAttribute('data-why') || '0', 10);
+        el.style.animationDelay = (idx * 90) + 'ms';
+        el.classList.add('why-go');
+      }
+      // Slide from left / right
+      if (el.classList.contains('anim-from-left') || el.classList.contains('anim-from-right')) {
+        el.classList.add('go');
+      }
+      // Values cards stagger
+      if (el.classList.contains('val-card')) {
+        var allVals = Array.prototype.slice.call(document.querySelectorAll('.page.active .val-card'));
+        var vIdx = allVals.indexOf(el);
+        el.style.animationDelay = (vIdx * 90) + 'ms';
+        el.classList.add('val-go');
+      }
+      // Rows: contact details, form rows, checkmark items
+      if (el.classList.contains('anim-row')) {
+        var allRows = Array.prototype.slice.call(document.querySelectorAll('.page.active .anim-row'));
+        var rIdx = allRows.indexOf(el);
+        el.style.animationDelay = (rIdx * 55) + 'ms';
+        el.classList.add('row-go');
+      }
+
+      _revealObserver.unobserve(el);
     });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.page.active .reveal').forEach(function(el) {
+  }, { threshold: 0.10 });
+
+  var activePage = document.querySelector('.page.active');
+  if (!activePage) return;
+  activePage.querySelectorAll('.reveal, .industry-card, .why-item, .anim-from-left, .anim-from-right, .val-card, .anim-row').forEach(function(el) {
     _revealObserver.observe(el);
   });
 
@@ -2287,7 +2373,7 @@ function initScrollReveal() {
         }
       });
     }, { threshold: 0.5 });
-    var sb = document.querySelector('.stats-bar');
+    var sb = activePage.querySelector('.stats-bar');
     if (sb) _countObserver.observe(sb);
   }
 }
@@ -2312,6 +2398,54 @@ function initHeroAnim() {
   document.querySelectorAll('.hero-anim').forEach(function(el) {
     el.classList.add('go');
   });
+}
+
+// ── Hero right panel stagger (.hr-anim elements) ──────────────────────────────
+function initHeroRightAnim() {
+  document.querySelectorAll('.hr-anim').forEach(function(el) {
+    el.classList.remove('go');
+    void el.offsetWidth; // reflow to restart animation
+    el.classList.add('go');
+  });
+}
+
+// ── Hero chips pop-in ─────────────────────────────────────────────────────────
+function initChipAnim() {
+  document.querySelectorAll('.hero-chip').forEach(function(el, i) {
+    el.classList.remove('chip-go');
+  });
+  void document.body.offsetWidth;
+  document.querySelectorAll('.hero-chip').forEach(function(el, i) {
+    setTimeout(function() { el.classList.add('chip-go'); }, 480 + i * 60);
+  });
+}
+
+// ── About page stats count-up ─────────────────────────────────────────────────
+var _aboutCounted = false;
+function initAboutCountUp() {
+  _aboutCounted = false; // reset so it re-counts each visit
+  var nums = document.querySelectorAll('#page-about .about-stat-num[data-target]');
+  if (!nums.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !_aboutCounted) {
+        _aboutCounted = true;
+        nums.forEach(function(el) {
+          var target = parseInt(el.getAttribute('data-target'), 10);
+          var suffix = el.getAttribute('data-suffix') || '';
+          var current = 0;
+          var step = Math.ceil(target / 40);
+          var timer = setInterval(function() {
+            current = Math.min(current + step, target);
+            el.textContent = current + suffix;
+            if (current >= target) clearInterval(timer);
+          }, 30);
+        });
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  nums.forEach(function(el) { obs.observe(el); });
 }
 
 // ── Product card hover effect ─────────────────────────────────────────────────
@@ -2457,10 +2591,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (activePage) activePage.classList.add('page-visible');
     });
   });
-  // Hero text stagger
+  // Hero text stagger (left panel)
   setTimeout(initHeroAnim, 80);
+  // Hero right panel stagger
+  setTimeout(initHeroRightAnim, 100);
+  // Hero chips pop-in
+  setTimeout(initChipAnim, 120);
   // Scroll reveal + count-up for home
-  setTimeout(initScrollReveal, 120);
+  setTimeout(initScrollReveal, 160);
 });
 
 
@@ -3071,9 +3209,15 @@ function openProduct(slug, name, cat, std, size, grade, alias) {
     'images/products/' + slug + '-1.webp',
     'images/products/' + slug + '-2.webp'
   ];
-  /* update main image */
+  /* update main image + zoom-in animation */
   var mi = document.getElementById('d-img-main');
-  if (mi) { mi.alt = name; setImgWithFallback(mi, _dImgs[0], 'https://placehold.co/600x600/111111/e8681a?text=NO+IMAGE'); }
+  if (mi) {
+    mi.alt = name;
+    mi.classList.remove('d-img-zoom');
+    void mi.offsetWidth;
+    mi.classList.add('d-img-zoom');
+    setImgWithFallback(mi, _dImgs[0], 'https://placehold.co/600x600/111111/e8681a?text=NO+IMAGE');
+  }
   /* update thumbnails */
   var t0 = document.getElementById('d-timg-0');
   var t1 = document.getElementById('d-timg-1');
@@ -3120,16 +3264,17 @@ function openProduct(slug, name, cat, std, size, grade, alias) {
   var tbody = document.getElementById('d-spec-tbody');
   if (tbody) {
     if (ps && ps.specs && ps.specs.length) {
-      tbody.innerHTML = ps.specs.map(function(row) {
-        return '<tr class="spec-row"><td class="spec-key">' + row.k + '</td><td class="spec-val">' + row.v + '</td></tr>';
+      tbody.innerHTML = ps.specs.map(function(row, ri) {
+        return '<tr class="spec-row" style="animation-delay:' + (ri * 55) + 'ms"><td class="spec-key">' + row.k + '</td><td class="spec-val">' + row.v + '</td></tr>';
       }).join('');
     } else {
       /* fallback: show card-level data */
-      tbody.innerHTML = [
-        std  ? '<tr class="spec-row"><td class="spec-key">Standard</td><td class="spec-val">' + std  + '</td></tr>' : '',
-        size ? '<tr class="spec-row"><td class="spec-key">Size Range</td><td class="spec-val">' + size + '</td></tr>' : '',
-        grade? '<tr class="spec-row"><td class="spec-key">Grade</td><td class="spec-val">'      + grade+ '</td></tr>' : ''
-      ].join('');
+      var fbRows = [
+        std  ? '<tr class="spec-row" style="animation-delay:0ms"><td class="spec-key">Standard</td><td class="spec-val">' + std  + '</td></tr>' : '',
+        size ? '<tr class="spec-row" style="animation-delay:55ms"><td class="spec-key">Size Range</td><td class="spec-val">' + size + '</td></tr>' : '',
+        grade? '<tr class="spec-row" style="animation-delay:110ms"><td class="spec-key">Grade</td><td class="spec-val">'      + grade+ '</td></tr>' : ''
+      ];
+      tbody.innerHTML = fbRows.join('');
     }
   }
 
@@ -3301,270 +3446,4 @@ function _expandQuery(q) {
 }
 
 function _scoreProduct(p, tokens) {
-  var searchable = (p.name+' '+p.alias+' '+p.cat+' '+p.tags.join(' ')).toLowerCase();
-  var score = 0;
-  tokens.forEach(function(t){
-    if(!t) return;
-    if(searchable.indexOf(t)>-1) score += 2;           // exact token in any field
-    if(p.name.toLowerCase().indexOf(t)>-1) score += 3; // token in name = bonus
-    // partial match (at least 3 chars)
-    if(t.length >= 3){
-      if(searchable.split(' ').some(function(w){ return w.indexOf(t)>-1 || t.indexOf(w)>-1 && w.length>=3; })) score += 1;
-    }
-  });
-  return score;
-}
-
-function runSearch(query, context) {
-  /* context: 'products' (filter grid) or 'home' (go to products page) */
-  var q = (query || '').trim();
-  if(context === 'home'){
-    window._pendingSearch = q;
-    goPage('products');
-    setTimeout(function(){ runSearch(q,'products'); }, 80);
-    return;
-  }
-  /* Products page: filter cards */
-  var cards = document.querySelectorAll('#product-grid .product-card');
-  var countEl = document.getElementById('prod-count');
-  if(!q){
-    /* clear search: show all / re-apply cat filter */
-    cards.forEach(function(c){ c.style.display=''; });
-    var activeBtn = document.querySelector('.cat-filter-btn.active');
-    if(activeBtn) filterProducts(activeBtn);
-    return;
-  }
-  var tokens = _expandQuery(q);
-  /* Score each product */
-  var results = [];
-  SEARCH_CATALOG.forEach(function(p){
-    var sc = _scoreProduct(p, tokens);
-    if(sc > 0) results.push({slug: p.slug, score: sc});
-  });
-  var matchingSlugs = results.map(function(r){ return r.slug; });
-  var count = 0;
-  cards.forEach(function(c){
-    var onc = c.getAttribute('onclick') || '';
-    var m = onc.match(/openProduct\('([^']+)'/);
-    var slug = m ? m[1] : '';
-    var show = matchingSlugs.indexOf(slug) > -1;
-    c.style.display = show ? '' : 'none';
-    if(show) count++;
-  });
-  if(countEl) countEl.innerHTML = q
-    ? 'Showing <strong>'+count+'</strong> result'+(count!==1?'s':'')+' for "<em>'+q+'</em>"'
-    : 'Showing <strong>'+count+'</strong> product'+(count!==1?'s':'');
-  /* Reset cat filter active state */
-  if(q) document.querySelectorAll('.cat-filter-btn').forEach(function(b){ b.classList.remove('active'); });
-}
-
-/* Called on page load if a pending search came from home */
-document.addEventListener('DOMContentLoaded', function(){
-  if(window._pendingSearch){ runSearch(window._pendingSearch,'products'); window._pendingSearch=''; }
-});
-/* ══════════════════════════════════════════════════════════════════════════ */
-
-function _homeSearch() {
-  var q = document.getElementById('home-search-input').value.trim();
-  if(!q) { goPage('products'); return; }
-  window._pendingSearch = q;
-  goPage('products');
-  setTimeout(function(){
-    runSearch(q, 'products');
-    var inp = document.getElementById('products-search-input');
-    if(inp){ inp.value = q; var c=document.getElementById('products-search-clear'); if(c) c.classList.add('visible'); }
-  }, 100);
-}
-
-/* ── Dynamic related products ────────────────────────────────────────────── */
-function _buildRelatedProducts(currentSlug) {
-  var current = null;
-  for(var i=0;i<SEARCH_CATALOG.length;i++){
-    if(SEARCH_CATALOG[i].slug === currentSlug){ current = SEARCH_CATALOG[i]; break; }
-  }
-  if(!current) return [];
-
-  /* Score all other products by shared tags + same category */
-  var scored = [];
-  SEARCH_CATALOG.forEach(function(p){
-    if(p.slug === currentSlug) return;
-    var score = 0;
-    /* Same category → strong signal */
-    if(p.cat === current.cat) score += 4;
-    /* Shared tags */
-    current.tags.forEach(function(t){
-      if(p.tags.indexOf(t) > -1) score += 2;
-    });
-    /* Shared words in name/alias */
-    var cn = (current.name+' '+current.alias).toLowerCase();
-    var pn = (p.name+' '+p.alias).toLowerCase();
-    cn.split(' ').forEach(function(w){
-      if(w.length>3 && pn.indexOf(w)>-1) score += 1;
-    });
-    if(score > 0) scored.push({p:p, score:score});
-  });
-
-  scored.sort(function(a,b){ return b.score - a.score; });
-  return scored.slice(0,3).map(function(s){ return s.p; });
-}
-
-function _renderRelatedProducts(currentSlug) {
-  var _rph = 'https://placehold.co/400x320/f5f5f5/e8681a?text=IMAGE';
-  var row = document.getElementById('related-products-row');
-  if(!row) return;
-  var related = _buildRelatedProducts(currentSlug);
-  if(!related.length){ row.innerHTML=''; return; }
-  var html = '';
-  for(var i=0;i<related.length;i++){
-    var p = related[i];
-    var safeName  = p.name.replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    var safeCat   = p.cat.replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    var safeAlias = p.alias.replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    html += '<div class="rel-card"'
-          + ' data-slug="' + p.slug + '"'
-          + ' data-name="' + safeName + '"'
-          + ' data-cat="' + safeCat + '"'
-          + ' data-alias="' + safeAlias + '"'
-          + ' onclick="_openRelated(this)">'
-          + '<div class="rel-img">'
-          + '<img src="images/products/' + p.slug + '-1.webp" alt="' + safeName + '"'
-          + ' style="width:100%;height:100%;object-fit:cover;"'
-          + ' onerror="this.onerror=null;this.src=_rph" /></div>'
-          + '<div class="rel-body">'
-          + '<div class="rel-name">' + safeName + '</div>'
-          + '<div class="rel-meta">' + safeAlias + '</div>'
-          + '<button class="rel-btn">View Product →</button>'
-          + '</div></div>';
-  }
-  row.innerHTML = html;
-}
-
-
-function _openRelated(el) {
-  var slug  = el.getAttribute('data-slug');
-  var name  = el.getAttribute('data-name');
-  var cat   = el.getAttribute('data-cat');
-  var alias = el.getAttribute('data-alias');
-  openProduct(slug, name, cat, '—', '—', '—', alias);
-}
-/* ────────────────────────────────────────────────────────────────────────── */
-
-/* ── Quote with product context ─────────────────────────────────────────── */
-function goPageWithProduct(cat, name, std, size, grade) {
-  goPage('contact');
-  // Map catalog category → form select option text
-  var catMap = {
-    'Bolts & Screws'       : 'Bolts & Screws',
-    'Nuts'                 : 'Nuts',
-    'Washers & SS Hardware': 'Washers',
-    'Structural Steel'     : 'Multiple / Mixed Order',
-    'Anchors'              : 'Anchors & Studs',
-    'Rods & Bars'          : 'Threaded Rods'
-  };
-  var mapped = catMap[cat] || cat || '';
-  var sel = document.getElementById('inquiry-category');
-  if (sel && mapped) {
-    for (var i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].text === mapped) { sel.selectedIndex = i; break; }
-    }
-  }
-  var details = document.getElementById('inquiry-details');
-  if (details && name && name !== 'Select a product') {
-    var lines = [name];
-    var specs = [];
-    if (std   && std   !== '—') specs.push('Standard: ' + std);
-    if (size  && size  !== '—') specs.push('Size: ' + size);
-    if (grade && grade !== '—') specs.push('Grade: ' + grade);
-    if (specs.length) lines.push(specs.join(' | '));
-    lines.push('');
-    lines.push('Quantity: ');
-    details.value = lines.join('\n');
-    // Place cursor at end
-    setTimeout(function(){ details.focus(); details.setSelectionRange(details.value.length, details.value.length); }, 80);
-  }
-}
-
-function requestQuoteFromCard(btn) {
-  event.stopPropagation();
-  var card = btn.closest('[data-cat]');
-  if (!card) { goPage('contact'); return; }
-  var cat = card.getAttribute('data-cat') || '';
-  // Parse product details from the card's openProduct() onclick
-  var onc = card.getAttribute('onclick') || '';
-  var m = onc.match(/openProduct\(([^)]+)\)/);
-  var name = '', std = '', size = '', grade = '';
-  if (m) {
-    var args = m[1].match(/'((?:[^'\\]|\\.)*)'/g) || [];
-    var clean = function(s){ return s ? s.replace(/^'|'$/g,'') : ''; };
-    name  = clean(args[1]);
-    std   = clean(args[3]);
-    size  = clean(args[4]);
-    grade = clean(args[5]);
-  }
-  goPageWithProduct(cat, name, std, size, grade);
-}
-</script>
-<style>
-.fg-title{font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--black);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:var(--border);}
-.filter-group{margin-bottom:1.75rem;}
-.product-name{font-size:.92rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--black);line-height:1.25;margin-bottom:.25rem;}
-.value-card h3{font-size:.85rem;}
-
-/* ── Category filter bar ── */
-.cat-filter-btn{background:none;border:none;border-bottom:3px solid transparent;padding:14px 18px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--g500);white-space:nowrap;transition:var(--ease);}
-.cat-filter-btn:hover{color:var(--black);}
-.cat-filter-btn.active{color:var(--black);border-bottom-color:var(--orange);}
-.cat-count{font-weight:400;opacity:.6;}
-/* ── Product meta & spec lines ── */
-.product-meta{font-size:.72rem;color:var(--g500);margin-bottom:.2rem;font-weight:500;}
-.product-spec{font-size:.7rem;color:var(--g600);letter-spacing:.03em;margin-bottom:.6rem;}
-.btn-quote-sm{display:inline-flex;align-items:center;gap:6px;background:var(--black);color:var(--white);border:none;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;cursor:pointer;transition:var(--ease);}
-.btn-quote-sm:hover{background:var(--orange);}
-.btn-quote-sm svg{width:10px;height:10px;}
-
-/* ── Product card dual-image hover ── */
-.product-img-area{position:relative;overflow:hidden;background:#f0f0f0;}
-.product-img-area::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:skeleton-shimmer 1.4s infinite;}
-@keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.pimg-main,.pimg-hover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease;}
-.pimg-main{opacity:0;z-index:1;transition:opacity .3s ease;}
-.pimg-main.loaded{opacity:1;}
-.pimg-hover{opacity:0;z-index:2;}
-.product-card:hover .pimg-hover.loaded{opacity:1;}
-.product-card:hover .pimg-main{opacity:0;}
-
-/* ── Detail thumbnail strip ── */
-.d-thumb{position:relative;width:80px;height:80px;background:#f5f5f5;border:2px solid transparent;cursor:pointer;overflow:hidden;transition:border-color .2s;}
-.d-thumb:hover{border-color:var(--orange);}
-.d-thumb.active{border-color:var(--orange);}
-#d-arrow-l{opacity:1;}
-
-/* ── Search bar ────────────────────────────────────────────────────────── */
-.search-bar{display:flex;align-items:stretch;background:#fff;border:2px solid #111111;height:46px;width:100%;box-sizing:border-box;transition:border-color .2s;}
-.search-bar:focus-within{border-color:var(--orange);}
-.search-bar input{flex:1 1 0;min-width:0;border:none;outline:none;font-family:var(--font);font-size:.88rem;font-weight:500;color:var(--black);padding:0 14px;background:transparent;height:100%;box-sizing:border-box;}
-.search-bar input::placeholder{color:#bbb;font-weight:400;}
-.search-bar-btn{width:46px;min-width:46px;background:#111111;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0;}
-.search-bar-btn:hover{background:var(--orange);}
-.search-bar-clear{width:34px;min-width:34px;background:transparent;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;color:#bbb;font-size:15px;line-height:1;flex-shrink:0;padding:0;transition:color .15s;}
-.search-bar-clear:hover{color:#111;}
-.search-bar-clear.visible{display:flex;}
-.hero-search{margin-top:1.75rem;width:100%;max-width:500px;}
-.products-search-row{width:100%;margin-bottom:14px;}
-
-/* ── Related product cards (horizontal strip) ── */
-.rel-card{flex:0 0 220px;width:220px;border:1px solid #e0e0e0;background:#fff;cursor:pointer;transition:border-color .2s,box-shadow .2s;}
-.rel-card:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(0,0,0,.1);}
-.rel-img{width:100%;height:160px;position:relative;overflow:hidden;background:#fff;}
-.rel-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.rel-body{padding:12px 14px;}
-.rel-name{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#111;line-height:1.2;margin-bottom:4px;}
-.rel-meta{font-size:.72rem;color:#888;margin-bottom:10px;}
-.rel-btn{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);background:none;border:none;cursor:pointer;padding:0;font-family:var(--font);}
-#related-products-row::-webkit-scrollbar{height:4px;}
-#related-products-row::-webkit-scrollbar-track{background:#e0e0e0;}
-#related-products-row::-webkit-scrollbar-thumb{background:var(--orange);}
-</style>
-</body>
-</html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  var searchable = (p.name+' '+p.alias+' '+p.cat+' '+p.tags.join(' '))

@@ -2118,6 +2118,7 @@ var _currentPage = 'home';
 function goPage(id, _fromBack) {
   if (!_fromBack && _currentPage && _currentPage !== id) {
     _pageHistory.push(_currentPage);
+    history.pushState({ page: id }, '', '#' + id);
   }
   _currentPage = id;
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -2143,8 +2144,26 @@ function goPage(id, _fromBack) {
 function goBack() {
   if (_pageHistory.length === 0) return;
   var prev = _pageHistory.pop();
+  history.replaceState({ page: prev }, '', '#' + prev);
   goPage(prev, true);
 }
+
+// Wire browser back/forward gestures to the internal page stack
+window.addEventListener('popstate', function(e) {
+  if (e.state && e.state.page) {
+    goBack();
+  } else {
+    // Reached the very first entry — stay on home instead of leaving
+    history.pushState({ page: 'home' }, '', '#home');
+    goPage('home', true);
+  }
+});
+
+// Seed initial history state so the very first back press is catchable
+(function() {
+  var init = location.hash.replace('#','') || 'home';
+  history.replaceState({ page: init }, '', '#' + init);
+})();
 
 // ── Mobile Nav ────────────────────────────────────────────────────────────────
 function openMobileNav() {

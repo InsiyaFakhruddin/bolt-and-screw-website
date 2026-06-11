@@ -3446,4 +3446,112 @@ function _expandQuery(q) {
 }
 
 function _scoreProduct(p, tokens) {
-  var searchable = (p.name+' '+p.alias+' '+p.cat+' '+p.tags.join(' '))
+  var searchable = (p.name+' '+p.alias+' '+p.cat+' '+p.tags.join(' ')).toLowerCase();
+  var score = 0;
+  tokens.forEach(function(t){
+    if(!t) return;
+    if(searchable.indexOf(t)>-1) score += 2;           // exact token in any field
+    if(p.name.toLowerCase().indexOf(t)>-1) score += 3; // token in name = bonus
+    // partial match (at least 3 chars)
+    if(t.length >= 3){
+      if(searchable.split(' ').some(function(w){ return w.indexOf(t)>-1 || t.indexOf(w)>-1 && w.length>=3; })) score += 1;
+    }
+  });
+  return score;
+}
+
+function runSearch(query, context) {
+  /* context: 'products' (filter grid) or 'home' (go to products page) */
+  var q = (query || '').trim();
+  if(context === 'home'){
+    window._pendingSearch = q;
+    goPage('products');
+    setTimeout(function(){ runSearch(q,'products'); }, 80);
+    return;
+  }
+  /* Products page: filter cards */
+  var cards = document.querySelectorAll('#product-grid .product-card');
+  var countEl = document.getElementById('prod-count');
+  if(!q){
+    /* clear search: show all / re-apply cat filter */
+    cards.forEach(function(c){ c.style.display=''; });
+    var activeBtn = document.querySelector('.cat-filter-btn.active');
+    if(activeBtn) filterProducts(activeBtn);
+    return;
+  }
+  var tokens = _expandQuery(q);
+  /* Score each product */
+  var results = [];
+  SEARCH_CATALOG.forEach(function(p){
+    var sc = _scoreProduct(p, tokens);
+    if(sc > 0) results.push({slug: p.slug, score: sc});
+  });
+  var matchingSlugs = results.map(function(r){ return r.slug; });
+  var count = 0;
+  cards.forEach(function(c){
+    var onc = c.getAttribute('onclick') || '';
+    var m = onc.match(/openProduct\('([^']+)'/);
+    var slug = m ? m[1] : '';
+    var show = matchingSlugs.indexOf(slug) > -1;
+    c.style.display = show ? '' : 'none';
+    if(show) count++;
+  });
+  if(countEl) countEl.innerHTML = q
+    ? 'Showing <strong>'+count+'</strong> result'+(count!==1?'s':'')+' for "<em>'+q+'</em>"'
+    : 'Showing <strong>'+count+'</strong> product'+(count!==1?'s':'');
+  /* Reset cat filter active state */
+  if(q) document.querySelectorAll('.cat-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+}
+
+/* Called on page load if a pending search came from home */
+document.addEventListener('DOMContentLoaded', function(){
+  if(window._pendingSearch){ runSearch(window._pendingSearch,'products'); window._pendingSearch=''; }
+});
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+function _homeSearch() {
+  var q = document.getElementById('home-search-input').value.trim();
+  if(!q) { goPage('products'); return; }
+  window._pendingSearch = q;
+  goPage('products');
+  setTimeout(function(){
+    runSearch(q, 'products');
+    var inp = document.getElementById('products-search-input');
+    if(inp){ inp.value = q; var c=document.getElementById('products-search-clear'); if(c) c.classList.add('visible'); }
+  }, 100);
+}
+
+/* ── Dynamic related products ────────────────────────────────────────────── */
+function _buildRelatedProducts(currentSlug) {
+  var current = null;
+  for(var i=0;i<SEARCH_CATALOG.length;i++){
+    if(SEARCH_CATALOG[i].slug === currentSlug){ current = SEARCH_CATALOG[i]; break; }
+  }
+  if(!current) return [];
+
+  /* Score all other products by shared tags + same category */
+  var scored = [];
+  SEARCH_CATALOG.forEach(function(p){
+    if(p.slug === currentSlug) return;
+    var score = 0;
+    /* Same category → strong signal */
+    if(p.cat === current.cat) score += 4;
+    /* Shared tags */
+    current.tags.forEach(function(t){
+      if(p.tags.indexOf(t) > -1) score += 2;
+    });
+    /* Shared words in name/alias */
+    var cn = (current.name+' '+current.alias).toLowerCase();
+    var pn = (p.name+' '+p.alias).toLowerCase();
+    cn.split(' ').forEach(function(w){
+      if(w.length>3 && pn.indexOf(w)>-1) score += 1;
+    });
+    if(score > 0) scored.push({p:p, score:score});
+  });
+
+  scored.sort(function(a,b){ return b.score - a.score; });
+  return scored.slice(0,3).map(function(s){ return s.p; });
+}
+
+function _renderRelatedProducts(currentSlug) {
+  var _rph = 'https://placehold.co/400x320/f5f5f5/e868

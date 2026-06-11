@@ -34,7 +34,27 @@ ul,ol{list-style:none}
 .dev-banner span{color:var(--g500);font-weight:400;letter-spacing:.06em}
 
 /* PAGE SYSTEM */
-.page{display:none}.page.active{display:block}
+/* ── Page transitions ── */
+.page{display:none;opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .35s ease}
+.page.active{display:block}
+.page.page-visible{opacity:1;transform:translateY(0)}
+
+/* ── Scroll reveal ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── Hero stagger ── */
+.hero-anim{opacity:0;transform:translateY(24px)}
+.hero-anim.go{animation:hero-in .6s ease forwards}
+@keyframes hero-in{to{opacity:1;transform:translateY(0)}}
+
+/* ── Section underline draw ── */
+.section-label::before{transition:width .6s ease}
+.reveal:not(.visible) .section-label::before{width:0}
+
+/* ── Product card stagger ── */
+@keyframes card-in{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.product-card.card-animate{animation:card-in .4s ease forwards;opacity:0}
 
 /* NAVBAR */
 .navbar{background:var(--black);border-bottom:none;position:sticky;top:0;z-index:100}
@@ -791,10 +811,10 @@ footer{background:var(--black);border-top:var(--border)}
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow"><span class="eline"></span><span>Industrial Fasteners · Karachi</span></div>
-      <h1 class="hero-heading">WE SELL<br>WHAT<br><span class="accent">HOLDS</span><br>TOGETHER</h1>
-      <p class="hero-desc">Premium bolts, screws, nuts, washers &amp; anchors for construction, manufacturing and industrial applications. DIN · ANSI · ISO certified.</p>
-      <div class="hero-actions">
+      <div class="hero-eyebrow hero-anim" style="animation-delay:.1s"><span class="eline"></span><span>Industrial Fasteners · Karachi</span></div>
+      <h1 class="hero-heading hero-anim" style="animation-delay:.25s">WE SELL<br>WHAT<br><span class="accent">HOLDS</span><br>TOGETHER</h1>
+      <p class="hero-desc hero-anim" style="animation-delay:.42s">Premium bolts, screws, nuts, washers &amp; anchors for construction, manufacturing and industrial applications. DIN · ANSI · ISO certified.</p>
+      <div class="hero-actions hero-anim" style="animation-delay:.55s">
         <button class="btn-primary" onclick="goPage('products')">Browse Catalog <svg><use href="#i-arrow-r"/></svg></button>
       </div>
       <div class="hero-search">
@@ -845,15 +865,15 @@ footer{background:var(--black);border-top:var(--border)}
   </div>
 
   <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Product Varieties</div></div>
-    <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Clients Served</div></div>
+  <div class="stats-bar reveal">
+    <div class="stat-item"><div class="stat-num" data-target="50" data-suffix="+">0+</div><div class="stat-label">Product Varieties</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="100" data-suffix="+">0+</div><div class="stat-label">Clients Served</div></div>
     <div class="stat-item"><div class="stat-num">All</div><div class="stat-label">DIN / ANSI Grades</div></div>
     <div class="stat-item"><div class="stat-num">KHI</div><div class="stat-label">Serving Karachi</div></div>
   </div>
 
   <!-- FEATURED PRODUCTS -->
-  <section class="products-section">
+  <section class="products-section reveal">
     <div class="section-header">
       <h2>Featured Products</h2><div class="sh-accent"></div><div class="sh-line"></div>
       <button class="sh-action" onclick="goPage('products')">View All <svg><use href="#i-arrow-r"/></svg></button>
@@ -975,7 +995,7 @@ footer{background:var(--black);border-top:var(--border)}
   </section>
 
   <!-- INDUSTRIES -->
-  <section class="industries-section">
+  <section class="industries-section reveal">
     <div class="section-header">
       <h2 style="background:var(--orange)">Industries We Serve</h2><div class="sh-accent" style="background:#333"></div><div class="sh-line" style="border-color:#333"></div>
     </div>
@@ -992,7 +1012,7 @@ footer{background:var(--black);border-top:var(--border)}
   </section>
 
   <!-- WHY US -->
-  <section class="why-section">
+  <section class="why-section reveal">
     <div class="why-left">
       <div class="section-label">Why Choose Us</div>
       <h2 class="why-heading">QUALITY YOU CAN RELY ON</h2>
@@ -2134,20 +2154,33 @@ function goPage(id, _fromBack) {
     history.pushState({ page: id }, '', '#' + id);
   }
   _currentPage = id;
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Fade out all pages
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active', 'page-visible');
+  });
   const target = document.getElementById('page-' + id);
   if (target) {
     target.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    // Fade in after a tick
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        target.classList.add('page-visible');
+        // Stagger product cards when entering products page
+        if (id === 'products') {
+          staggerCards(target);
+        }
+        // Always re-run scroll reveal for the new page
+        initScrollReveal();
+      });
+    });
   }
-  // Update nav active state using onclick-passed page id
   document.querySelectorAll('.nav-link').forEach(l => {
     const onc = l.getAttribute('onclick') || '';
     const match = onc.match(/goPage\('([^']+)'/);
     l.classList.toggle('active', match && match[1] === id);
   });
   closeMobileNav();
-  // Show/hide back button (desktop: floating fixed; mobile: inline bc-back in breadcrumb)
   var bb = document.getElementById('global-back-btn');
   var hasBack = _pageHistory.length > 0;
   if (bb) bb.style.display = hasBack ? 'flex' : 'none';
@@ -2221,6 +2254,63 @@ function animateCounters() {
       el.textContent = current + suffix;
       if (current >= target) clearInterval(timer);
     }, 30);
+  });
+}
+
+// ── Scroll reveal (IntersectionObserver) ─────────────────────────────────────
+var _revealObserver = null;
+var _countObserver  = null;
+var _counted        = false;
+
+function initScrollReveal() {
+  if (_revealObserver) _revealObserver.disconnect();
+  _revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        _revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.page.active .reveal').forEach(function(el) {
+    _revealObserver.observe(el);
+  });
+
+  // Count-up observer — fires once when stats-bar enters view
+  if (!_counted) {
+    _countObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting && !_counted) {
+          _counted = true;
+          animateCounters();
+          _countObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    var sb = document.querySelector('.stats-bar');
+    if (sb) _countObserver.observe(sb);
+  }
+}
+
+// ── Stagger product cards ─────────────────────────────────────────────────────
+function staggerCards(page) {
+  var cards = (page || document).querySelectorAll('#product-grid .product-card:not([style*="display: none"])');
+  cards.forEach(function(c, i) {
+    c.classList.remove('card-animate');
+    c.style.animationDelay = '';
+  });
+  // Force reflow then re-add
+  void document.body.offsetHeight;
+  cards.forEach(function(c, i) {
+    c.classList.add('card-animate');
+    c.style.animationDelay = (i * 40) + 'ms';
+  });
+}
+
+// ── Hero stagger on load ──────────────────────────────────────────────────────
+function initHeroAnim() {
+  document.querySelectorAll('.hero-anim').forEach(function(el) {
+    el.classList.add('go');
   });
 }
 
@@ -2360,8 +2450,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearch();
   initNavScroll();
   initForms();
-  // Animate stats on load
-  setTimeout(animateCounters, 400);
+  // Fade in the initial active page
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      var activePage = document.querySelector('.page.active');
+      if (activePage) activePage.classList.add('page-visible');
+    });
+  });
+  // Hero text stagger
+  setTimeout(initHeroAnim, 80);
+  // Scroll reveal + count-up for home
+  setTimeout(initScrollReveal, 120);
 });
 
 
@@ -2397,6 +2496,47 @@ function syncSidebar(cb, cat) {
     var oc = c.getAttribute('onclick') || '';
     var m = oc.match(/openProduct\([^,]+,[^,]+,[^,]+,[^,]+,[^,]+,'([^']+)'/);
     if (m) c.setAttribute('data-grade', m[1].toLowerCase());
+  });
+})();
+
+// ── Mobile: auto-swap product image after 1.5s in view ────────────────────────
+(function(){
+  if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) return; // desktop only uses CSS hover
+  if (!('IntersectionObserver' in window)) return;
+
+  var timers = new WeakMap();
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var card = entry.target;
+      var main  = card.querySelector('.pimg-main');
+      var hover = card.querySelector('.pimg-hover');
+      if (!main || !hover) return;
+
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+        // Card well in view — start countdown to swap
+        if (!timers.has(card)) {
+          var t = setTimeout(function(){
+            hover.style.opacity = '1';
+            main.style.opacity  = '0';
+            timers.delete(card);
+          }, 1500);
+          timers.set(card, t);
+        }
+      } else {
+        // Card left view — cancel timer and reset
+        if (timers.has(card)) {
+          clearTimeout(timers.get(card));
+          timers.delete(card);
+        }
+        hover.style.opacity = '';
+        main.style.opacity  = '';
+      }
+    });
+  }, { threshold: 0.6 });
+
+  document.querySelectorAll('#product-grid .product-card').forEach(function(c){
+    observer.observe(c);
   });
 })();
 

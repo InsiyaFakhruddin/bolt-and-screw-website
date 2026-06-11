@@ -1243,7 +1243,7 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('csk-cut-screw','CSK Cut Screw','Bolts & Screws','DIN 7982 / ISO 7050','No. 4–No. 14 (2.9–6.3mm)','Carbon Steel / SS 201 / SS 304','Countersunk Self-Tapping Screw')">
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('csk-cut-screw','Self Tapping Screw','Bolts & Screws','DIN 7982 / ISO 7050','No. 4–No. 14 (2.9–6.3mm)','Carbon Steel / SS 201 / SS 304','Self-Tapping Screw')">
         <div class="product-img-area">
           <span class="pcat-tag">Bolts &amp; Screws</span>
           <img class="pimg-main" src="images/products/csk-cut-screw-1.png" alt="CSK Cut Screw" loading="lazy"
@@ -1252,8 +1252,8 @@ footer{background:var(--black);border-top:var(--border)}
                onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=CSK+CUT+SCREW+VIEW+2')" />
         </div>
         <div class="product-body">
-          <div class="product-name">CSK Cut Screw</div>
-          <div class="product-meta">Countersunk Self-Tapping Screw</div>
+          <div class="product-name">Self Tapping Screw</div>
+          <div class="product-meta">Self-Tapping Screw</div>
           <div class="product-spec">DIN 7982 &nbsp;·&nbsp; No. 4–No. 14 (2.9–6.3mm)</div>
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
@@ -1270,36 +1270,6 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">CSK Machine Screw</div>
           <div class="product-meta">Countersunk Machine Screw</div>
           <div class="product-spec">DIN 963 / DIN 965 &nbsp;·&nbsp; M3–M10</div>
-          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
-        </div>
-      </div>
-      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('frame-fixing-screw','Frame Fixing Screw','Bolts & Screws','—','6×60 – 10×200mm','Carbon Steel / SS','Window / Door Frame Anchor Screw')">
-        <div class="product-img-area">
-          <span class="pcat-tag">Bolts &amp; Screws</span>
-          <img class="pimg-main" src="images/products/frame-fixing-screw-1.png" alt="Frame Fixing Screw" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FRAME+FIXING+SCREW+VIEW+1')" />
-          <img class="pimg-hover" src="images/products/frame-fixing-screw-2.png" alt="Frame Fixing Screw view 2" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FRAME+FIXING+SCREW+VIEW+2')" />
-        </div>
-        <div class="product-body">
-          <div class="product-name">Frame Fixing Screw</div>
-          <div class="product-meta">Window / Door Frame Anchor Screw</div>
-          <div class="product-spec">— &nbsp;·&nbsp; 6×60 – 10×200mm</div>
-          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
-        </div>
-      </div>
-      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('metal-frame-fixing-screw','Metal Frame Fixing Screw','Bolts & Screws','DIN 7504-K / ISO 15480','Ø6–8mm, 40–160mm','Carbon Steel','Heavy-Duty Metal Frame Screw')">
-        <div class="product-img-area">
-          <span class="pcat-tag">Bolts &amp; Screws</span>
-          <img class="pimg-main" src="images/products/metal-frame-fixing-screw-1.png" alt="Metal Frame Fixing Screw" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=METAL+FRAME+FIXING+SCREW+VIEW+1')" />
-          <img class="pimg-hover" src="images/products/metal-frame-fixing-screw-2.png" alt="Metal Frame Fixing Screw view 2" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=METAL+FRAME+FIXING+SCREW+VIEW+2')" />
-        </div>
-        <div class="product-body">
-          <div class="product-name">Metal Frame Fixing Screw</div>
-          <div class="product-meta">Heavy-Duty Metal Frame Screw</div>
-          <div class="product-spec">DIN 7504-K &nbsp;·&nbsp; Ø6–8mm, 40–160mm</div>
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
@@ -2549,7 +2519,6 @@ var PRODUCT_SPECS = {
     specs: [
       { k:'Size Range',    v:'M3 – M10  (common: M3, M4, M5, M6, M8)' },
       { k:'Length Range',  v:'6mm – 80mm' },
-      { k:'Grade',         v:'4.8 / 8.8 / SS 201 / SS 304' },
       { k:'Material',      v:'Mild Steel / Stainless Steel' },
       { k:'Finish',        v:'Zinc Plated / Self-Colour / Plain' },
       { k:'Drive',         v:'Slotted (DIN 963) / Phillips / Pozi (DIN 965)' },
@@ -2587,8 +2556,8 @@ var PRODUCT_SPECS = {
     desc: 'Headless socket set screw used to secure a collar, gear, or pulley onto a shaft. Available in flat point (DIN 913), cup point (DIN 916), cone point (DIN 914), and dog point (DIN 915) variants.',
     badges: ['DIN 913', 'DIN 916', 'ISO 4026', 'ISO 4029'],
     specs: [
-      { k:'Size Range',    v:'M3 – M20  (common: M4, M5, M6, M8, M10, M12)' },
-      { k:'Length Range',  v:'3mm – 60mm' },
+      { k:'Size Range',    v:'M2 – M16  (common: M3, M4, M5, M6, M8, M10)' },
+      { k:'Length Range',  v:'6mm – 50mm' },
       { k:'Grade',         v:'12.9 / 45H' },
       { k:'Material',      v:'Alloy Steel' },
       { k:'Finish',        v:'Black Oxide / Self-Colour' },
@@ -3037,10 +3006,8 @@ var SEARCH_CATALOG = [
   {slug:'socket-cap-screw',    name:'Socket Head Cap Screw',       alias:'Allen Bolt',                         cat:'Bolts & Screws',       tags:['allen','socket','cap','screw','din912','8.8','12.9','ss304','stainless']},
   {slug:'button-head-allen-bolt',name:'Button Head Allen Bolt',    alias:'Button Head Socket Cap Screw',       cat:'Bolts & Screws',       tags:['button','head','allen','socket','din7380','8.8','10.9','low profile','flat']},
   {slug:'csk-allen-bolt',      name:'CSK Allen Bolt',              alias:'Countersunk Socket Cap Screw',       cat:'Bolts & Screws',       tags:['countersunk','csk','allen','socket','flush','din7991','8.8','12.9']},
-  {slug:'csk-cut-screw',       name:'CSK Cut Screw',               alias:'Countersunk Self-Tapping Screw',     cat:'Bolts & Screws',       tags:['countersunk','csk','self tapping','wood','sheet metal','cut','self-tapping']},
+  {slug:'csk-cut-screw',       name:'Self Tapping Screw',          alias:'Self-Tapping Screw',                cat:'Bolts & Screws',       tags:['self tapping','wood','sheet metal','cut','self-tapping','csk']},
   {slug:'csk-machine-screw',   name:'CSK Machine Screw',           alias:'Countersunk Machine Screw',          cat:'Bolts & Screws',       tags:['countersunk','csk','machine','screw','din963','965','m3','m12','flat head']},
-  {slug:'frame-fixing-screw',  name:'Frame Fixing Screw',          alias:'Window Door Frame Anchor Screw',     cat:'Bolts & Screws',       tags:['frame','fixing','window','door','anchor','concrete','masonry','long']},
-  {slug:'metal-frame-fixing-screw',name:'Metal Frame Fixing Screw',alias:'Heavy-Duty Frame Screw',            cat:'Bolts & Screws',       tags:['metal','frame','heavy','duty','fixing','steel']},
   {slug:'grub-screw',          name:'Grub Screw',                  alias:'Set Screw / Socket Set Screw',       cat:'Bolts & Screws',       tags:['grub','set screw','headless','din913','din916','12.9','shaft','keyway']},
   {slug:'lifting-eye-bolt',    name:'Lifting Eye Bolt',            alias:'Eye Bolt / Ring Bolt',               cat:'Bolts & Screws',       tags:['lifting','eye','ring','rigging','load','din580','crane','hook']},
   {slug:'long-eye-bolt',       name:'Long Eye Bolt',               alias:'Extended Shank Eye Bolt',            cat:'Bolts & Screws',       tags:['long','eye','extended','shank','ring','lifting','rigging']},

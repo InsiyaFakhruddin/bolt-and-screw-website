@@ -668,8 +668,14 @@ footer{background:var(--black);border-top:var(--border)}
 .mob-filter-toggle.active svg{color:var(--orange);}
 
 /* Mobile filter panel */
-.mob-filter-panel{display:none;background:var(--g50);border-bottom:var(--border);padding:16px;overflow:hidden;}
+.mob-filter-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.32);z-index:47;}
+.mob-filter-overlay.open{display:block;}
+.mob-filter-panel{display:none;background:var(--g50);border-bottom:var(--border);padding:16px;overflow:hidden;position:relative;z-index:48;}
 .mob-filter-panel.open{display:block;}
+.mob-filter-actions{display:flex;gap:8px;margin-top:14px;padding-top:12px;border-top:var(--border);}
+.mob-filter-apply-btn{flex:1;background:var(--orange);color:#fff;border:none;padding:10px 0;font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border-radius:4px;}
+.mob-filter-apply-btn:hover{background:var(--orange-d);}
+.mob-filter-reset-btn{background:var(--g100);color:var(--black);border:1px solid var(--g200);padding:10px 14px;font-size:.72rem;font-weight:700;cursor:pointer;border-radius:4px;}
 .mob-filter-inner{display:flex;flex-direction:column;gap:16px;}
 .mob-filter-section{}
 .mob-filter-heading{font-size:.65rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
@@ -1180,20 +1186,21 @@ footer{background:var(--black);border-top:var(--border)}
   </div>
 
   <!-- Mobile Filter Panel -->
+  <div class="mob-filter-overlay" id="mob-filter-overlay" onclick="closeMobFilterReset()"></div>
   <div class="mob-filter-panel" id="mob-filter-panel">
     <div class="mob-filter-inner">
       <div class="mob-filter-section">
         <div class="mob-filter-heading">CATEGORY</div>
         <div class="mob-filter-chips">
-          <label class="mob-chip active" id="mfc-all"><input type="radio" name="mob-cat" value="all" checked onchange="mobCatFilter('all',this)"> All (37)</label>
-          <label class="mob-chip" id="mfc-bolts"><input type="radio" name="mob-cat" value="Bolts & Screws" onchange="mobCatFilter('Bolts & Screws',this)"> Bolts &amp; Screws</label>
-          <label class="mob-chip" id="mfc-nuts"><input type="radio" name="mob-cat" value="Nuts" onchange="mobCatFilter('Nuts',this)"> Nuts</label>
-          <label class="mob-chip" id="mfc-washers"><input type="radio" name="mob-cat" value="Washers" onchange="mobCatFilter('Washers',this)"> Washers</label>
-          <label class="mob-chip" id="mfc-steel"><input type="radio" name="mob-cat" value="Structural Steel" onchange="mobCatFilter('Structural Steel',this)"> Structural Steel</label>
-          <label class="mob-chip" id="mfc-anchors"><input type="radio" name="mob-cat" value="Anchors" onchange="mobCatFilter('Anchors',this)"> Anchors</label>
-          <label class="mob-chip" id="mfc-rods"><input type="radio" name="mob-cat" value="Rods & Bars" onchange="mobCatFilter('Rods & Bars',this)"> Rods &amp; Bars</label>
-          <label class="mob-chip" id="mfc-sets"><input type="radio" name="mob-cat" value="Sets" onchange="mobCatFilter('Sets',this)"> Sets</label>
-          <label class="mob-chip" id="mfc-solar"><input type="radio" name="mob-cat" value="Solar Equipment" onchange="mobCatFilter('Solar Equipment',this)"> Solar Equipment</label>
+          <label class="mob-chip active" id="mfc-all"><input type="radio" name="mob-cat" value="all" checked onchange="mobCatStage('all',this)"> All (37)</label>
+          <label class="mob-chip" id="mfc-bolts"><input type="radio" name="mob-cat" value="Bolts & Screws" onchange="mobCatStage('Bolts & Screws',this)"> Bolts &amp; Screws</label>
+          <label class="mob-chip" id="mfc-nuts"><input type="radio" name="mob-cat" value="Nuts" onchange="mobCatStage('Nuts',this)"> Nuts</label>
+          <label class="mob-chip" id="mfc-washers"><input type="radio" name="mob-cat" value="Washers" onchange="mobCatStage('Washers',this)"> Washers</label>
+          <label class="mob-chip" id="mfc-steel"><input type="radio" name="mob-cat" value="Structural Steel" onchange="mobCatStage('Structural Steel',this)"> Structural Steel</label>
+          <label class="mob-chip" id="mfc-anchors"><input type="radio" name="mob-cat" value="Anchors" onchange="mobCatStage('Anchors',this)"> Anchors</label>
+          <label class="mob-chip" id="mfc-rods"><input type="radio" name="mob-cat" value="Rods & Bars" onchange="mobCatStage('Rods & Bars',this)"> Rods &amp; Bars</label>
+          <label class="mob-chip" id="mfc-sets"><input type="radio" name="mob-cat" value="Sets" onchange="mobCatStage('Sets',this)"> Sets</label>
+          <label class="mob-chip" id="mfc-solar"><input type="radio" name="mob-cat" value="Solar Equipment" onchange="mobCatStage('Solar Equipment',this)"> Solar Equipment</label>
         </div>
       </div>
       <div class="mob-filter-section">
@@ -1206,6 +1213,10 @@ footer{background:var(--black);border-top:var(--border)}
           <label class="mob-chip" id="mfm-ht"><input type="radio" name="mob-mat" value="High Tensile" onchange="mobMatFilter('High Tensile',this)"> High Tensile</label>
           <label class="mob-chip" id="mfm-hdg"><input type="radio" name="mob-mat" value="Galvanised" onchange="mobMatFilter('Galvanised',this)"> Galvanised</label>
         </div>
+      </div>
+      <div class="mob-filter-actions">
+        <button class="mob-filter-reset-btn" onclick="closeMobFilterReset()">Reset</button>
+        <button class="mob-filter-apply-btn" onclick="applyMobFilter()">Apply Filter</button>
       </div>
     </div>
   </div>
@@ -2700,13 +2711,13 @@ function filterProducts(btn) {
   if (cat === 'all') {
     _activeCats.clear();
   } else {
-    if (_activeCats.has(cat)) {
-      _activeCats.delete(cat);
+    // Single-select: clicking an active cat deselects it; clicking a new cat switches to it
+    if (_activeCats.size === 1 && _activeCats.has(cat)) {
+      _activeCats.clear();
     } else {
+      _activeCats.clear();
       _activeCats.add(cat);
     }
-    // If nothing left selected, revert to all
-    if (_activeCats.size === 0) _activeCats.clear();
   }
   _applyFilter();
 }
@@ -2771,22 +2782,69 @@ function syncSidebar(cb, cat) {
 // ── Mobile filter panel ────────────────────────────────────────────────────────
 var _mobActiveMat = 'all';
 
+var _mobPendingCat = 'all';
+
 function toggleMobFilter() {
-  var panel = document.getElementById('mob-filter-panel');
-  var btn   = document.getElementById('mob-filter-toggle');
-  var open  = panel.classList.toggle('open');
+  var panel   = document.getElementById('mob-filter-panel');
+  var overlay = document.getElementById('mob-filter-overlay');
+  var btn     = document.getElementById('mob-filter-toggle');
+  var open    = panel.classList.toggle('open');
   btn.classList.toggle('active', open);
+  overlay.classList.toggle('open', open);
+  if (open) {
+    // Sync chips to current active state when opening
+    _mobPendingCat = _activeCats.size === 1 ? _activeCats.values().next().value : 'all';
+    _syncMobCatChips(_mobPendingCat);
+  }
+}
+
+function _syncMobCatChips(cat) {
+  document.querySelectorAll('#mob-filter-panel [name="mob-cat"]').forEach(function(r) {
+    var lbl = r.closest('.mob-chip');
+    if (r.value === cat) { r.checked = true; lbl.classList.add('active'); }
+    else { r.checked = false; lbl.classList.remove('active'); }
+  });
+}
+
+function mobCatStage(cat, input) {
+  // Stage selection only — does NOT apply the filter yet
+  _mobPendingCat = cat;
+  document.querySelectorAll('#mob-filter-panel [name="mob-cat"] ~ *').forEach(function() {});
+  var chips = document.querySelectorAll('#mob-filter-panel .mob-filter-chips:first-of-type .mob-chip');
+  chips.forEach(function(c) { c.classList.remove('active'); });
+  if (input) input.closest('.mob-chip').classList.add('active');
+}
+
+function applyMobFilter() {
+  // Apply the staged category and close
+  var btn = document.querySelector('.cat-filter-btn[data-cat="' + _mobPendingCat + '"]');
+  if (btn) filterProducts(btn);
+  applyMatFilter(_mobActiveMat);
+  _closeMobPanel();
+}
+
+function closeMobFilterReset() {
+  // Discard selection, reset to All, close
+  _mobPendingCat = 'all';
+  _activeCats.clear();
+  _applyFilter();
+  _syncMobCatChips('all');
+  _closeMobPanel();
+}
+
+function _closeMobPanel() {
+  var panel   = document.getElementById('mob-filter-panel');
+  var overlay = document.getElementById('mob-filter-overlay');
+  var btn     = document.getElementById('mob-filter-toggle');
+  panel.classList.remove('open');
+  overlay.classList.remove('open');
+  btn.classList.remove('active');
 }
 
 function mobCatFilter(cat, input) {
-  // Sync category bar
-  var btn = document.querySelector('.cat-filter-btn[data-cat="' + cat + '"]');
-  if (btn) filterProducts(btn);
-  // Update chip active state
-  document.querySelectorAll('#mob-filter-panel .mob-filter-chips:first-of-type .mob-chip').forEach(function(c){ c.classList.remove('active'); });
-  if (input) input.closest('.mob-chip').classList.add('active');
-  // Re-apply material filter on top
-  applyMatFilter(_mobActiveMat);
+  // Legacy — kept for any residual calls; delegates to stage + immediate apply
+  mobCatStage(cat, input);
+  applyMobFilter();
 }
 
 function mobMatFilter(mat, input) {

@@ -902,7 +902,7 @@ footer{background:var(--black);border-top:var(--border)}
     <div class="cat-item active" onclick="goToCategory('all')"><div class="cat-icon"><svg><use href="#cat-all"/></svg></div><div class="cat-label">All</div><span class="cat-count">50+</span></div>
     <div class="cat-item" onclick="goToCategory('Bolts &amp; Screws')"><div class="cat-icon"><svg><use href="#cat-bolt"/></svg></div><div class="cat-label">Bolts &amp; Screws</div><span class="cat-count">22</span></div>
     <div class="cat-item" onclick="goToCategory('Nuts')"><div class="cat-icon"><svg><use href="#cat-nut"/></svg></div><div class="cat-label">Nuts</div><span class="cat-count">10</span></div>
-    <div class="cat-item" onclick="goToCategory('Washers &amp; SS Hardware')"><div class="cat-icon"><svg><use href="#cat-washer"/></svg></div><div class="cat-label">Washers</div><span class="cat-count">8</span></div>
+    <div class="cat-item" onclick="goToCategory('Washers')"><div class="cat-icon"><svg><use href="#cat-washer"/></svg></div><div class="cat-label">Washers</div><span class="cat-count">2</span></div>
     <div class="cat-item" onclick="goToCategory('Anchors')"><div class="cat-icon"><svg><use href="#cat-anchor"/></svg></div><div class="cat-label">Anchors</div><span class="cat-count">7</span></div>
   </div>
 
@@ -977,9 +977,9 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" onclick="openProduct('ss-fastener-set','SS Nuts Bolts Washers','Washers & SS Hardware','DIN 125/934/933','M4–M36','SS 304 / SS 316','Stainless Steel Fastener Set')">
+      <div class="product-card" onclick="openProduct('ss-fastener-set','SS Nuts Bolts Washers','Sets','DIN 125/934/933','M4–M36','SS 304 / SS 316','Stainless Steel Fastener Set')">
         <div class="product-img-area">
-          <span class="pcat-tag">Washers &amp; SS Hardware</span>
+          <span class="pcat-tag">Sets</span>
           <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/ss-fastener-set-1.webp" alt="SS Nuts Bolts Washers" loading="lazy"
                onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SS+FASTENER+SET+VIEW+1')" />
           <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/ss-fastener-set-2.webp" alt="SS Nuts Bolts Washers view 2" loading="lazy"
@@ -1157,20 +1157,22 @@ footer{background:var(--black);border-top:var(--border)}
     </div>
     <div class="navbar-inner" style="height:auto;overflow:visible;">
       <h1 class="page-heading">OUR PRODUCT <span class="accent">CATALOG</span></h1>
-      <p style="color:var(--g400);max-width:560px;font-size:.93rem;margin-top:.5rem;line-height:1.7;">34 products across 6 categories. All items available for bulk inquiry — contact us for pricing &amp; availability.</p>
+      <p style="color:var(--g400);max-width:560px;font-size:.93rem;margin-top:.5rem;line-height:1.7;">37 products across 7 categories. All items available for bulk inquiry — contact us for pricing &amp; availability.</p>
     </div>
   </div>
 
   <!-- Category filter bar -->
   <div class="cat-filter-bar">
     <div class="cat-filter-scroll">
-      <button class="cat-filter-btn active" data-cat="all" onclick="filterProducts(this)">All <span class="cat-count">(34)</span></button>
+      <button class="cat-filter-btn active" data-cat="all" onclick="filterProducts(this)">All <span class="cat-count">(37)</span></button>
       <button class="cat-filter-btn" data-cat="Bolts & Screws" onclick="filterProducts(this)">Bolts &amp; Screws <span class="cat-count">(13)</span></button>
-      <button class="cat-filter-btn" data-cat="Nuts" onclick="filterProducts(this)">Nuts <span class="cat-count">(5)</span></button>
-      <button class="cat-filter-btn" data-cat="Washers & SS Hardware" onclick="filterProducts(this)">Washers &amp; SS <span class="cat-count">(1)</span></button>
+      <button class="cat-filter-btn" data-cat="Nuts" onclick="filterProducts(this)">Nuts <span class="cat-count">(6)</span></button>
+      <button class="cat-filter-btn" data-cat="Washers" onclick="filterProducts(this)">Washers <span class="cat-count">(2)</span></button>
       <button class="cat-filter-btn" data-cat="Structural Steel" onclick="filterProducts(this)">Structural Steel <span class="cat-count">(1)</span></button>
       <button class="cat-filter-btn" data-cat="Anchors" onclick="filterProducts(this)">Anchors <span class="cat-count">(13)</span></button>
       <button class="cat-filter-btn" data-cat="Rods & Bars" onclick="filterProducts(this)">Rods &amp; Bars <span class="cat-count">(1)</span></button>
+      <button class="cat-filter-btn" data-cat="Sets" onclick="filterProducts(this)">Sets <span class="cat-count">(1)</span></button>
+      <button class="cat-filter-btn" data-cat="Solar Equipment" onclick="filterProducts(this)">Solar Equipment <span class="cat-count">(0)</span></button>
     </div>
     <button class="mob-filter-toggle" id="mob-filter-toggle" onclick="toggleMobFilter()" title="Filter products">
       <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
@@ -1183,13 +1185,15 @@ footer{background:var(--black);border-top:var(--border)}
       <div class="mob-filter-section">
         <div class="mob-filter-heading">CATEGORY</div>
         <div class="mob-filter-chips">
-          <label class="mob-chip active" id="mfc-all"><input type="radio" name="mob-cat" value="all" checked onchange="mobCatFilter('all',this)"> All (34)</label>
+          <label class="mob-chip active" id="mfc-all"><input type="radio" name="mob-cat" value="all" checked onchange="mobCatFilter('all',this)"> All (37)</label>
           <label class="mob-chip" id="mfc-bolts"><input type="radio" name="mob-cat" value="Bolts & Screws" onchange="mobCatFilter('Bolts & Screws',this)"> Bolts &amp; Screws</label>
           <label class="mob-chip" id="mfc-nuts"><input type="radio" name="mob-cat" value="Nuts" onchange="mobCatFilter('Nuts',this)"> Nuts</label>
-          <label class="mob-chip" id="mfc-washers"><input type="radio" name="mob-cat" value="Washers & SS Hardware" onchange="mobCatFilter('Washers & SS Hardware',this)"> Washers &amp; SS</label>
+          <label class="mob-chip" id="mfc-washers"><input type="radio" name="mob-cat" value="Washers" onchange="mobCatFilter('Washers',this)"> Washers</label>
           <label class="mob-chip" id="mfc-steel"><input type="radio" name="mob-cat" value="Structural Steel" onchange="mobCatFilter('Structural Steel',this)"> Structural Steel</label>
           <label class="mob-chip" id="mfc-anchors"><input type="radio" name="mob-cat" value="Anchors" onchange="mobCatFilter('Anchors',this)"> Anchors</label>
           <label class="mob-chip" id="mfc-rods"><input type="radio" name="mob-cat" value="Rods & Bars" onchange="mobCatFilter('Rods & Bars',this)"> Rods &amp; Bars</label>
+          <label class="mob-chip" id="mfc-sets"><input type="radio" name="mob-cat" value="Sets" onchange="mobCatFilter('Sets',this)"> Sets</label>
+          <label class="mob-chip" id="mfc-solar"><input type="radio" name="mob-cat" value="Solar Equipment" onchange="mobCatFilter('Solar Equipment',this)"> Solar Equipment</label>
         </div>
       </div>
       <div class="mob-filter-section">
@@ -1214,13 +1218,15 @@ footer{background:var(--black);border-top:var(--border)}
       <aside class="sidebar">
         <div class="filter-group">
           <div class="fg-title">CATEGORY</div>
-          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="all" checked onchange="syncSidebar(this,'all')"> <span>All Products (34)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="all" checked onchange="syncSidebar(this,'all')"> <span>All Products (37)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Bolts &amp; Screws" onchange="syncSidebar(this,'Bolts &amp; Screws')"> <span>Bolts &amp; Screws (13)</span></label>
-          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Nuts" onchange="syncSidebar(this,'Nuts')"> <span>Nuts (5)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Nuts" onchange="syncSidebar(this,'Nuts')"> <span>Nuts (6)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Anchors" onchange="syncSidebar(this,'Anchors')"> <span>Anchors (13)</span></label>
-          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Washers &amp; SS Hardware" onchange="syncSidebar(this,'Washers &amp; SS Hardware')"> <span>Washers &amp; SS Hardware (1)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Washers" onchange="syncSidebar(this,'Washers')"> <span>Washers (2)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Structural Steel" onchange="syncSidebar(this,'Structural Steel')"> <span>Structural Steel (1)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Rods &amp; Bars" onchange="syncSidebar(this,'Rods &amp; Bars')"> <span>Rods &amp; Bars (1)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Sets" onchange="syncSidebar(this,'Sets')"> <span>Sets (1)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Solar Equipment" onchange="syncSidebar(this,'Solar Equipment')"> <span>Solar Equipment (0)</span></label>
         </div>
         <div class="filter-group">
           <div class="fg-title">MATERIAL</div>
@@ -1247,7 +1253,7 @@ footer{background:var(--black);border-top:var(--border)}
               </button>
             </div>
           </div>
-          <div class="products-count" id="prod-count">Showing <strong>34</strong> products</div>
+          <div class="products-count" id="prod-count">Showing <strong>37</strong> products</div>
         </div>
         <div class="product-grid grid3" id="product-grid">
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('hex-bolt','Hexagonal Bolt','Bolts & Screws','DIN 933 / 931','M6–M64','4.8 / 8.8 / 10.9 / SS 304','Hex Head Bolt')">
@@ -1445,21 +1451,7 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Nuts" onclick="openProduct('ss-nut','SS Nut (Stainless Steel Nut)','Nuts','DIN 934 / ISO 3506','M3–M36','SS 201 / SS 304 (A2-70) / SS 316 (A4-80)','SS Hex Nut')">
-        <div class="product-img-area">
-          <span class="pcat-tag">Nuts</span>
-          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/ss-nut-1.webp" alt="Ss Nut (Stainless Steel Nut)" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SS+NUT+VIEW+1')" />
-          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/ss-nut-2.webp" alt="Ss Nut (Stainless Steel Nut) view 2" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SS+NUT+VIEW+2')" />
-        </div>
-        <div class="product-body">
-          <div class="product-name">SS Nut (Stainless Steel Nut)</div>
-          <div class="product-meta">SS Hex Nut / A2 Nut</div>
-          <div class="product-spec">DIN 934 / ISO 3506 &nbsp;·&nbsp; M3–M36</div>
-          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
-        </div>
-      </div>
+
       <div class="product-card" data-cat="Nuts" onclick="openProduct('lock-nut','Lock Nut (Nylon Insert)','Nuts','DIN 985 / ISO 7042','M4–M36','6 / 8 / SS 201 / SS 304 / SS 316','Nylon Lock Nut / Nyloc')">
         <div class="product-img-area">
           <span class="pcat-tag">Nuts</span>
@@ -1475,7 +1467,7 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Nuts" onclick="openProduct('cap-nut','Cap Nut','Nuts','DIN 1587 / ISO 8483','M4–M24','6 / 8 / SS 201 / SS 304','Acorn Nut / Dome Nut')">
+      <div class="product-card" data-cat="Nuts" onclick="openProduct('cap-nut','Cap Nut','Nuts','Acorn Nut / Dome Nut','DIN 1587','M4–M20','MS / SS 304')">
         <div class="product-img-area">
           <span class="pcat-tag">Nuts</span>
           <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/cap-nut-1.webp" alt="Cap Nut" loading="lazy"
@@ -1486,7 +1478,24 @@ footer{background:var(--black);border-top:var(--border)}
         <div class="product-body">
           <div class="product-name">Cap Nut</div>
           <div class="product-meta">Acorn Nut / Dome Nut</div>
-          <div class="product-spec">DIN 1587 &nbsp;·&nbsp; M4–M24</div>
+          <div class="product-spec">Cap Nut / DIN 1587 &nbsp;·&nbsp; M4–M20 &nbsp;·&nbsp; MS · SS 304</div>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="Nuts" onclick="openProduct('flange-nut','Collar / Flange Nut','Nuts','Flange Nut / Collar Nut','DIN 6923','M5 – M24','MS / GI / SS 304')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/flange-nut-1.webp" alt="Collar / Flange Nut" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=COLLAR+%2F+FLANGE+NUT')" />
+          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/flange-nut-2.webp" alt="Collar / Flange Nut view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=COLLAR+%2F+FLANGE+NUT')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Collar / Flange Nut</div>
+          <div class="pcat-tag">Nuts</div>
+          <div class="product-meta">DIN 6923 &nbsp;·&nbsp; M5–M24</div>
+          <div class="product-spec">MS / GI / SS 304</div>
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
@@ -1505,9 +1514,24 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Washers & SS Hardware" onclick="openProduct('ss-fastener-set','SS Nuts Bolts Washers','Washers & SS Hardware','DIN 931/933/934/125','M4–M36','SS 201 / SS 304 (A2) / SS 316 (A4)','Stainless Steel Fastener Set')">
+      <div class="product-card" data-cat="Nuts" onclick="openProduct('wing-nut','Wing Nut','Nuts','DIN 315 / ISO 1168','M4–M20','MS / Galvanised / SS 304','Butterfly Nut / Thumb Nut')">
         <div class="product-img-area">
-          <span class="pcat-tag">Washers &amp; SS Hardware</span>
+          <span class="pcat-tag">Nuts</span>
+          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/wing-nut-1.webp" alt="Wing Nut" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=WING+NUT+VIEW+1')" />
+          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/wing-nut-2.webp" alt="Wing Nut view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=WING+NUT+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Wing Nut</div>
+          <div class="product-meta">Butterfly Nut / Thumb Nut</div>
+          <div class="product-spec">DIN 315 / ISO 1168 &nbsp;·&nbsp; M4–M20</div>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Sets" onclick="openProduct('ss-fastener-set','SS Nuts Bolts Washers','Sets','DIN 931/933/934/125','M4–M36','SS 201 / SS 304 (A2) / SS 316 (A4)','Stainless Steel Fastener Set')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Sets</span>
           <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/ss-fastener-set-1.webp" alt="SS Nuts Bolts Washers" loading="lazy"
                onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SS+FASTENER+SET+VIEW+1')" />
           <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/ss-fastener-set-2.webp" alt="SS Nuts Bolts Washers view 2" loading="lazy"
@@ -1520,7 +1544,37 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Structural Steel" onclick="openProduct('c-channel','C Channel','Structural Steel','—','25–150mm','MS (Mild Steel)','Mild Steel C Channel / Strut Channel')">
+      <div class="product-card" data-cat="Washers" onclick="openProduct('plain-washer','Plain Washer','Washers','DIN 125 / ISO 7089','M3–M64','MS / GI / SS 304 / SS 316','Flat Washer / Form A Washer')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Washers</span>
+          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/plain-washer-1.webp" alt="Plain Washer" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=PLAIN+WASHER+VIEW+1')" />
+          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/plain-washer-2.webp" alt="Plain Washer view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=PLAIN+WASHER+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Plain Washer</div>
+          <div class="product-meta">Flat Washer / Form A Washer</div>
+          <div class="product-spec">DIN 125 / ISO 7089 &nbsp;·&nbsp; M3–M64</div>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Washers" onclick="openProduct('spring-washer','Spring Washer','Washers','DIN 127 / BS 1802','M3–M36','Spring Steel / SS 304','Split Lock Washer / Lock Washer')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Washers</span>
+          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/spring-washer-1.webp" alt="Spring Washer" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=SPRING+WASHER+VIEW+1')" />
+          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/spring-washer-2.webp" alt="Spring Washer view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=SPRING+WASHER+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Spring Washer</div>
+          <div class="product-meta">Split Lock Washer / Lock Washer</div>
+          <div class="product-spec">DIN 127 / BS 1802 &nbsp;·&nbsp; M3–M36</div>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+            <div class="product-card" data-cat="Structural Steel" onclick="openProduct('c-channel','C Channel','Structural Steel','—','25–150mm','MS (Mild Steel)','Mild Steel C Channel / Strut Channel')">
         <div class="product-img-area">
           <span class="pcat-tag">Structural Steel</span>
           <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/c-channel-1.webp" alt="C Channel" loading="lazy"
@@ -2991,18 +3045,6 @@ var PRODUCT_SPECS = {
       { k:'Standard',      v:'DIN 934 / DIN 439 / ISO 4032 / ISO 4033' }
     ]
   },
-  'ss-nut': {
-    desc: 'Stainless steel hexagonal nut offering excellent corrosion resistance for marine, food-grade, chemical, and outdoor environments.',
-    badges: ['DIN 934', 'ISO 4032', 'ISO 3506'],
-    specs: [
-      { k:'Size Range',    v:'M3 – M36  (common: M4, M6, M8, M10, M12, M16)' },
-      { k:'Grade',         v:'A2-70 (SS 201 / SS 304) / A4-80 (SS 316)' },
-      { k:'Material',      v:'SS 201 / SS 304 / SS 316' },
-      { k:'Finish',        v:'Self-Colour (Bright / Passivated)' },
-      { k:'Thread',        v:'Metric (M)' },
-      { k:'Standard',      v:'DIN 934 / ISO 4032 / ISO 3506' }
-    ]
-  },
   'lock-nut': {
     desc: 'Nylon insert locking nut (Nyloc) that resists vibration-induced loosening. The nylon collar creates prevailing torque to maintain clamp load under dynamic and shock loads.',
     badges: ['DIN 985', 'DIN 982', 'ISO 7042'],
@@ -3017,15 +3059,28 @@ var PRODUCT_SPECS = {
     ]
   },
   'cap-nut': {
-    desc: 'Domed cap nut (acorn / dome nut) that covers and protects exposed bolt ends. Used in furniture, railings, playground equipment, and decorative metalwork.',
-    badges: ['DIN 1587', 'ISO 8483'],
+    badges: ['DIN 1587'],
+    desc: 'Dome-shaped nut that covers the protruding threaded end of a bolt for safety, aesthetics, and corrosion protection. Also called Acorn Nut or Dome Nut. Used in furniture, automotive, electrical panels, and anywhere a finished appearance is required.',
     specs: [
-      { k:'Size Range',    v:'M4 – M24  (common: M5, M6, M8, M10, M12)' },
-      { k:'Grade',         v:'6 / 8 / SS 201 / SS 304' },
-      { k:'Material',      v:'Mild Steel / Stainless Steel' },
-      { k:'Finish',        v:'Zinc Plated / Bright Chrome / Self-Colour' },
-      { k:'Thread',        v:'Metric (M)' },
-      { k:'Standard',      v:'DIN 1587 / ISO 8483' }
+      {k:'Standard', v:'DIN 1587'},
+      {k:'Size Range', v:'M4 – M20'},
+      {k:'Style', v:'High Type (DIN 1587) / Low Type'},
+      {k:'Material', v:'MS / SS 304 / SS 316 / Brass'},
+      {k:'Finish', v:'Plain / Zinc Plated / Nickel Plated'},
+      {k:'Also Known As', v:'Acorn Nut, Dome Nut, Crown Nut'},
+    ]
+  },
+
+  'flange-nut': {
+    badges: ['DIN 6923','ISO 4161'],
+    desc: 'Hexagonal nut with an integrated wide flange at the base that acts as a built-in washer, distributing the clamping load and providing greater bearing surface. The serrated flange variant offers additional vibration resistance. Widely used in automotive, structural, and general engineering.',
+    specs: [
+      {k:'Standard', v:'DIN 6923 / ISO 4161'},
+      {k:'Size Range', v:'M5 – M24'},
+      {k:'Type', v:'Plain Flange / Serrated Flange'},
+      {k:'Material', v:'MS / Galvanised / SS 304 / SS 316'},
+      {k:'Finish', v:'Plain / Zinc Plated / Hot-Dip Galvanised'},
+      {k:'Also Known As', v:'Flange Nut, Collar Nut, Serrated Flange Nut'},
     ]
   },
   'eye-nut': {
@@ -3040,6 +3095,18 @@ var PRODUCT_SPECS = {
       { k:'Standard',      v:'DIN 582 / ISO 1139' }
     ]
   },
+  'wing-nut': {
+    badges: ['DIN 315','ISO 1168'],
+    desc: 'Hand-tightened nut with two large wing-shaped projections for finger grip, enabling quick assembly and removal without tools. Common in scaffolding, formwork, shuttering, pipe fittings, and any application requiring frequent hand adjustment.',
+    specs: [
+      {k:'Standard', v:'DIN 315 / ISO 1168'},
+      {k:'Size Range', v:'M4 – M20'},
+      {k:'Type', v:'American Type / Square Type'},
+      {k:'Material', v:'MS (Mild Steel) / Galvanised / SS 201 / SS 304'},
+      {k:'Finish', v:'Plain / Zinc Plated / Hot-Dip Galvanised'},
+      {k:'Also Known As', v:'Butterfly Nut, Thumb Nut'},
+    ]
+  },
   'ss-fastener-set': {
     desc: 'Complete stainless steel fastener set — hex bolt + hex nut + flat washer. Ideal for projects requiring a full corrosion-resistant fastening solution in one order.',
     badges: ['DIN 931/933', 'DIN 934', 'DIN 125', 'ISO 3506'],
@@ -3051,6 +3118,31 @@ var PRODUCT_SPECS = {
       { k:'Finish',        v:'Self-Colour (Bright / Passivated)' },
       { k:'Thread',        v:'Metric (M)' },
       { k:'Standard',      v:'DIN 931/933 (bolt) / DIN 934 (nut) / DIN 125 (washer) / ISO 3506' }
+    ]
+  },
+  'plain-washer': {
+    badges: ['DIN 125','ISO 7089'],
+    desc: 'Flat washer used to distribute bolt or nut load over a larger surface area, preventing surface damage and reducing loosening. Available in Form A (normal OD) and Form B (large OD). Essential component for almost every bolted joint.',
+    specs: [
+      {k:'Standard', v:'DIN 125 / ISO 7089 / DIN 9021'},
+      {k:'Size Range', v:'M3 – M64'},
+      {k:'Outer Diameter', v:'7mm – 125mm'},
+      {k:'Thickness', v:'0.5mm – 8mm'},
+      {k:'Material', v:'MS / Galvanised / SS 201 / SS 304 / SS 316 / Brass'},
+      {k:'Finish', v:'Plain / Zinc Plated / Hot-Dip Galvanised'},
+      {k:'Also Known As', v:'Flat Washer, Form A Washer, Penny Washer'},
+    ]
+  },
+  'spring-washer': {
+    badges: ['DIN 127','BS 1802'],
+    desc: 'Split helical spring washer that bites into both the nut and bearing surface to resist vibration-induced loosening. The split ends create a spring force that maintains clamp load. Available in light, medium, and heavy sections.',
+    specs: [
+      {k:'Standard', v:'DIN 127 / BS 1802'},
+      {k:'Size Range', v:'M3 – M36'},
+      {k:'Section', v:'Light / Medium (Standard) / Heavy'},
+      {k:'Material', v:'Spring Steel / SS 304 / SS 316'},
+      {k:'Finish', v:'Self-Colour / Zinc Plated / Black Phosphate'},
+      {k:'Also Known As', v:'Split Lock Washer, Lock Washer, Helical Spring Washer'},
     ]
   },
   'c-channel': {
@@ -3387,10 +3479,13 @@ var SEARCH_CATALOG = [
   {slug:'carriage-bolt',       name:'Carriage Bolt',               alias:'Coach Bolt',                         cat:'Bolts & Screws',       tags:['carriage','coach','round head','square neck','din603','4.6','8.8','wood']},
   {slug:'hex-nut',             name:'Hex Nut',                     alias:'Hexagon Nut',                        cat:'Nuts',                 tags:['nut','hex','hexagon','din934','m3','m64','zinc','galvanized','standard']},
   {slug:'lock-nut',            name:'Lock Nut',                    alias:'Nylon Insert Lock Nut / Nyloc',      cat:'Nuts',                 tags:['lock','nylon','nyloc','prevailing','torque','din985','locking','vibration','self-locking']},
-  {slug:'ss-nut',              name:'SS Nut',                      alias:'Stainless Steel Nut / A2 Nut',       cat:'Nuts',                 tags:['stainless','ss','a2','a4','304','316','rust','corrosion','hex nut']},
-  {slug:'cap-nut',             name:'Cap Nut',                     alias:'Acorn Nut / Dome Nut',               cat:'Nuts',                 tags:['cap','acorn','dome','decorative','din1587','cover','bolt end']},
+  {slug:'cap-nut',             name:'Cap Nut',                     alias:'Acorn Nut / Dome Nut',               cat:'Nuts',                 tags:['cap','acorn','dome','crown','cover','protective','din1587']},
+  {slug:'flange-nut',           name:'Collar / Flange Nut',         alias:'Flange Nut / Collar Nut',            cat:'Nuts',                 tags:['flange','collar','serrated','din6923','bearing','washer','built-in']},
   {slug:'eye-nut',             name:'Eye Nut',                     alias:'Lifting Eye Nut / Ring Nut',         cat:'Nuts',                 tags:['eye','ring','lifting','rigging','din582','crane','load','hook']},
-  {slug:'ss-fastener-set',     name:'SS Nuts Bolts Washers',       alias:'Stainless Steel Fastener Set',       cat:'Washers & SS Hardware',tags:['stainless','ss','304','316','set','kit','combination','nuts','bolts','washers','din125','din934']},
+  {slug:'wing-nut', name:'Wing Nut', alias:'Butterfly Nut / Thumb Nut', cat:'Nuts', tags:['wing','butterfly','thumb','hand tighten','din315','scaffolding','formwork']},
+  {slug:'ss-fastener-set',     name:'SS Nuts Bolts Washers',       alias:'Stainless Steel Fastener Set',       cat:'Sets',                 tags:['stainless','ss','304','316','set','kit','combination','nuts','bolts','washers','din125','din934']},
+  {slug:'plain-washer', name:'Plain Washer', alias:'Flat Washer / Form A Washer', cat:'Washers', tags:['plain','flat','washer','din125','form a','penny','load distribution']},
+  {slug:'spring-washer', name:'Spring Washer', alias:'Split Lock Washer / Lock Washer', cat:'Washers', tags:['spring','split','lock washer','helical','din127','vibration','anti-loosening']},
   {slug:'c-channel',           name:'C Channel',                   alias:'Mild Steel C Channel / Strut Channel',cat:'Structural Steel',   tags:['channel','c channel','strut','unistrut','cable tray','support','steel','mild','structural']},
   {slug:'wedge-anchor',        name:'Wedge Anchor',                alias:'Through Bolt / Wedge Anchor',        cat:'Anchors',             tags:['wedge','anchor','concrete','masonry','din529','heavy','load','expansion','through bolt']},
   {slug:'sleeve-anchor',       name:'Sleeve Anchor',               alias:'Expansion Sleeve Bolt',              cat:'Anchors',             tags:['sleeve','expansion','anchor','hollow','masonry','brick','din7715','zinc alloy']},
@@ -3637,7 +3732,8 @@ function goPageWithProduct(cat, name, std, size, grade) {
   var catMap = {
     'Bolts & Screws'       : 'Bolts & Screws',
     'Nuts'                 : 'Nuts',
-    'Washers & SS Hardware': 'Washers',
+    'Washers'              : 'Washers',
+    'Sets'                 : 'Multiple / Mixed Order',
     'Structural Steel'     : 'Multiple / Mixed Order',
     'Anchors'              : 'Anchors & Studs',
     'Rods & Bars'          : 'Threaded Rods'

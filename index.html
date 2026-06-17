@@ -1163,7 +1163,7 @@ footer{background:var(--black);border-top:var(--border)}
     </div>
     <div class="navbar-inner" style="height:auto;overflow:visible;">
       <h1 class="page-heading">OUR PRODUCT <span class="accent">CATALOG</span></h1>
-      <p style="color:var(--g400);max-width:560px;font-size:.93rem;margin-top:.5rem;line-height:1.7;">42 products across 8 categories. All items available for bulk inquiry — contact us for pricing &amp; availability.</p>
+      <p style="color:var(--g400);max-width:560px;font-size:.93rem;margin-top:.5rem;line-height:1.7;">42 products across 9 categories. All items available for bulk inquiry — contact us for pricing &amp; availability.</p>
     </div>
   </div>
 
@@ -1175,9 +1175,10 @@ footer{background:var(--black);border-top:var(--border)}
       <button class="cat-filter-btn" data-cat="Nuts" onclick="filterProducts(this)">Nuts <span class="cat-count">(6)</span></button>
       <button class="cat-filter-btn" data-cat="Washers" onclick="filterProducts(this)">Washers <span class="cat-count">(2)</span></button>
       <button class="cat-filter-btn" data-cat="Structural Steel" onclick="filterProducts(this)">Structural Steel <span class="cat-count">(1)</span></button>
-      <button class="cat-filter-btn" data-cat="Anchors" onclick="filterProducts(this)">Anchors <span class="cat-count">(13)</span></button>
+      <button class="cat-filter-btn" data-cat="Anchors" onclick="filterProducts(this)">Anchors <span class="cat-count">(9)</span></button>
       <button class="cat-filter-btn" data-cat="Rods & Bars" onclick="filterProducts(this)">Rods &amp; Bars <span class="cat-count">(1)</span></button>
       <button class="cat-filter-btn" data-cat="Sets" onclick="filterProducts(this)">Sets <span class="cat-count">(1)</span></button>
+      <button class="cat-filter-btn" data-cat="Epoxy Anchors" onclick="filterProducts(this)">Epoxy Anchors <span class="cat-count">(4)</span></button>
       <button class="cat-filter-btn" data-cat="Solar Equipment" onclick="filterProducts(this)">Solar Equipment <span class="cat-count">(5)</span></button>
     </div>
     <button class="mob-filter-toggle" id="mob-filter-toggle" onclick="toggleMobFilter()" title="Filter products">
@@ -1195,6 +1196,7 @@ footer{background:var(--black);border-top:var(--border)}
           <label class="mob-chip active" id="mfc-all"><input type="radio" name="mob-cat" value="all" checked onchange="mobCatStage('all',this)"> All (42)</label>
           <label class="mob-chip" id="mfc-bolts"><input type="radio" name="mob-cat" value="Bolts & Screws" onchange="mobCatStage('Bolts & Screws',this)"> Bolts &amp; Screws</label>
           <label class="mob-chip" id="mfc-nuts"><input type="radio" name="mob-cat" value="Nuts" onchange="mobCatStage('Nuts',this)"> Nuts</label>
+          <label class="mob-chip" id="mfc-epoxy"><input type="radio" name="mob-cat" value="Epoxy Anchors" onchange="mobCatStage('Epoxy Anchors',this)"> Epoxy Anchors</label>
           <label class="mob-chip" id="mfc-washers"><input type="radio" name="mob-cat" value="Washers" onchange="mobCatStage('Washers',this)"> Washers</label>
           <label class="mob-chip" id="mfc-steel"><input type="radio" name="mob-cat" value="Structural Steel" onchange="mobCatStage('Structural Steel',this)"> Structural Steel</label>
           <label class="mob-chip" id="mfc-anchors"><input type="radio" name="mob-cat" value="Anchors" onchange="mobCatStage('Anchors',this)"> Anchors</label>
@@ -1232,7 +1234,8 @@ footer{background:var(--black);border-top:var(--border)}
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="all" checked onchange="syncSidebar(this,'all')"> <span>All Products (42)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Bolts &amp; Screws" onchange="syncSidebar(this,'Bolts &amp; Screws')"> <span>Bolts &amp; Screws (13)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Nuts" onchange="syncSidebar(this,'Nuts')"> <span>Nuts (6)</span></label>
-          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Anchors" onchange="syncSidebar(this,'Anchors')"> <span>Anchors (13)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Anchors" onchange="syncSidebar(this,'Anchors')"> <span>Anchors (9)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Epoxy Anchors" onchange="syncSidebar(this,'Epoxy Anchors')"> <span>Epoxy Anchors (4)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Washers" onchange="syncSidebar(this,'Washers')"> <span>Washers (2)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Structural Steel" onchange="syncSidebar(this,'Structural Steel')"> <span>Structural Steel (1)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Rods &amp; Bars" onchange="syncSidebar(this,'Rods &amp; Bars')"> <span>Rods &amp; Bars (1)</span></label>
@@ -1705,9 +1708,9 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Anchors" onclick="openProduct('chemical-anchor','Chemical Anchor','Anchors','—','M8–M30','Epoxy / Vinylester','Injectable Resin Anchor')">
+      <div class="product-card" data-cat="Epoxy Anchors" onclick="openProduct('chemical-anchor','Chemical Anchor','Epoxy Anchors','—','M8–M30','Epoxy / Vinylester','Injectable Resin Anchor')">
         <div class="product-img-area">
-          <span class="pcat-tag">Anchors</span>
+          <span class="pcat-tag">Epoxy Anchors</span>
           <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/chemical-anchor-1.webp" alt="Chemical Anchor" loading="lazy"
                onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=CHEMICAL+ANCHOR+VIEW+1')" />
           <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/chemical-anchor-2.webp" alt="Chemical Anchor view 2" loading="lazy"
@@ -1720,9 +1723,9 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Anchors" onclick="openProduct('fischer-epoxy','Fischer Epoxy','Anchors','—','M8–M30','Fischer Epoxy Resin','Fischer Brand Epoxy Anchor')">
+      <div class="product-card" data-cat="Epoxy Anchors" onclick="openProduct('fischer-epoxy','Fischer Epoxy','Epoxy Anchors','—','M8–M30','Fischer Epoxy Resin','Fischer Brand Epoxy Anchor')">
         <div class="product-img-area">
-          <span class="pcat-tag">Anchors</span>
+          <span class="pcat-tag">Epoxy Anchors</span>
           <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/fischer-epoxy-1.webp" alt="Fischer Epoxy" loading="lazy"
                onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FISCHER+EPOXY+VIEW+1')" />
           <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/fischer-epoxy-2.webp" alt="Fischer Epoxy view 2" loading="lazy"
@@ -1735,24 +1738,24 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Anchors" onclick="openProduct('fixcher-epoxy','Fixcher Epoxy','Anchors','—','M8–M30','Epoxy Resin','Fischer/Fixcher Epoxy Anchor')">
+      <div class="product-card" data-cat="Epoxy Anchors" onclick="openProduct('fixcher-epoxy','Magic Epoxy','Epoxy Anchors','Part A + Part B','M8–M30','Epoxy Resin + Amine Hardener','Magic Epoxy Anchor / 2-Component Epoxy')">
         <div class="product-img-area">
-          <span class="pcat-tag">Anchors</span>
-          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/fixcher-epoxy-1.webp" alt="Fixcher Epoxy" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FIXCHER+EPOXY+VIEW+1')" />
-          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/fixcher-epoxy-2.webp" alt="Fixcher Epoxy view 2" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FIXCHER+EPOXY+VIEW+2')" />
+          <span class="pcat-tag">Epoxy Anchors</span>
+          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/fixcher-epoxy-1.webp" alt="Magic Epoxy" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=MAGIC+EPOXY+VIEW+1')" />
+          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/fixcher-epoxy-2.webp" alt="Magic Epoxy view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=MAGIC+EPOXY+VIEW+2')" />
         </div>
         <div class="product-body">
-          <div class="product-name">Fixcher Epoxy</div>
-          <div class="product-meta">Fischer/Fixcher Epoxy Anchor</div>
+          <div class="product-name">Magic Epoxy</div>
+          <div class="product-meta">Magic Epoxy Anchor</div>
           <div class="product-spec">— &nbsp;·&nbsp; M8–M30</div>
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Anchors" onclick="openProduct('epoxy-local','Epoxy Local','Anchors','—','M8–M30','Epoxy Resin (Local)','Local Epoxy Anchor')">
+      <div class="product-card" data-cat="Epoxy Anchors" onclick="openProduct('epoxy-local','Epoxy Local','Epoxy Anchors','—','M8–M30','Epoxy Resin (Local)','Local Epoxy Anchor')">
         <div class="product-img-area">
-          <span class="pcat-tag">Anchors</span>
+          <span class="pcat-tag">Epoxy Anchors</span>
           <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/epoxy-local-1.webp" alt="Epoxy Local" loading="lazy"
                onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=EPOXY+LOCAL+VIEW+1')" />
           <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/epoxy-local-2.webp" alt="Epoxy Local view 2" loading="lazy"
@@ -3404,14 +3407,20 @@ var PRODUCT_SPECS = {
     ]
   },
   'fixcher-epoxy': {
-    desc: 'Fixcher brand epoxy injection anchor — a cost-effective alternative to Fischer for high-load chemical anchoring in concrete and masonry on standard construction projects.',
-    badges: [],
+    badges: ['2-Component','Part A + Part B'],
+    desc: 'Magic Epoxy is a two-component, high-strength chemical anchoring system consisting of Part A (epoxy resin) and Part B (amine hardener). When dispensed through the static mixing nozzle the two components react to form a rigid, rock-solid bond between the anchor rod and the substrate. Suitable for heavy-duty structural anchoring of threaded rods, rebar, and bolts into concrete, brick, and masonry.',
     specs: [
-      { k:'Rod Size',      v:'M8 – M30  (common: M10, M12, M16, M20)' },
-      { k:'Cartridge',     v:'150ml / 300ml / 380ml' },
-      { k:'Resin Type',    v:'Epoxy / Vinylester' },
+      { k:'System',        v:'2-Component Epoxy — Part A (Resin) + Part B (Hardener)' },
+      { k:'Resin (Part A)', v:'Bisphenol-A Epoxy Resin with inorganic fillers' },
+      { k:'Hardener (Part B)', v:'Amine-based curing agent; controls setting speed and final strength' },
+      { k:'Mix Ratio',     v:'1:1 by volume (dispensed via static mixing nozzle)' },
+      { k:'Rod Size',      v:'M8 – M30 (common: M10, M12, M16, M20)' },
+      { k:'Cartridge Size', v:'150ml / 300ml / 380ml' },
+      { k:'Gel Time',      v:'~8 min at +20°C (longer at lower temps)' },
+      { k:'Full Cure',     v:'24–48 hrs at +20°C' },
       { k:'Install Temp.', v:'+5°C to +40°C' },
-      { k:'Standard',      v:'Proprietary / ETA-equivalent testing' }
+      { k:'Substrate',     v:'Cracked & Uncracked Concrete / Brick / Stone Masonry' },
+      { k:'Standard',      v:'ETA-equivalent / ASTM C881 / EN 1504-6' },
     ]
   },
   'epoxy-local': {
@@ -3697,10 +3706,10 @@ var SEARCH_CATALOG = [
   {slug:'ss-rawl-bolt',        name:'SS Rawl Bolt',                alias:'SS Fix Bolt / SS Rawal Bolt',        cat:'Anchors',             tags:['stainless','ss','304','rawl','rawal','fix','expansion','concrete','wall']},
   {slug:'pipe-anchor',         name:'Pipe Anchor',                 alias:'Pipe Clamp Anchor',                  cat:'Anchors',             tags:['pipe','anchor','clamp','expansion','ms','carbon','fixing']},
   {slug:'rawalplug',           name:'Rawalplug',                   alias:'Plastic Wall Plug / Nylon Rawlplug', cat:'Anchors',             tags:['rawlplug','wall plug','nylon','plastic','dowel','drill','masonry','brick','wall']},
-  {slug:'chemical-anchor',     name:'Chemical Anchor',             alias:'Injectable Resin Anchor',            cat:'Anchors',             tags:['chemical','epoxy','resin','injectable','vinylester','high load','rebar','heavy','concrete']},
-  {slug:'fischer-epoxy',       name:'Fischer Epoxy',               alias:'Fischer Brand Epoxy Anchor',         cat:'Anchors',             tags:['fischer','epoxy','resin','brand','anchor','concrete','heavy']},
-  {slug:'fixcher-epoxy',       name:'Fixcher Epoxy',               alias:'Fischer Fixcher Epoxy Anchor',       cat:'Anchors',             tags:['fixcher','fischer','epoxy','resin','anchor','concrete']},
-  {slug:'epoxy-local',         name:'Epoxy Local',                 alias:'Local Epoxy Anchor',                 cat:'Anchors',             tags:['epoxy','local','resin','anchor','concrete','chemical','affordable']},
+  {slug:'chemical-anchor',     name:'Chemical Anchor',             alias:'Injectable Resin Anchor',            cat:'Epoxy Anchors',             tags:['chemical','epoxy','resin','injectable','vinylester','high load','rebar','heavy','concrete']},
+  {slug:'fischer-epoxy',       name:'Fischer Epoxy',               alias:'Fischer Brand Epoxy Anchor',         cat:'Epoxy Anchors',             tags:['fischer','epoxy','resin','brand','anchor','concrete','heavy']},
+  {slug:'fixcher-epoxy',       name:'Magic Epoxy',                 alias:'Magic Epoxy Anchor',                 cat:'Epoxy Anchors',             tags:['magic','epoxy','resin','anchor','concrete','fixcher']},
+  {slug:'epoxy-local',         name:'Epoxy Local',                 alias:'Local Epoxy Anchor',                 cat:'Epoxy Anchors',             tags:['epoxy','local','resin','anchor','concrete','chemical','affordable']},
   {slug:'fischer',             name:'Fischer',                     alias:'Fischer Brand Anchor Range',         cat:'Anchors',             tags:['fischer','brand','anchor','range','concrete','masonry','all type']},
   {slug:'eye-nut-anchor',      name:'Eye Nut Anchor',              alias:'Anchoring Eye Nut',                  cat:'Anchors',             tags:['eye','nut','anchor','ring','lifting','anchoring']},
   {slug:'solar-mid-clamp-ubolt',      name:'Solar Panel Mid Clamp U Bolt',       alias:'Mid Clamp U-Bolt / C Channel Clamp',    cat:'Solar Equipment', tags:['solar','mid','clamp','u-bolt','c channel','purlin','ms','galvanised','ss304']},

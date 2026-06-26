@@ -1248,8 +1248,8 @@ footer{background:var(--black);border-top:var(--border)}
   <!-- Category filter bar -->
   <div class="cat-filter-bar">
     <div class="cat-filter-scroll">
-      <button class="cat-filter-btn active" data-cat="all" onclick="filterProducts(this)">All <span class="cat-count">(42)</span></button>
-      <button class="cat-filter-btn" data-cat="Bolts & Screws" onclick="filterProducts(this)">Bolts &amp; Screws <span class="cat-count">(13)</span></button>
+      <button class="cat-filter-btn active" data-cat="all" onclick="filterProducts(this)">All <span class="cat-count">(43)</span></button>
+      <button class="cat-filter-btn" data-cat="Bolts & Screws" onclick="filterProducts(this)">Bolts &amp; Screws <span class="cat-count">(14)</span></button>
       <button class="cat-filter-btn" data-cat="Nuts" onclick="filterProducts(this)">Nuts <span class="cat-count">(6)</span></button>
       <button class="cat-filter-btn" data-cat="Washers" onclick="filterProducts(this)">Washers <span class="cat-count">(2)</span></button>
       <button class="cat-filter-btn" data-cat="Structural Steel" onclick="filterProducts(this)">Structural Steel <span class="cat-count">(1)</span></button>
@@ -1271,7 +1271,7 @@ footer{background:var(--black);border-top:var(--border)}
       <div class="mob-filter-section">
         <div class="mob-filter-heading">CATEGORY</div>
         <div class="mob-filter-chips">
-          <label class="mob-chip active" id="mfc-all"><input type="radio" name="mob-cat" value="all" checked onchange="mobCatStage('all',this)"> All (42)</label>
+          <label class="mob-chip active" id="mfc-all"><input type="radio" name="mob-cat" value="all" checked onchange="mobCatStage('all',this)"> All (43)</label>
           <label class="mob-chip" id="mfc-bolts"><input type="radio" name="mob-cat" value="Bolts & Screws" onchange="mobCatStage('Bolts & Screws',this)"> Bolts &amp; Screws</label>
           <label class="mob-chip" id="mfc-nuts"><input type="radio" name="mob-cat" value="Nuts" onchange="mobCatStage('Nuts',this)"> Nuts</label>
           <label class="mob-chip" id="mfc-epoxy"><input type="radio" name="mob-cat" value="Epoxy Anchors" onchange="mobCatStage('Epoxy Anchors',this)"> Epoxy Anchors</label>
@@ -1309,8 +1309,8 @@ footer{background:var(--black);border-top:var(--border)}
       <aside class="sidebar">
         <div class="filter-group">
           <div class="fg-title">CATEGORY</div>
-          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="all" checked onchange="syncSidebar(this,'all')"> <span>All Products (42)</span></label>
-          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Bolts &amp; Screws" onchange="syncSidebar(this,'Bolts &amp; Screws')"> <span>Bolts &amp; Screws (13)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="all" checked onchange="syncSidebar(this,'all')"> <span>All Products (43)</span></label>
+          <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Bolts &amp; Screws" onchange="syncSidebar(this,'Bolts &amp; Screws')"> <span>Bolts &amp; Screws (14)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Nuts" onchange="syncSidebar(this,'Nuts')"> <span>Nuts (6)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Anchors" onchange="syncSidebar(this,'Anchors')"> <span>Anchors (8)</span></label>
           <label class="filter-opt"><input type="checkbox" class="filter-check" data-cat="Epoxy Anchors" onchange="syncSidebar(this,'Epoxy Anchors')"> <span>Epoxy Anchors (5)</span></label>
@@ -1345,7 +1345,7 @@ footer{background:var(--black);border-top:var(--border)}
               </button>
             </div>
           </div>
-          <div class="products-count" id="prod-count">Showing <strong>42</strong> products</div>
+          <div class="products-count" id="prod-count">Showing <strong>43</strong> products</div>
         </div>
         <div class="product-grid grid3" id="product-grid">
       <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('hex-bolt','Hexagonal Bolt','Bolts & Screws','DIN 933 / 931','M6–M64','4.8 / 8.8 / 10.9 / SS 304','Hex Head Bolt')">
@@ -1435,6 +1435,21 @@ footer{background:var(--black);border-top:var(--border)}
           <div class="product-name">CSK Machine Screw</div>
           <div class="product-meta">Countersunk Machine Screw</div>
           <div class="product-spec">DIN 963 / DIN 965 &nbsp;·&nbsp; M3–M10</div>
+          <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <div class="product-card" data-cat="Bolts & Screws" onclick="openProduct('round-head-machine-screw','Round Head Machine Screw','Bolts & Screws','DIN 85 / DIN 7985','M2–M10','4.8 / 8.8 / SS 304','Pan Head Machine Screw')">
+        <div class="product-img-area">
+          <span class="pcat-tag">Bolts &amp; Screws</span>
+          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/round-head-machine-screw-1.webp" alt="Round Head Machine Screw" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=ROUND+HEAD+SCREW+VIEW+1')" />
+          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/round-head-machine-screw-2.webp" alt="Round Head Machine Screw view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=ROUND+HEAD+SCREW+VIEW+2')" />
+        </div>
+        <div class="product-body">
+          <div class="product-name">Round Head Machine Screw</div>
+          <div class="product-meta">Pan Head Machine Screw</div>
+          <div class="product-spec">DIN 85 / DIN 7985 &nbsp;·&nbsp; M2–M10</div>
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
@@ -1846,18 +1861,18 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
-      <div class="product-card" data-cat="Epoxy Anchors" onclick="openProduct('fischer','Fischer','Epoxy Anchors','—','M6–M30','Various (Fischer)','Fischer Brand Anchor Range')">
+      <div class="product-card" data-cat="Epoxy Anchors" onclick="openProduct('fischer','Fischer FIS Express','Epoxy Anchors','ETA','M8–M24','Fischer FIS Express Injection Mortar','Fast-Cure Fischer Epoxy Anchor')">
         <div class="product-img-area">
           <span class="pcat-tag">Epoxy Anchors</span>
-          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/fischer-1.webp" alt="Fischer" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FISCHER+VIEW+1')" />
-          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/fischer-2.webp" alt="Fischer view 2" loading="lazy"
-               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FISCHER+VIEW+2')" />
+          <img class="pimg-main" onload="this.classList.add('loaded')" src="images/products/fischer-1.webp" alt="Fischer FIS Express" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/111111/e8681a?text=FISCHER+FIS+EXPRESS+VIEW+1')" />
+          <img class="pimg-hover" onload="this.classList.add('loaded')" src="images/products/fischer-2.webp" alt="Fischer FIS Express view 2" loading="lazy"
+               onerror="imgFallback(this,'https://placehold.co/400x320/1a1a1a/e8681a?text=FISCHER+FIS+EXPRESS+VIEW+2')" />
         </div>
         <div class="product-body">
-          <div class="product-name">Fischer</div>
-          <div class="product-meta">Fischer Brand Anchor Range</div>
-          <div class="product-spec">— &nbsp;·&nbsp; M6–M30</div>
+          <div class="product-name">Fischer FIS Express</div>
+          <div class="product-meta">Fast-Cure Fischer Epoxy Anchor</div>
+          <div class="product-spec">ETA &nbsp;·&nbsp; M8–M24</div>
           <button class="btn-quote-sm" onclick="requestQuoteFromCard(this)">Request Quote <svg width="12" height="12"><use href="#i-arrow-r"/></svg></button>
         </div>
       </div>
@@ -3168,6 +3183,20 @@ var PRODUCT_SPECS = {
       { k:'Standard',      v:'DIN 963 / DIN 965 / ISO 2009 / ISO 7046' }
     ]
   },
+  'round-head-machine-screw': {
+    desc: 'Round (pan) head machine screw with a wide, dome-shaped head and large bearing surface. Available with slotted (DIN 85) or Phillips cross-drive (DIN 7985) for use in tapped holes in metal, plastic, and light alloy components.',
+    badges: ['DIN 85', 'DIN 7985', 'ISO 1580', 'ISO 7045'],
+    specs: [
+      { k:'Size Range',    v:'M2 – M10  (common: M3, M4, M5, M6, M8)' },
+      { k:'Length Range',  v:'5mm – 60mm' },
+      { k:'Grade',         v:'4.8 / 8.8 / SS 201 / SS 304 / SS 316' },
+      { k:'Material',      v:'Carbon Steel / Stainless Steel / Brass' },
+      { k:'Finish',        v:'Zinc Plated (BZP) / Self-Colour / Plain' },
+      { k:'Drive',         v:'Slotted (DIN 85 / ISO 1580) / Phillips PH2 (DIN 7985 / ISO 7045) / Pozi' },
+      { k:'Thread',        v:'Metric (M) — fully threaded' },
+      { k:'Standard',      v:'DIN 85 / DIN 7985 / ISO 1580 / ISO 7045' }
+    ]
+  },
   'frame-fixing-screw': {
     desc: 'Hex head concrete/masonry screw for fixing window and door frames directly into concrete and masonry without plugs. Self-tapping thread bites into a pre-drilled hole.',
     badges: ['DIN 571'],
@@ -3534,15 +3563,18 @@ var PRODUCT_SPECS = {
     ]
   },
   'fischer': {
-    desc: 'Fischer brand anchor range — covering nylon frame plugs, bolt anchors (FBN), stud anchors (FAZ II), and hammer-set anchors (FH II) for concrete, masonry, and hollow base materials.',
-    badges: ['ETA', 'ICC-ES'],
+    desc: 'Fischer FIS Express 390 S — a fast-curing, styrene-free hybrid injection mortar for high-strength post-installed anchoring in concrete and masonry. Significantly shorter cure times than standard epoxy, making it suitable for time-critical construction projects. ETA-approved for both cracked and uncracked concrete.',
+    badges: ['ETA', 'ICC-ES', 'FIS Express'],
     specs: [
-      { k:'Size Range',    v:'M6 – M30 (varies by anchor type)' },
-      { k:'Types Available',v:'FBN Wedge Anchor / FAZ II Bolt Anchor / FH II Stud Anchor / UX Nylon Frame Plug' },
-      { k:'Material',      v:'Zinc Alloy / Carbon Steel / SS 304 / Nylon' },
-      { k:'Finish',        v:'Zinc Plated / Electro-Galvanized / Stainless Self-Colour' },
-      { k:'Approvals',     v:'ETA / ICC-ES ESR' },
-      { k:'Standard',      v:'ETA / ICC-ES' }
+      { k:'Rod Size',      v:'M8 – M24  (common: M10, M12, M16, M20)' },
+      { k:'Cartridge',     v:'390ml (FIS Express 390 S)' },
+      { k:'Resin Type',    v:'Styrene-Free Hybrid Vinylester / Epoxy Mortar' },
+      { k:'Gel Time',      v:'~3–4 min at +20°C  (fast-cure vs ~8 min for standard epoxy)' },
+      { k:'Full Cure',     v:'20–60 min at +20°C (temp dependent)' },
+      { k:'Install Temp.', v:'+0°C to +40°C  |  Service temp up to +80°C' },
+      { k:'Substrate',     v:'Cracked & Uncracked Concrete / Brick / Stone Masonry' },
+      { k:'Approvals',     v:'ETA 11/0415 / ICC-ES ESR' },
+      { k:'Standard',      v:'ETA / ICC-ES / EN 1504-6' }
     ]
   },
   'eye-nut-anchor': {
@@ -3780,6 +3812,7 @@ var SEARCH_CATALOG = [
   {slug:'csk-allen-bolt',      name:'CSK Allen Bolt',              alias:'Countersunk Socket Cap Screw',       cat:'Bolts & Screws',       tags:['countersunk','csk','allen','socket','flush','din7991','8.8','12.9']},
   {slug:'csk-cut-screw',       name:'Self Tapping Screw',          alias:'Self-Tapping Screw',                cat:'Bolts & Screws',       tags:['self tapping','wood','sheet metal','cut','self-tapping','csk']},
   {slug:'csk-machine-screw',   name:'CSK Machine Screw',           alias:'Countersunk Machine Screw',          cat:'Bolts & Screws',       tags:['countersunk','csk','machine','screw','din963','965','m3','m12','flat head']},
+  {slug:'round-head-machine-screw', name:'Round Head Machine Screw', alias:'Pan Head Machine Screw',            cat:'Bolts & Screws',       tags:['round head','pan head','machine screw','din85','din7985','phillips','slotted','m3','m6','m8']},
   {slug:'grub-screw',          name:'Grub Screw',                  alias:'Set Screw / Socket Set Screw',       cat:'Bolts & Screws',       tags:['grub','set screw','headless','din913','din916','12.9','shaft','keyway']},
   {slug:'lifting-eye-bolt',    name:'Lifting Eye Bolt',            alias:'Eye Bolt / Ring Bolt',               cat:'Bolts & Screws',       tags:['lifting','eye','ring','rigging','load','din580','crane','hook']},
   {slug:'long-eye-bolt',       name:'Long Eye Bolt',               alias:'Extended Shank Eye Bolt',            cat:'Bolts & Screws',       tags:['long','eye','extended','shank','ring','lifting','rigging']},
@@ -3809,7 +3842,7 @@ var SEARCH_CATALOG = [
   {slug:'fischer-epoxy',       name:'Fischer Epoxy',               alias:'Fischer Brand Epoxy Anchor',         cat:'Epoxy Anchors',             tags:['fischer','epoxy','resin','brand','anchor','concrete','heavy']},
   {slug:'fixcher-epoxy',       name:'Magic Epoxy',                 alias:'Magic Epoxy Anchor',                 cat:'Epoxy Anchors',             tags:['magic','epoxy','resin','anchor','concrete','fixcher']},
   {slug:'epoxy-local',         name:'Epoxy Local',                 alias:'Local Epoxy Anchor',                 cat:'Epoxy Anchors',             tags:['epoxy','local','resin','anchor','concrete','chemical','affordable']},
-  {slug:'fischer',             name:'Fischer',                     alias:'Fischer Brand Anchor Range',         cat:'Epoxy Anchors',             tags:['fischer','brand','anchor','range','concrete','masonry','all type']},
+  {slug:'fischer',             name:'Fischer FIS Express',         alias:'Fast-Cure Fischer Epoxy Anchor',     cat:'Epoxy Anchors',             tags:['fischer','fis express','epoxy','fast cure','injection mortar','concrete','hybrid','vinylester']},
   {slug:'eye-nut-anchor',      name:'Eye Nut Anchor',              alias:'Anchoring Eye Nut',                  cat:'Anchors',             tags:['eye','nut','anchor','ring','lifting','anchoring']},
   {slug:'solar-mid-clamp-ubolt',      name:'Solar Panel Mid Clamp U Bolt',       alias:'Mid Clamp U-Bolt / C Channel Clamp',    cat:'Solar Equipment', tags:['solar','mid','clamp','u-bolt','c channel','purlin','ms','galvanised','ss304']},
   {slug:'solar-end-clamp-ubolt',      name:'Solar Panel End Clamp U Bolt',       alias:'End Clamp U-Bolt / C Channel End Clamp', cat:'Solar Equipment', tags:['solar','end','clamp','u-bolt','c channel','purlin','ms','galvanised','ss304']},

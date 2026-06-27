@@ -855,6 +855,17 @@ footer{background:var(--black);border-top:var(--border)}
   #global-back-btn{display:none !important}
   /* Show inline back button only when there is history */
   body.has-back .bc-back{display:flex}
+  /* FAQ + Reviews: stack to single column on mobile */
+  .faq-inner{flex-direction:column;gap:32px;padding:0 24px;}
+  .faq-left{flex:none;}
+  .reviews-inner{flex-direction:column;gap:32px;padding:0 24px;}
+  .reviews-left{flex:none;}
+  .rev-card{flex:0 0 220px;}
+}
+@media(max-width:480px){
+  .faq-inner{padding:0 16px;}
+  .reviews-inner{padding:0 16px;}
+  .rev-card{flex:0 0 200px;}
 }
 </style>
 </head>
@@ -1234,9 +1245,11 @@ footer{background:var(--black);border-top:var(--border)}
   <!-- CTA BANNER -->
   <!-- FAQ SECTION -->
   <div style="background:var(--white);border-top:var(--border);border-bottom:var(--border);padding:72px 0;" id="faq-section">
-    <div class="navbar-inner" style="height:auto;overflow:visible;max-width:860px;">
-      <div class="section-label" style="margin-bottom:1rem;">FREQUENTLY ASKED QUESTIONS</div>
-      <h2 style="font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:2.5rem;line-height:1;">EVERYTHING YOU NEED<br>TO KNOW</h2>
+    <div class="faq-inner">
+      <div class="faq-left">
+        <div class="section-label">FREQUENTLY ASKED QUESTIONS</div>
+        <h2 class="faq-hdg">EVERYTHING<br>YOU NEED<br>TO KNOW</h2>
+      </div>
       <div id="faq-list">
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Where is Bolt &amp; Screw Trading located in Karachi? <span class="faq-icon">+</span></button>
@@ -1266,24 +1279,33 @@ footer{background:var(--black);border-top:var(--border)}
           <button class="faq-q" onclick="toggleFaq(this)">Can you deliver fasteners across Pakistan? <span class="faq-icon">+</span></button>
           <div class="faq-a">We primarily serve Karachi and surrounding areas. For outstation orders across Pakistan, we coordinate delivery through freight and courier partners. Contact us at 0333-3869952 to discuss shipping options for your location and order size.</div>
         </div>
-      </div>
-    </div>
+      </div><!-- /#faq-list -->
+    </div><!-- /.faq-inner -->
   </div>
 
   <!-- GOOGLE REVIEWS SECTION -->
   <div class="reviews-section">
-    <div class="navbar-inner" style="height:auto;overflow:visible;">
-      <div class="section-label">WHAT OUR CUSTOMERS SAY</div>
-      <h2 style="font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 20px;line-height:1;">TRUSTED BY BUSINESSES<br>ACROSS KARACHI</h2>
-      <div class="reviews-overall">
-        <span class="reviews-overall-score">5.0</span>
-        <div>
-          <div class="reviews-overall-stars">
-            <span class="reviews-overall-star">★</span><span class="reviews-overall-star">★</span><span class="reviews-overall-star">★</span><span class="reviews-overall-star">★</span><span class="reviews-overall-star">★</span>
+    <div class="reviews-inner">
+      <!-- LEFT: heading + rating + link -->
+      <div class="reviews-left">
+        <div class="section-label">WHAT OUR CUSTOMERS SAY</div>
+        <h2 class="reviews-hdg">TRUSTED BY<br>BUSINESSES<br>ACROSS KARACHI</h2>
+        <div class="reviews-overall">
+          <span class="reviews-overall-score">5.0</span>
+          <div>
+            <div class="reviews-overall-stars">
+              <span class="reviews-overall-star">★</span><span class="reviews-overall-star">★</span><span class="reviews-overall-star">★</span><span class="reviews-overall-star">★</span><span class="reviews-overall-star">★</span>
+            </div>
+            <div class="reviews-overall-meta">12 reviews on Google</div>
           </div>
-          <div class="reviews-overall-meta">12 reviews on Google</div>
         </div>
+        <a href="https://g.page/r/REVIEW_LINK/review" target="_blank" rel="noopener" class="reviews-cta-link">
+          See all reviews on Google
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
+      <!-- RIGHT: scrollable cards -->
+      <div class="reviews-right">
       <div class="reviews-scroll">
         <div class="rev-card">
           <div class="rev-top">
@@ -1376,11 +1398,8 @@ footer{background:var(--black);border-top:var(--border)}
           </div>
         </div>
       </div>
-      <a href="https://g.page/r/REVIEW_LINK/review" target="_blank" rel="noopener" class="reviews-cta-link">
-        See all reviews on Google
-        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+      </div><!-- /.reviews-right -->
+    </div><!-- /.reviews-inner -->
   </div>
 
   <div class="cta-banner">
@@ -4433,13 +4452,17 @@ function requestQuoteFromCard(btn) {
 #d-arrow-l{opacity:1;}
 
 /* ── Google Reviews section ──────────────────────────────────────────────── */
-.reviews-section{padding:72px 0;background:var(--g50);border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);}
-.reviews-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;cursor:grab;}
+.reviews-section{padding:72px 0;background:var(--g50);border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);overflow:hidden;}
+.reviews-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:flex;gap:64px;align-items:flex-start;}
+.reviews-left{flex:0 0 220px;display:flex;flex-direction:column;}
+.reviews-hdg{font-size:clamp(22px,2.4vw,34px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin:12px 0 24px;line-height:1.0;color:var(--black);}
+.reviews-right{flex:1;min-width:0;overflow:hidden;}
+.reviews-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;cursor:grab;}
 .reviews-scroll:active{cursor:grabbing;}
 .reviews-scroll::-webkit-scrollbar{height:4px;}
 .reviews-scroll::-webkit-scrollbar-track{background:var(--g200);border-radius:2px;}
 .reviews-scroll::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
-.rev-card{flex:0 0 260px;scroll-snap-align:start;background:var(--white);border:1.5px solid var(--g200);border-radius:4px;padding:20px 18px 16px;display:flex;flex-direction:column;gap:10px;transition:border-color var(--ease),transform var(--ease);}
+.rev-card{flex:0 0 250px;scroll-snap-align:start;background:var(--white);border:1.5px solid var(--g200);border-radius:4px;padding:20px 18px 16px;display:flex;flex-direction:column;gap:10px;transition:border-color var(--ease),transform var(--ease);}
 .rev-card:hover{border-color:var(--orange);transform:translateY(-2px);}
 .rev-top{display:flex;align-items:center;gap:10px;}
 .rev-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;font-family:var(--font);background:var(--black);color:var(--white);}
@@ -4451,16 +4474,20 @@ function requestQuoteFromCard(btn) {
 .rev-via{display:flex;align-items:center;gap:5px;margin-top:4px;}
 .rev-via-text{font-size:.68rem;color:var(--g400);font-weight:500;letter-spacing:.02em;}
 .g-logo-svg{width:13px;height:13px;flex-shrink:0;}
-.reviews-overall{display:inline-flex;align-items:center;gap:8px;margin-bottom:24px;}
-.reviews-overall-score{font-size:2.2rem;font-weight:900;line-height:1;color:var(--black);letter-spacing:-.03em;}
-.reviews-overall-stars{display:flex;gap:3px;}
-.reviews-overall-star{color:var(--orange);font-size:18px;}
-.reviews-overall-meta{font-size:.8rem;color:var(--g500);font-weight:500;line-height:1.4;}
-.reviews-cta-link{display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);text-decoration:none;transition:color var(--ease);}
+.reviews-overall{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.reviews-overall-score{font-size:2.4rem;font-weight:900;line-height:1;color:var(--black);letter-spacing:-.03em;}
+.reviews-overall-stars{display:flex;gap:2px;margin-bottom:2px;}
+.reviews-overall-star{color:var(--orange);font-size:16px;}
+.reviews-overall-meta{font-size:.75rem;color:var(--g500);font-weight:500;line-height:1.4;}
+.reviews-cta-link{display:inline-flex;align-items:center;gap:6px;margin-top:28px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);text-decoration:none;transition:color var(--ease);}
 .reviews-cta-link:hover{color:var(--orange-d);}
-.reviews-cta-link svg{width:14px;height:14px;}
+.reviews-cta-link svg{width:13px;height:13px;}
 
 /* ── FAQ section ─────────────────────────────────────────────────────────── */
+.faq-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:flex;gap:64px;align-items:flex-start;}
+.faq-left{flex:0 0 220px;}
+.faq-hdg{font-size:clamp(22px,2.4vw,34px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;margin:12px 0 0;line-height:1.0;color:var(--black);}
+#faq-list{flex:1;min-width:0;}
 .faq-item{border-bottom:1px solid var(--g200);}
 .faq-item:first-child{border-top:1px solid var(--g200);}
 .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-size:.95rem;font-weight:700;color:var(--black);background:none;border:none;cursor:pointer;text-align:left;font-family:var(--font);}
